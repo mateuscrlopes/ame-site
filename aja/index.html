@@ -1,0 +1,681 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex"><!-- esta cópia fica no GitHub só para aparecer dentro do Wix; o Google deve indexar o maiseducacao.org -->
+<title>AJA · AME</title>
+
+<!--
+==========================================================================
+  PÁGINA: AJA
+  Associação Mais Educação (AME) · maiseducacao.org/aja
+
+  COMO USAR NO WIX
+  1. Crie a página com o endereço /aja.
+  2. Adicionar > Incorporar código > Incorporar HTML (código) e cole TUDO.
+  3. Deixe o elemento com a largura total da página.
+  4. Altura: veja a mensagem do Claude (computador e celular são diferentes).
+     No editor de celular, ajuste a altura do elemento separadamente.
+  5. O menu e o rodapé continuam sendo os do Wix (ficam fora deste código).
+  6. Em Configurações da página > SEO, preencha título e descrição.
+  7. LINKS: ative o Modo Dev e cole o arquivo velo-pagina.js no código da
+     página. Sem ele, os botões de WhatsApp e links não conseguem abrir.
+
+  COMO EDITAR
+  - Procure pelos comentários "EDITAR" (como este bloco cinza entre
+    os sinais de comentário). Eles indicam o que pode ser trocado.
+  - Textos entre colchetes [ ] são informações a confirmar.
+  - Comentários não aparecem no site: servem só de guia.
+==========================================================================
+-->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,600;9..40,700&display=swap">
+
+<style>
+/* ==========================================================================
+   CORES E MEDIDAS
+   EDITAR: as cores da AME e a cor do projeto ficam todas aqui.
+   ========================================================================== */
+:root {
+  --roxo: #614998;        /* cor principal da AME */
+  --ameixa: #562568;      /* roxo escuro */
+  --lilas: #e9ddf8;       /* fundo leve */
+  --amarelo: #e8b950;     /* destaque (ponta do lápis) */
+  --creme: #fcf8f0;       /* fundo neutro */
+  --grafite: #292530;     /* texto */
+  --suave: rgba(41, 37, 48, .74);   /* texto secundário */
+  --borda: rgba(97, 73, 152, .2);   /* linhas e contornos */
+
+  /* Cor deste projeto (muda de página para página) */
+  --projeto: #562568;
+  --projeto-texto: #ffffff;   /* cor do texto SOBRE a cor do projeto */
+
+  --largura: 1120px;      /* largura máxima do conteúdo */
+}
+
+* { box-sizing: border-box; }
+html, body {
+  margin: 0; background: #fff; color: var(--grafite);
+  font-family: "DM Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+img { max-width: 100%; display: block; }
+.conteudo { max-width: var(--largura); margin: 0 auto; padding: 0 24px; }
+.chapeu { margin: 0 0 12px; font-size: 12px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--roxo); }
+.titulo-secao { margin: 0 0 20px; font-size: clamp(30px, 4vw, 44px); line-height: 1.08; font-weight: 300; letter-spacing: -.02em; }
+.titulo-secao strong { font-weight: 700; }
+a:focus-visible, button:focus-visible, input:focus-visible { outline: 3px solid var(--roxo); outline-offset: 3px; border-radius: 8px; }
+
+/* Botões */
+.botao {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  min-height: 52px; padding: 0 28px; border: 0; border-radius: 999px;
+  font: 700 16px "DM Sans", sans-serif; text-decoration: none; cursor: pointer;
+}
+.botao-projeto { background: var(--projeto); color: var(--projeto-texto); }
+.botao-projeto:hover { filter: brightness(1.06); }
+.botao-roxo { background: var(--roxo); color: #fff; }
+.botao-roxo:hover { background: var(--ameixa); }
+
+/* ==========================================================================
+   SEÇÃO 1 · TOPO
+   ========================================================================== */
+.topo { padding: 40px 0 72px; }
+.topo .conteudo { display: grid; grid-template-columns: 1fr 1.05fr; gap: 56px; align-items: center; }
+.voltar { display: inline-flex; align-items: center; gap: 6px; min-height: 44px; margin-bottom: 20px; color: var(--roxo); font-weight: 600; font-size: 15px; text-decoration: none; }
+.voltar:hover { text-decoration: underline; }
+.assinatura { height: 52px; width: auto; margin-bottom: 28px; }
+/* Assinatura provisória (projeto ainda sem assinatura oficial): logo + etiqueta inclinada */
+.assinatura-provisoria { display: inline-flex; align-items: center; gap: 0; }
+.assinatura-provisoria img { height: 100%; width: auto; }
+.assinatura-provisoria .etiqueta { margin-left: -6px; padding: 6px 18px 6px 22px; background: var(--projeto); color: var(--projeto-texto); font-size: 15px; font-weight: 700; clip-path: polygon(14px 0, 100% 0, 100% 100%, 0 100%); border-radius: 0 6px 6px 0; }
+.topo h1 { margin: 0 0 20px; font-size: clamp(42px, 5.6vw, 68px); line-height: 1.02; font-weight: 300; letter-spacing: -.025em; }
+.topo h1 strong { display: block; font-weight: 700; color: var(--roxo); }
+.topo .intro { margin: 0 0 24px; max-width: 480px; font-size: 19px; line-height: 1.55; color: var(--suave); }
+.status { display: inline-flex; align-items: center; gap: 10px; margin: 0 0 28px; padding: 8px 16px; border-radius: 999px; background: var(--creme); border: 1px solid var(--borda); font-size: 15px; font-weight: 600; }
+.status .ponto { width: 10px; height: 10px; border-radius: 999px; background: var(--projeto); }
+.topo .acoes { display: flex; flex-wrap: wrap; gap: 12px; }
+
+/* Foto com o recorte diagonal da página inicial */
+.foto-topo {
+  position: relative; aspect-ratio: 4 / 3; width: 100%;
+  clip-path: polygon(38% 0, 100% 0, 100% 100%, 0 100%, 0 62%);
+  border-radius: 0 24px 24px 0; overflow: hidden; background: var(--lilas);
+}
+.foto-topo img { width: 100%; height: 100%; object-fit: cover; }
+
+/* ==========================================================================
+   FAIXA ANIMADA (mesmo código da faixa da página inicial)
+   ========================================================================== */
+.faixa { height: 52px; }
+
+.faixa-rail{width:100%;height:100%;overflow:hidden;display:flex;align-items:center;background:var(--f-fundo)}
+.faixa-track{display:flex;flex:0 0 auto;width:max-content;will-change:transform;animation:faixa-run var(--f-speed,22s) linear infinite}
+.faixa-track.direita{animation-direction:reverse}
+.faixa-seq{display:flex;flex:0 0 auto;align-items:center}
+.faixa-item{display:flex;flex:0 0 auto;align-items:center;gap:18px;padding:0 26px;white-space:nowrap;line-height:1;font-family:"DM Sans",Arial,sans-serif;font-size:clamp(15px,1.55vw,20px);font-weight:800;letter-spacing:-.02em;color:var(--f-texto)}
+.faixa-item.alt{color:var(--f-destaque)}
+.faixa-simbolo{width:17px;height:17px;color:var(--f-destaque);display:block;flex:0 0 auto}
+.faixa-item.alt .faixa-simbolo{color:var(--f-texto)}
+.faixa-simbolo.logo{width:auto;height:15px;aspect-ratio:1018/362.5}
+.faixa-simbolo svg{width:100%;height:100%;display:block}
+@keyframes faixa-run{from{transform:translateX(0)}to{transform:translateX(calc(-1 * var(--f-loop, 400px)))}}
+@media(max-width:600px){.faixa-item{gap:12px;padding:0 18px;font-size:15px}.faixa-simbolo{width:14px;height:14px}.faixa-simbolo.logo{height:12px}}
+
+
+/* ==========================================================================
+   SEÇÃO 2 · COMO FUNCIONA
+   ========================================================================== */
+.funciona { padding: 88px 0; }
+.funciona .conteudo { display: grid; grid-template-columns: 1fr 1.1fr; gap: 56px; align-items: start; }
+.funciona .descricao { margin: 0; font-size: 18px; line-height: 1.6; max-width: 460px; }
+.infos { margin: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.info { padding: 18px 18px 20px; border-radius: 16px; background: #fff; border: 1px solid var(--borda); border-bottom: 4px solid var(--projeto); }
+.info dt { font-size: 12px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--roxo); }
+.info dd { margin: 6px 0 0; font-size: 17px; font-weight: 600; line-height: 1.35; }
+
+/* ==========================================================================
+   SEÇÃO 3 · COMO PARTICIPAR + FORMULÁRIO
+   ========================================================================== */
+.participar { padding: 88px 0; background: var(--creme); }
+.participar .conteudo { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: start; }
+.passos { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 18px; }
+.passos li { display: flex; gap: 16px; align-items: flex-start; font-size: 17px; line-height: 1.5; }
+.num { flex: none; width: 36px; height: 36px; margin-top: -5px; border-radius: 999px; background: var(--roxo); color: #fff; font-weight: 700; display: flex; align-items: center; justify-content: center; }
+.formulario { padding: 32px; border-radius: 24px; background: #fff; border: 1px solid var(--borda); display: flex; flex-direction: column; gap: 16px; }
+.formulario h3 { margin: 0 0 4px; font-size: 26px; font-weight: 600; }
+.campo { display: flex; flex-direction: column; gap: 6px; font-size: 15px; font-weight: 600; }
+.campo input { min-height: 50px; padding: 0 14px; border: 2px solid var(--borda); border-radius: 10px; font: 400 17px "DM Sans", sans-serif; color: var(--grafite); background: #fff; }
+.campo input:focus, .campo select:focus, .campo textarea:focus { border-color: var(--roxo); outline: none; }
+.campo select, .campo textarea { min-height: 50px; padding: 12px 14px; border: 2px solid var(--borda); border-radius: 10px; font: 400 17px "DM Sans", sans-serif; color: var(--grafite); background: #fff; }
+.campo textarea { resize: vertical; }
+.dica { font-size: 13px; font-weight: 400; color: var(--suave); }
+.aviso-form { margin: 0; font-size: 13px; line-height: 1.5; color: var(--suave); }
+.erro { margin: 0; font-size: 14px; font-weight: 600; color: #a3341c; }
+
+/* ==========================================================================
+   SEÇÃO 4 · APOIE O PROJETO
+   ========================================================================== */
+.apoio { padding: 88px 0 40px; }
+.apoio-caixa { display: grid; grid-template-columns: 1.3fr 1fr; align-items: stretch; border-radius: 24px; background: var(--roxo); color: #fff; overflow: hidden; }
+.apoio-texto { padding: 48px; display: flex; flex-direction: column; gap: 16px; }
+.apoio-texto .chapeu { color: var(--lilas); margin: 0; }
+.apoio-texto h2 { margin: 0; font-size: clamp(28px, 3.4vw, 40px); line-height: 1.1; font-weight: 300; }
+.apoio-texto h2 strong { font-weight: 700; }
+.apoio-texto p { margin: 0; font-size: 17px; line-height: 1.55; color: var(--lilas); }
+.apoio-texto .acoes { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 8px; }
+.botao-contorno { background: transparent; color: #fff; border: 2px solid var(--lilas); }
+.botao-contorno:hover { background: rgba(233, 221, 248, .12); }
+.botao-amarelo { background: var(--amarelo); color: var(--grafite); }
+.apoio-caixa a:focus-visible { outline-color: var(--amarelo); }
+.apoio-foto { position: relative; min-height: 300px; }
+.apoio-foto img { position: absolute; inset: 24px 0 0 0; width: 100%; height: calc(100% - 24px); object-fit: contain; object-position: right bottom; }
+
+/* ==========================================================================
+   SEÇÃO 5 · OUTROS PROJETOS
+   ========================================================================== */
+.outros { padding: 48px 0 96px; }
+.outros-lista { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 16px; }
+.outro { position: relative; display: flex; flex-direction: column; gap: 8px; padding: 26px 22px 22px; border-radius: 16px; border: 1px solid var(--borda); background: #fff; color: var(--grafite); text-decoration: none; overflow: hidden; transition: border-color .2s; }
+.outro-faixa { position: absolute; left: 0; right: 0; top: 0; height: 6px; background: var(--c); transition: height .25s ease; }
+.outro:hover { border-color: var(--c); }
+.outro:hover .outro-faixa { height: 10px; }
+.outro-area { margin-top: 6px; font-size: 12px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--suave); }
+.outro-nome { font-size: 20px; font-weight: 700; }
+.outro-ver { margin-top: 8px; font-size: 15px; font-weight: 600; color: var(--roxo); }
+@media (prefers-reduced-motion: reduce) { .outro, .outro-faixa { transition: none; } }
+
+/* ==========================================================================
+   CELULAR (telas até 820px)
+   ========================================================================== */
+@media (max-width: 820px) {
+  .conteudo { padding: 0 16px; }
+  .topo { padding: 24px 0 48px; }
+  .topo .conteudo, .funciona .conteudo, .participar .conteudo { grid-template-columns: 1fr; gap: 36px; }
+  .assinatura { height: 40px; margin-bottom: 20px; }
+  .assinatura-provisoria .etiqueta { font-size: 13px; }
+  .topo .intro { font-size: 17px; }
+  .topo .acoes .botao { width: 100%; }
+  .foto-topo { aspect-ratio: 4 / 3.2; }
+  .faixa { height: 44px; }
+  .funciona, .participar { padding: 56px 0; }
+  .formulario { padding: 24px 20px; }
+  .apoio { padding: 56px 0 24px; }
+  .apoio-caixa { grid-template-columns: 1fr; }
+  .apoio-texto { padding: 28px 20px 32px; }
+  .apoio-texto .botao { width: 100%; }
+  .apoio-foto { order: -1; min-height: 0; aspect-ratio: 1 / 0.9; }
+  .outros { padding: 32px 0 64px; }
+  .outros-lista { grid-template-columns: 1fr; gap: 12px; }
+}
+@media (max-width: 360px) { .infos { grid-template-columns: 1fr; } }
+/* Caixa que aparece se o link não puder ser aberto */
+
+.ame-plano-b{margin-top:16px;padding:16px 18px;border-radius:14px;background:#fcf8f0;color:#292530;border:2px solid #e8b950;font-family:"DM Sans",sans-serif;font-size:15px;line-height:1.5;text-align:left;flex-basis:100%}
+.ame-plano-b p{margin:0 0 8px;color:#292530}
+.ame-plano-b-copiar{min-height:44px;padding:0 18px;border:0;border-radius:999px;background:#614998;color:#fff;font:600 15px "DM Sans",sans-serif;cursor:pointer}
+
+</style>
+</head>
+
+<body>
+<main>
+
+<!-- ==========================================================================
+     SEÇÃO 1 · TOPO
+     Assinatura do projeto, título, texto de abertura, situação das inscrições
+     e foto.
+     ========================================================================== -->
+<section class="topo" aria-labelledby="titulo-pagina">
+  <div class="conteudo">
+    <div>
+      <!-- Assinatura oficial do projeto (logo AME + etiqueta). Não trocar por outra imagem. -->
+      <span class="assinatura assinatura-provisoria"><img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyByb2xlPSJpbWciIGFyaWEtbGFiZWw9IkFNRSDigJQgQXNzb2NpYcOnw6NvIE1haXMgRWR1Y2HDp8OjbyIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgd2lkdGg9IjEwMTguMCIgaGVpZ2h0PSIzNjIuMCIgdmlld0JveD0iOTEuMDAgNDE5LjAwIDEwMTguMDAgMzYyLjAwIiB4bWxuczpjMnBhPSJodHRwOi8vYzJwYS5vcmcvbWFuaWZlc3QiPgo8cGF0aCBmaWxsLXJ1bGU9Im5vbnplcm8iIGZpbGw9InJnYigzOC4wMzg2MzUlLCAyOC42MjcwMTQlLCA1OS42MDg0NTklKSIgZmlsbC1vcGFjaXR5PSIxIiBkPSJNIDU3OS40MjU3ODEgNTcwLjg5MDYyNSBMIDU2Ny41ODk4NDQgNzMwLjkxMDE1NiBDIDU2NS41NTA3ODEgNzQ2LjIyMjY1NiA1NTguNzM4MjgxIDc1OC41MjczNDQgNTQzLjI5Njg3NSA3NjAuMTI1IEMgNTI4LjcxMDkzOCA3NjEuNjI4OTA2IDUyMC4zNTU0NjkgNzYwLjkwMjM0NCA1MTQuNDg0Mzc1IDc2MCBDIDQ5Ny4zODI4MTIgNzU3LjM3NSA0OTQuMzcxMDk0IDc0Mi4wMzEyNSA0OTUuMzA0Njg4IDcyNC45MDIzNDQgTCA1MDguMzY3MTg4IDQ4NC41NDI5NjkgQyA1MDguOTg0Mzc1IDQ3My4xNDA2MjUgNTEzLjMzMjAzMSA0NjIuNzQyMTg4IDUyMC4xNDQ1MzEgNDU0LjM4NjcxOSBDIDUzMy4xODc1IDQzOC40MDYyNSA1NTcuNzE0ODQ0IDQzOC4xNzE4NzUgNTc4LjI3MzQzOCA0NDAuMTM2NzE5IEMgNTk0LjUxNTYyNSA0NDEuNjkxNDA2IDYwOC4wMDM5MDYgNDUxLjAxOTUzMSA2MTUuOTg4MjgxIDQ2NC44NzEwOTQgTCA2MjcuMzE2NDA2IDQ4Ny44NTU0NjkgTCA2NjMuMTc1NzgxIDU2OS4yNDIxODggQyA2NjQuMDMxMjUgNTcxLjE4NzUgNjY1Ljc2MTcxOSA1NzIuMjY1NjI1IDY2Ny4yNjk1MzEgNTcyLjQzMzU5NCBDIDY2OS4yMzgyODEgNTcyLjY1MjM0NCA2NzAuOTUzMTI1IDU3MS40MTc5NjkgNjcyLjI1NzgxMiA1NjkuMzUxNTYyIEwgNzI4Ljk5NjA5NCA0NzkuNDMzNTk0IEMgNzQ0LjQ3MjY1NiA0NTQuOTA2MjUgNzY0Ljg1MTU2MiA0MzcuODQ3NjU2IDc5NC43MzQzNzUgNDM5LjA3MDMxMiBDIDgwMy44MTI1IDQzOS40NDE0MDYgODEyLjQxNzk2OSA0NDAuMzcxMDk0IDgyMC42MzY3MTkgNDQ0LjEyODkwNiBDIDgzNy41ODU5MzggNDUxLjg4NjcxOSA4NDUuMTY0MDYyIDQ2Ny45MTc5NjkgODQzLjE4NzUgNDg2LjM5ODQzOCBMIDgyNS45ODA0NjkgNjQ3LjI4MTI1IEwgODE4Ljg1MTU2MiA3MTIuMDU0Njg4IEMgODE3LjgwODU5NCA3MjEuNTM5MDYyIDgxNy44MjQyMTkgNzMwLjU4OTg0NCA4MTQuOTg0Mzc1IDczOS42ODM1OTQgQyA4MTEuNjQ0NTMxIDc1MC4zOTQ1MzEgODAzLjQwNjI1IDc1Ny4yMzA0NjkgNzkyLjEyMTA5NCA3NTkuNTExNzE5IEMgNzgyLjY4NzUgNzYxLjQyMTg3NSA3NzEuNjIxMDk0IDc2MS40MjE4NzUgNzYxLjk3NjU2MiA3NTkuNzg1MTU2IEMgNzUwLjg3NSA3NTcuODk4NDM4IDc0Mi43NzM0MzggNzUwLjY4MzU5NCA3NDEuMjM0Mzc1IDczOS43MzA0NjkgQyA3MzkuODMyMDMxIDczMi42MDU0NjkgNzQwLjIwMzEyNSA3MjUuOTAyMzQ0IDc0MC43ODkwNjIgNzE4LjI5Njg3NSBMIDc1My4yMTg3NSA1NzIuMzM1OTM4IEwgNjk2LjgwODU5NCA2NzcuMzEyNSBMIDY4OC41MTk1MzEgNjkxLjkxMDE1NiBDIDY4MS43NSA3MDMuMDk3NjU2IDY3MC4yNTc4MTIgNzA5LjEyNSA2NTcuMjYxNzE5IDcwOS4yODEyNSBDIDY0My4xNzE4NzUgNzA5LjQ0OTIxOSA2MzEuNDk2MDk0IDcwMi4yNDIxODggNjI1LjY0MDYyNSA2ODkuMjU3ODEyIEwgNjAwLjMwNDY4OCA2MjMuNzIyNjU2IFogTSA1NzkuNDI1NzgxIDU3MC44OTA2MjUgIi8+CjxwYXRoIGZpbGwtcnVsZT0ibm9uemVybyIgZmlsbD0icmdiKDM4LjAzODYzNSUsIDI4LjYyNzAxNCUsIDU5LjYwODQ1OSUpIiBmaWxsLW9wYWNpdHk9IjEiIGQ9Ik0gOTM4LjAxNTYyNSA2MzAuNzQ2MDk0IEMgOTM0LjE2NDA2MiA2MzAuNzYxNzE5IDkzMi44MDQ2ODggNjMzLjU3NDIxOSA5MzIuNTQ2ODc1IDYzNi40MTAxNTYgTCA5MjkuMTYwMTU2IDY3My4yMTQ4NDQgQyA5MjguNDI5Njg4IDY4MS4xNjc5NjkgOTMzLjk0NTMxMiA2ODcuNDc2NTYyIDk0Mi40MTQwNjIgNjg3LjQ5NjA5NCBMIDEwNjUuMTYwMTU2IDY4Ny43OTI5NjkgQyAxMDcwLjA3NDIxOSA2ODcuODA0Njg4IDEwNzQuMzIwMzEyIDY5MC4wNzgxMjUgMTA3Ni45MTc5NjkgNjkyLjg1MTU2MiBDIDEwNzkuOTcyNjU2IDY5Ni4xMDE1NjIgMTA4MS4xNDA2MjUgNzAwLjk4MDQ2OSAxMDgwLjQyOTY4OCA3MDUuNzA3MDMxIEMgMTA3OC41NjY0MDYgNzE4LjA3NDIxOSAxMDc1LjgyMDMxMiA3MzAuMTYwMTU2IDEwNzEuMTAxNTYyIDc0MS41MjM0MzggQyAxMDY2LjQwMjM0NCA3NTIuODM1OTM4IDEwNTYuOTY0ODQ0IDc1OS44Mzk4NDQgMTA0NC40MTQwNjIgNzU5LjgzNTkzOCBMIDg4OS4yMTA5MzggNzU5Ljc4MTI1IEMgODc5LjYxNzE4OCA3NTkuNzgxMjUgODcwLjg4MjgxMiA3NTcuMDM1MTU2IDg2Mi45OTYwOTQgNzUyLjUxMTcxOSBDIDg0NC43NDIxODggNzQyLjA1MDc4MSA4NDIuNDk2MDk0IDcxOS41NDI5NjkgODQ0LjY5NTMxMiA2OTguNzczNDM4IEwgODY1Ljk1NzAzMSA0OTcuNzczNDM4IEMgODY5LjM4NjcxOSA0NjUuMzU5Mzc1IDg5My45MzM1OTQgNDM5LjczODI4MSA5MjUuMzA0Njg4IDQzOS42Njc5NjkgTCAxMDc0LjY0MDYyNSA0MzkuMzMyMDMxIEMgMTA4My4zNDc2NTYgNDM5LjMxMjUgMTA4OS42MDE1NjIgNDQ3LjAxNTYyNSAxMDg4LjU4OTg0NCA0NTUuMTgzNTk0IEMgMTA4Ni45ODA0NjkgNDY4LjE4NzUgMTA4My44MzU5MzggNDgwLjY2Nzk2OSAxMDc5LjMxMjUgNDkyLjg3ODkwNiBDIDEwNzUuNSA1MDMuMTY0MDYyIDEwNjcuMTA1NDY5IDUxMC4xNTIzNDQgMTA1NS44MjAzMTIgNTEwLjE5NTMxMiBMIDk2MS41IDUxMC41NjY0MDYgQyA5NTIuMDAzOTA2IDUxMC42MDE1NjIgOTQ1LjM1MTU2MiA1MTYuODAwNzgxIDk0NC4zMzU5MzggNTI1Ljg3MTA5NCBMIDk0MS4wOTM3NSA1NTQuODYzMjgxIEMgOTQwLjkwNjI1IDU1Ni41MzEyNSA5NDIuMzM1OTM4IDU1OC4wNDI5NjkgOTQ0LjEyODkwNiA1NTguMDQ2ODc1IEwgMTA0MS4xOTUzMTIgNTU4LjI4NTE1NiBDIDEwNDkuNTcwMzEyIDU1OC4zMDQ2ODggMTA1Ni4xMzI4MTIgNTY1LjUxNTYyNSAxMDU1LjI3MzQzOCA1NzMuOTQxNDA2IEMgMTA1My44ODI4MTIgNTg3LjU1ODU5NCAxMDUwLjkyNTc4MSA2MDAuNzY5NTMxIDEwNDYuNDYwOTM4IDYxMy42MDE1NjIgQyAxMDQyLjk2ODc1IDYyMy42MzY3MTkgMTAzNC4zNTU0NjkgNjMwLjQxNDA2MiAxMDIzLjQ3MjY1NiA2MzAuNDUzMTI1IFogTSA5MzguMDE1NjI1IDYzMC43NDYwOTQgIi8+CjxwYXRoIGZpbGwtcnVsZT0ibm9uemVybyIgZmlsbD0icmdiKDM0LjExNzEyNiUsIDE0LjUwOTU4MyUsIDQwLjc4MzY5MSUpIiBmaWxsLW9wYWNpdHk9IjEiIGQ9Ik0gNDAyLjU2NjQwNiA1MTYuMTcxODc1IEwgNDA2LjYwMTU2MiA1NDkuNzUzOTA2IEwgMzc5LjA5Mzc1IDU0MC43NjU2MjUgWiBNIDQwMi41NjY0MDYgNTE2LjE3MTg3NSAiLz4KPHBhdGggZmlsbC1ydWxlPSJub256ZXJvIiBmaWxsPSJyZ2IoMzguMDM4NjM1JSwgMjguNjI3MDE0JSwgNTkuNjA4NDU5JSkiIGZpbGwtb3BhY2l0eT0iMSIgZD0iTSA0NjYuNjE3MTg4IDQ0MS44MjQyMTkgQyA0NTkuMTk1MzEyIDQzOS45MDIzNDQgNDUxLjIzNDM3NSA0MzkuNjI1IDQ0Ni42NDg0MzggNDM5LjYyNSBMIDQwMC4wMDM5MDYgNDM5LjYyNSBDIDM3MC45NTMxMjUgNDM5LjYyNSAzNDIuNDUzMTI1IDQ2Ny4zOTA2MjUgMzI2Ljc4OTA2MiA0OTEuNDQxNDA2IEwgMjk0LjM5ODQzOCA1MzkuODA0Njg4IEwgMjU2Ljc2MTcxOSA1OTcuMjY5NTMxIEMgMjIxLjk1NzAzMSA1OTYuOTQ5MjE5IDE4Ny44NDc2NTYgNjAwLjg4NjcxOSAxNTQuODAwNzgxIDYxMS4zNzg5MDYgQyAxNDEuMzgyODEyIDYxNS42MzI4MTIgMTI5LjEwOTM3NSA2MjAuNjUyMzQ0IDExNy40NDkyMTkgNjI4LjA1MDc4MSBDIDExMi4xMDE1NjIgNjMwLjY4MzU5NCAxMTAuMjY1NjI1IDYzNS45MDYyNSAxMTEuODUxNTYyIDY0MS41NTQ2ODggTCAxMjYuMDMxMjUgNjkxLjY4MzU5NCBDIDEyNi41NjY0MDYgNjkzLjU4MjAzMSAxMjguNTg1OTM4IDY5NC44MzIwMzEgMTI5LjgwMDc4MSA2OTUuMTg3NSBDIDEzMS4xMTMyODEgNjk1LjU1ODU5NCAxMzIuOTQxNDA2IDY5NS4yMjI2NTYgMTM0LjM3NSA2OTQuMjIyNjU2IEMgMTU3LjgzOTg0NCA2NzcuODY3MTg4IDE4NS4wMzkwNjIgNjY3LjcwNzAzMSAyMTMuNzI2NTYyIDY2Ni40NzI2NTYgTCAxNTkuNTUwNzgxIDc1Ni4xOTkyMTkgQyAxNTguOTE0MDYyIDc1Ny4yODkwNjIgMTU3LjgxNjQwNiA3NTkuMTA1NDY5IDE1Ny4yNzM0MzggNzYwLjAzOTA2MiBDIDE1Ny4yMzgyODEgNzYwLjEwMTU2MiAxNTcuMjM4MjgxIDc2MC4xNzk2ODggMTU3LjI3MzQzOCA3NjAuMjQyMTg4IEMgMTU3LjMwMDc4MSA3NjAuMzEyNSAxNTcuMzc4OTA2IDc2MC4zNjcxODggMTU3LjQ2ODc1IDc2MC4zNjcxODggTCAxOTQuNDkyMTg4IDc2MC4zNjcxODggQyAyMDMuODI4MTI1IDc2MC4zNjcxODggMjA5LjQ4MDQ2OSA3NjAuMzY3MTg4IDIxNi4xMjEwOTQgNzYwLjAzOTA2MiBDIDIxOS40OTIxODggNzU5Ljg3MTA5NCAyMjMuMTI1IDc1OS42MjEwOTQgMjI3LjYxMzI4MSA3NTkuMjQyMTg4IEMgMjM4LjgyMDMxMiA3NTguMjkyOTY5IDI0NS41OTc2NTYgNzQ4LjU2MjUgMjUxLjM0Mzc1IDczOS4xMDE1NjIgTCAyOTQuNDQxNDA2IDY2OC4wODU5MzggTCAzMjIuNTA3ODEyIDYxMi40Njg3NSBMIDM0Ny43MjY1NjIgNTYyLjUwNzgxMiBMIDQwMi4zNDM3NSA1MDMuNjI1IEMgNDAzLjQxNzk2OSA1MDIuNDcyNjU2IDQwNS4xMjEwOTQgNTAyLjIwNzAzMSA0MDYuNDY4NzUgNTAyLjM0NzY1NiBDIDQwNi41MjM0MzggNTAyLjM0NzY1NiA0MDYuNTgyMDMxIDUwMi4zNTkzNzUgNDA2LjYzNjcxOSA1MDIuMzY3MTg4IEMgNDA2LjcwNzAzMSA1MDIuMzc1IDQwNi43Njk1MzEgNTAyLjM4MjgxMiA0MDYuODMyMDMxIDUwMi40MDIzNDQgQyA0MDYuOTM3NSA1MDIuNDE3OTY5IDQwNy4wNDI5NjkgNTAyLjQzNzUgNDA3LjE0NDUzMSA1MDIuNDY0ODQ0IEMgNDA3LjMyMDMxMiA1MDIuNSA0MDcuNDgwNDY5IDUwMi41NTA3ODEgNDA3LjYyODkwNiA1MDIuNjA1NDY5IEMgNDA3Ljk0MTQwNiA1MDIuNzE4NzUgNDA4LjIyMjY1NiA1MDIuODcxMDk0IDQwOC40ODA0NjkgNTAzLjAzOTA2MiBDIDQwOC42NDg0MzggNTAzLjE2NDA2MiA0MDguODA4NTk0IDUwMy4yODkwNjIgNDA4Ljk2MDkzOCA1MDMuNDQxNDA2IEMgNDA5LjA0Njg3NSA1MDMuNTE5NTMxIDQwOS4xMjg5MDYgNTAzLjYwOTM3NSA0MDkuMjA3MDMxIDUwMy42OTUzMTIgQyA0MDkuMzY3MTg4IDUwMy44ODI4MTIgNDA5LjUwNzgxMiA1MDQuMDc4MTI1IDQwOS42NDQ1MzEgNTA0LjI4OTA2MiBDIDQwOS43NDIxODggNTA0LjQ0OTIxOSA0MDkuODI4MTI1IDUwNC42Mjg5MDYgNDA5LjkxMDE1NiA1MDQuODA0Njg4IEMgNDA5LjkyNTc4MSA1MDQuODI0MjE5IDQwOS45Mzc1IDUwNC44NDc2NTYgNDA5LjkzNzUgNTA0Ljg3NSBDIDQxMC4wMTU2MjUgNTA1LjAyNzM0NCA0MTAuMDc4MTI1IDUwNS4xOTUzMTIgNDEwLjE0MDYyNSA1MDUuMzYzMjgxIEMgNDEwLjIyNjU2MiA1MDUuNjIxMDk0IDQxMC4zMDg1OTQgNTA1Ljg5NDUzMSA0MTAuMzcxMDk0IDUwNi4xODc1IEMgNDEwLjQyMTg3NSA1MDYuNDQ1MzEyIDQxMC40Njg3NSA1MDYuNzEwOTM4IDQxMC41MDM5MDYgNTA2Ljk5NjA5NCBMIDQxNS40NzY1NjIgNTQ2Ljc2NTYyNSBMIDQyMC40MzM1OTQgNTg2LjUzMTI1IEwgNDExLjQ2MDkzOCA2MzUuODYzMjgxIEwgNDA4LjA0Njg3NSA2NTQuNjI1IEwgMzk0LjcxODc1IDcyNy45MjU3ODEgQyAzOTkuNTc4MTI1IDczNi4yMzgyODEgNDAzLjU1ODU5NCA3NDQuODU1NDY5IDQwNyA3NTQuMDA3ODEyIEMgNDA4LjI1IDc1Ny4zMzIwMzEgNDExLjA3MDMxMiA3NTkuNTMxMjUgNDE0LjU4MjAzMSA3NjAuMDM5MDYyIEMgNDE1LjEwNTQ2OSA3NjAuMTA5Mzc1IDQxNS42NDg0MzggNzYwLjE0NDUzMSA0MTYuMTk1MzEyIDc2MC4xNDQ1MzEgTCA0MzQuNTM1MTU2IDc2MC4wMzkwNjIgTCA0NTEuMjIyNjU2IDc1OS45NDE0MDYgQyA0NjUuMzk0NTMxIDc1OS44NTkzNzUgNDcwLjUxMTcxOSA3NDcuNjgzNTk0IDQ3MC4yOTY4NzUgNzMzLjIxMDkzOCBMIDQ4My42NTIzNDQgNDY1LjM1MTU2MiBDIDQ4NC4xOTUzMTIgNDU0LjQ3MjY1NiA0NzcuMTUyMzQ0IDQ0NC41NDY4NzUgNDY2LjYxNzE4OCA0NDEuODI0MjE5ICIvPgo8cGF0aCBmaWxsLXJ1bGU9Im5vbnplcm8iIGZpbGw9InJnYig5MS4zNzI2ODElLCA3Mi45NDE1ODklLCAzMS4zNzIwNyUpIiBmaWxsLW9wYWNpdHk9IjEiIGQ9Ik0gNDExLjAwNzgxMiA1ODcuMjIyNjU2IEMgNDAxLjY2MDE1NiA1OTAuMTU2MjUgMzk2LjYzMjgxMiA1ODcuNDYwOTM4IDM5Mi45MTAxNTYgNTc5LjEwOTM3NSBDIDM4OC4zMzIwMzEgNTgyLjE3NTc4MSAzODQuNTE5NTMxIDU4Mi4zNTU0NjkgMzc5Ljg5MDYyNSA1ODAuOTMzNTk0IEMgMzc2LjgzMjAzMSA1ODAuMDAzOTA2IDM3NC45NTMxMjUgNTc1Ljc5Mjk2OSAzNzIuODM5ODQ0IDU3My4wMDc4MTIgTCAzNzIuODM5ODQ0IDU3MyBDIDM3Mi4xMTMyODEgNTczLjMxNjQwNiAzNzEuNDE0MDYyIDU3My41OTM3NSAzNzAuNzM4MjgxIDU3My44MzIwMzEgQyAzNzAuMDU0Njg4IDU3NC4wNzAzMTIgMzY5LjQwMjM0NCA1NzQuMjczNDM4IDM2OC43NzM0MzggNTc0LjQzMzU5NCBDIDM2OC4xMDU0NjkgNTc0LjYwMTU2MiAzNjcuNDU3MDMxIDU3NC43MjY1NjIgMzY2Ljg0NzY1NiA1NzQuODA4NTk0IEMgMzY2LjI4OTA2MiA1NzQuODg2NzE5IDM2NS43MzgyODEgNTc0LjkyMTg3NSAzNjUuMjE0ODQ0IDU3NC45MjE4NzUgQyAzNjQuMjAzMTI1IDU3NC45MjE4NzUgMzYzLjI0NjA5NCA1NzQuNzg5MDYyIDM2Mi4zMjQyMTkgNTc0LjUwNzgxMiBDIDM1OS41ODU5MzggNTczLjY3MTg3NSAzNTcuMjA3MDMxIDU3MS41NzgxMjUgMzU0LjgwNDY4OCA1NjguMDkzNzUgTCAzMzIuNDIxODc1IDYxNS45MTAxNTYgTCAzMDYuODU1NDY5IDY3MC41MDc4MTIgQyAzMzUuODc4OTA2IDY3NyAzNjQuMTg3NSA2ODkuNTU4NTk0IDM4My4xNDQ1MzEgNzExLjQyNTc4MSBDIDM4My4xNjQwNjIgNzExLjQ1MzEyNSAzODMuMTkxNDA2IDcxMS40NzY1NjIgMzgzLjIxNDg0NCA3MTEuNTAzOTA2IEwgMzk3LjUwMzkwNiA2NDcuNjI4OTA2IFogTSA0MTEuMDA3ODEyIDU4Ny4yMjI2NTYgIi8+CjxwYXRoIGZpbGwtcnVsZT0ibm9uemVybyIgZmlsbD0icmdiKDM0LjExNzEyNiUsIDE0LjUwOTU4MyUsIDQwLjc4MzY5MSUpIiBmaWxsLW9wYWNpdHk9IjEiIGQ9Ik0gNDAyLjM0Mzc1IDUwMy42MjUgTCA0MDIuMzQzNzUgNTAzLjYxNzE4OCBDIDQwMy42MDU0NjkgNTAyLjI1NzgxMiA0MDUuNzU3ODEyIDUwMi4xMjUgNDA3LjE0NDUzMSA1MDIuNDY0ODQ0IEMgNDA1Ljc1IDUwMi4xMzY3MTkgNDAzLjYwNTQ2OSA1MDIuMjY5NTMxIDQwMi4zNDM3NSA1MDMuNjI1ICIvPgo8cGF0aCBmaWxsLXJ1bGU9Im5vbnplcm8iIGZpbGw9InJnYigzNC4xMTcxMjYlLCAxNC41MDk1ODMlLCA0MC43ODM2OTElKSIgZmlsbC1vcGFjaXR5PSIxIiBkPSJNIDQwNi42MDE1NjIgNTQ5Ljc1MzkwNiBMIDM3OS4wOTM3NSA1NDAuNzY1NjI1IEwgNDAyLjU2NjQwNiA1MTYuMTcxODc1IFogTSA0MDYuNjAxNTYyIDU0OS43NTM5MDYgIi8+CjxwYXRoIGZpbGwtcnVsZT0ibm9uemVybyIgZmlsbD0icmdiKDkxLjM3MjY4MSUsIDcyLjk0MTU4OSUsIDMxLjM3MjA3JSkiIGZpbGwtb3BhY2l0eT0iMSIgZD0iTSA0MTEuMDA3ODEyIDU4Ny4yMjI2NTYgTCAzOTcuNTAzOTA2IDY0Ny42Mjg5MDYgQyAzNzYuNzg5MDYyIDYzNC42ODM1OTQgMzU1LjQ3NjU2MiA2MjMuODk4NDM4IDMzMi40MjE4NzUgNjE1LjkxMDE1NiBMIDM1NC44MDQ2ODggNTY4LjA5Mzc1IEMgMzU3LjIwNzAzMSA1NzEuNTc4MTI1IDM1OS41ODU5MzggNTczLjY3MTg3NSAzNjIuMzI0MjE5IDU3NC41MDc4MTIgQyAzNjUuMjUgNTc1LjM5MDYyNSAzNjguNTkzNzUgNTc0LjgzNTkzOCAzNzIuODM5ODQ0IDU3MyBMIDM3Mi44Mzk4NDQgNTczLjAwNzgxMiBDIDM3NC45NTMxMjUgNTc1Ljc5Mjk2OSAzNzYuODMyMDMxIDU4MC4wMDM5MDYgMzc5Ljg5MDYyNSA1ODAuOTMzNTk0IEMgMzg0LjUxOTUzMSA1ODIuMzU1NDY5IDM4OC4zMzIwMzEgNTgyLjE3NTc4MSAzOTIuOTEwMTU2IDU3OS4xMDkzNzUgQyAzOTYuNjMyODEyIDU4Ny40NjA5MzggNDAxLjY2MDE1NiA1OTAuMTU2MjUgNDExLjAwNzgxMiA1ODcuMjIyNjU2ICIvPgo8cGF0aCBmaWxsLXJ1bGU9Im5vbnplcm8iIGZpbGw9InJnYigzNC4xMTcxMjYlLCAxNC41MDk1ODMlLCA0MC43ODM2OTElKSIgZmlsbC1vcGFjaXR5PSIxIiBkPSJNIDQxMS40NjA5MzggNjM1Ljg2MzI4MSBMIDQyMC40MzM1OTQgNTg2LjUzMTI1IEwgNDE1LjQ3NjU2MiA1NDYuNzY1NjI1IEwgNDIwLjQ0NTMxMiA1ODYuNTMxMjUgWiBNIDQxMS40NjA5MzggNjM1Ljg2MzI4MSAiLz4KPHBhdGggZmlsbC1ydWxlPSJub256ZXJvIiBmaWxsPSJyZ2IoMTAwJSwgMTAwJSwgMTAwJSkiIGZpbGwtb3BhY2l0eT0iMSIgZD0iTSAzNzIuODM5ODQ0IDU3MyBMIDM3Mi44Mzk4NDQgNTczLjAwNzgxMiBDIDM2OC41OTM3NSA1NzQuODQzNzUgMzY1LjI1IDU3NS4zOTA2MjUgMzYyLjMyNDIxOSA1NzQuNTA3ODEyIEMgMzY1LjI1IDU3NS4zOTA2MjUgMzY4LjU5Mzc1IDU3NC44MzU5MzggMzcyLjgzOTg0NCA1NzMgIi8+CjxwYXRoIGZpbGwtcnVsZT0ibm9uemVybyIgZmlsbD0icmdiKDEwMCUsIDEwMCUsIDEwMCUpIiBmaWxsLW9wYWNpdHk9IjEiIGQ9Ik0gNDA2LjYwMTU2MiA1NDkuNzUzOTA2IEwgMzc5LjA5Mzc1IDU0MC43NjU2MjUgTCA0MDIuNTY2NDA2IDUxNi4xNzE4NzUgWiBNIDQwNi42MDE1NjIgNTQ5Ljc1MzkwNiAiLz4KPHBhdGggZmlsbC1ydWxlPSJub256ZXJvIiBmaWxsPSJyZ2IoMTAwJSwgMTAwJSwgMTAwJSkiIGZpbGwtb3BhY2l0eT0iMSIgZD0iTSA0MDguOTYwOTM4IDUwMy40Mzc1IEMgNDA5LjY1MjM0NCA1MDQuMDkzNzUgNDEwLjEyMTA5NCA1MDUuMDI3MzQ0IDQxMC4zNzEwOTQgNTA2LjE4NzUgQyA0MTAuMTEzMjgxIDUwNS4wMjczNDQgNDA5LjY0NDUzMSA1MDQuMDkzNzUgNDA4Ljk2MDkzOCA1MDMuNDM3NSAiLz4KPHBhdGggZmlsbC1ydWxlPSJub256ZXJvIiBmaWxsPSJyZ2IoMTAwJSwgMTAwJSwgMTAwJSkiIGZpbGwtb3BhY2l0eT0iMSIgZD0iTSA0MDYuNjAxNTYyIDU0OS43NTM5MDYgTCAzNzkuMDkzNzUgNTQwLjc2NTYyNSBMIDQwMi41NjY0MDYgNTE2LjE3MTg3NSBaIE0gNDA2LjYwMTU2MiA1NDkuNzUzOTA2ICIvPgo8cGF0aCBmaWxsLXJ1bGU9Im5vbnplcm8iIGZpbGw9InJnYig5MS4zNzI2ODElLCA3Mi45NDE1ODklLCAzMS4zNzIwNyUpIiBmaWxsLW9wYWNpdHk9IjEiIGQ9Ik0gNDA2LjYwMTU2MiA1NDkuNzUzOTA2IEwgMzc5LjA5Mzc1IDU0MC43NjU2MjUgTCA0MDIuNTY2NDA2IDUxNi4xNzE4NzUgWiBNIDQwNi42MDE1NjIgNTQ5Ljc1MzkwNiAiLz4KPG1ldGFkYXRhPjxjMnBhOm1hbmlmZXN0PkFBQVdnbXAxYldJQUFBQWVhblZ0WkdNeWNHRUFFUUFRZ0FBQXFnQTRtM0VEWXpKd1lRQUFBQlpjYW5WdFlnQUFBRWRxZFcxa1l6SnRZUUFSQUJDQUFBQ3FBRGliY1FOMWNtNDZZekp3WVRwaE9UbGlOamM1TlMxbE1UZzRMVFE0TkdFdE9HTTVaaTA1TWpFeVltWm1ORGM0TWpRQUFBQURsMnAxYldJQUFBQXBhblZ0WkdNeVlYTUFFUUFRZ0FBQXFnQTRtM0VEWXpKd1lTNWhjM05sY25ScGIyNXpBQUFBQUx4cWRXMWlBQUFBUkdwMWJXUmpZbTl5QUJFQUVJQUFBS29BT0p0eEUyTXljR0V1YVc1bmNtVmthV1Z1ZEM1Mk13QUFBQUFZWXpKemFQNUZ0NGpwMmRoRjBaTGs2TldKRnZvQUFBQndZMkp2Y3FOcFpHTTZabTl5YldGMGJXbHRZV2RsTDNOMlp5dDRiV3hxYVc1emRHRnVZMlZKUkhnc2VHMXdPbWxwWkRvd1ptTXhOVEJoWVMxa01XTTRMVFJrTjJZdFlUUTJOeTB3T0RabE9HWTFOV05tTVdGc2NtVnNZWFJwYjI1emFHbHdhSEJoY21WdWRFOW1BQUFCNG1wMWJXSUFBQUJCYW5WdFpHTmliM0lBRVFBUWdBQUFxZ0E0bTNFVFl6SndZUzVoWTNScGIyNXpMbll5QUFBQUFCaGpNbk5vT204QlVXeGVzNkJLdEJBWENvN2xxZ0FBQVpsalltOXlvbWRoWTNScGIyNXpncUptWVdOMGFXOXVhMk15Y0dFdWIzQmxibVZrYW5CaGNtRnRaWFJsY25PaGEybHVaM0psWkdsbGJuUnpnYUpqZFhKc2VDMXpaV3htSTJwMWJXSm1QV015Y0dFdVlYTnpaWEowYVc5dWN5OWpNbkJoTG1sdVozSmxaR2xsYm5RdWRqTmthR0Z6YUZnZzVoVjhoL2F5Y0x6Rk9GdVdxYmdTVVRUV1JyNXp3Zjl2S3BmUmJ3UVMzNUdrWm1GamRHbHZibmdkWTI5dExtRnVkR2h5YjNCcFl5NWpiR0YxWkdVdWNISnZkbWxrWldScWNHRnlZVzFsZEdWeWM2RjRIMk52YlM1aGJuUm9jbTl3YVdNdWIzSnBaMmx1TFdOdmJtWnBaR1Z1WTJWbmRXNXJibTkzYm10a1pYTmpjbWx3ZEdsdmJuaG1RMnhoZFdSbElIQnliM1pwWkdWa0lIUm9hWE1nWm1sc1pTQmhkQ0IwYUdVZ2NtVnhkV1Z6ZENCdlppQmhJSFZ6WlhJZ1lXNWtJRzFoZVNCb1lYWmxJR055WldGMFpXUWdiM0lnYlc5a2FXWnBaV1FnZEdobElHWnBiR1VnWTI5dWRHVnVkSE11YlhOdlpuUjNZWEpsUVdkbGJuU2haRzVoYldWbVEyeGhkV1JsY21Gc2JFRmpkR2x2Ym5OSmJtTnNkV1JsWlBVQUFBRElhblZ0WWdBQUFFQnFkVzFrWTJKdmNnQVJBQkNBQUFDcUFEaWJjUk5qTW5CaExtaGhjMmd1WkdGMFlRQUFBQUFZWXpKemFBOW1TNWVOSDJsWFN0V3lkTE5uQ1pzQUFBQ0FZMkp2Y3FWallXeG5abk5vWVRJMU5tTndZV1JNQUFBQUFBQUFBQUFBQUFBQVpHaGhjMmhZSU04clc3T1IwaC8vSGlyMEJIOTBiUXJ4SmdPaEZOZHU1d0hJVTlVZ0JGWE5aRzVoYldWdWFuVnRZbVlnYldGdWFXWmxjM1JxWlhoamJIVnphVzl1YzRHaVpYTjBZWEowR1NWcFpteGxibWQwYUJrZUJBQUFBajVxZFcxaUFBQUFKMnAxYldSak1tTnNBQkVBRUlBQUFLb0FPSnR4QTJNeWNHRXVZMnhoYVcwdWRqSUFBQUFDRDJOaWIzS2xZMkZzWjJaemFHRXlOVFpwYzJsbmJtRjBkWEpsZUUxelpXeG1JMnAxYldKbVBTOWpNbkJoTDNWeWJqcGpNbkJoT21FNU9XSTJOemsxTFdVeE9EZ3RORGcwWVMwNFl6bG1MVGt5TVRKaVptWTBOemd5TkM5ak1uQmhMbk5wWjI1aGRIVnlaV3BwYm5OMFlXNWpaVWxFZUN4NGJYQTZhV2xrT2pBelpqTmtaakJtTFdVNU1tSXROREEzTlMwNU1HTXhMV1ZpTXpBMVptUmxObUpqWm5KamNtVmhkR1ZrWDJGemMyVnlkR2x2Ym5PRG9tTjFjbXg0TFhObGJHWWphblZ0WW1ZOVl6SndZUzVoYzNObGNuUnBiMjV6TDJNeWNHRXVhVzVuY21Wa2FXVnVkQzUyTTJSb1lYTm9XQ0RtRlh5SDlySnd2TVU0VzVhcHVCSlJOTlpHdm5QQi8yOHFsOUZ2QkJMZmthSmpkWEpzZUNwelpXeG1JMnAxYldKbVBXTXljR0V1WVhOelpYSjBhVzl1Y3k5ak1uQmhMbUZqZEdsdmJuTXVkakprYUdGemFGZ2dBMmtyK1J0OVRhRXpkbmlnSHNzSmxCM0pZOFdqSGxXeG1oVW5oZUpZUDEraVkzVnliSGdwYzJWc1ppTnFkVzFpWmoxak1uQmhMbUZ6YzJWeWRHbHZibk12WXpKd1lTNW9ZWE5vTG1SaGRHRmthR0Z6YUZnZ0p0NnRkY0dXNWd5WFg4RXNWRGM1Z05pUTBRd3JRSnNqckdKdWlyc1JKM3QwWTJ4aGFXMWZaMlZ1WlhKaGRHOXlYMmx1Wm0ralpHNWhiV1Z2UVc1MGFISnZjR2xqSUVacGJHVnpaM1psY25OcGIyNWxNUzR3TGpCcmMzQmxZMVpsY25OcGIyNWxNaTQwTGpBQUFCQTRhblZ0WWdBQUFDaHFkVzFrWXpKamN3QVJBQkNBQUFDcUFEaWJjUU5qTW5CaExuTnBaMjVoZEhWeVpRQUFBQkFJWTJKdmN0S0VXUUlTb2dFbUdDRlpBZ293Z2dJR01JSUJqYUFEQWdFQ0FoUkE1YUFLN3NJNTBMNjRnL29HUWdVOVoxVVRBREFLQmdncWhrak9QUVFEQXpCSk1SY3dGUVlEVlFRS0V3NUJiblJvY205d2FXTXNJRkJDUXpFdU1Dd0dBMVVFQXhNbFFXNTBhSEp2Y0dsaklFTnZiblJsYm5RZ1EzSmxaR1Z1ZEdsaGJITWdVbTl2ZENCRFFUQWVGdzB5TmpBNE1EY3hPRFF6TlRaYUZ3MHlPREE0TURZeE9UUXpOVFphTUVReEZ6QVZCZ05WQkFvVERrRnVkR2h5YjNCcFl5d2dVRUpETVNrd0p3WURWUVFERXlCQmJuUm9jbTl3YVdNZ1EyeGhkV1JsSUVOdmJuUmxiblFnVTJsbmJtbHVaekJaTUJNR0J5cUdTTTQ5QWdFR0NDcUdTTTQ5QXdFSEEwSUFCSmg2Q212TFVCZ0ZGTlUwdlVLbE9WdEU2ZGpkMTdMNVN1d1gwTGVtRmlzQk0zZGtkLzNjeWp4RkEzUW81UzQ2ZlgwL2loWTBWWjdtZmI5S0Y3MDN0NU9qV0RCV01BNEdBMVVkRHdFQi93UUVBd0lIZ0RBVkJnTlZIU1VFRGpBTUJnb3JCZ0VFQVlQb1hnSUJNQXdHQTFVZEV3RUIvd1FDTUFBd0h3WURWUjBqQkJnd0ZvQVV6bEhpQklGT1pGc2orT1BFejVvK25NSFhYTUl3Q2dZSUtvWkl6ajBFQXdNRFp3QXdaQUl3TVhNZEZKNEJldExMVlk3T1J1RTlub3FiYkFaT1puL2FBclh5VHdGQVpmS3JQenhGMnZQb0pOZjErVUNkZzFYR0FqQndYMXpkOVdHcVlrcW1MNVNGcXcxUXlTanIxekpmcEpNOSsxcmREd1NQTE1PUE9qS3VpWGpvVS9wVVVlRzlSd21oWTNCaFpGa05uZ0FBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQVBaWVFJME5ibVJxenAwTzZ1QjQvYUo5bURwakpwL3BrSEtxUWE4L0NwUklYMm16NEFQSXNRMVpvV0VqajFOTXN0MkFESkZIYlc4S0lFMDM0V0VWWHVXSXRKND08L2MycGE6bWFuaWZlc3Q+PC9tZXRhZGF0YT48L3N2Zz4K" alt="AME"><span class="etiqueta">AJA</span></span>
+
+      <!-- EDITAR: título (a primeira linha fica leve, a segunda em negrito roxo) -->
+      <h1 id="titulo-pagina">Aprendizado de <strong>Jovens e Adultos</strong></h1>
+
+      <!-- EDITAR: texto de abertura -->
+      <p class="intro">Aulas de alfabetização para jovens e adultos que não tiveram a oportunidade de concluir os estudos na idade escolar.</p>
+
+      <!-- EDITAR: situação das inscrições. Ex.: "Inscrições abertas", "Inscrições encerradas", "Lista de espera" -->
+      <p class="status"><span class="ponto" aria-hidden="true"></span>[Turmas em andamento]</p>
+
+      <div class="acoes">
+        <a class="botao botao-projeto" href="#inscricao">Quero participar</a>
+      </div>
+    </div>
+
+    <!-- EDITAR: foto do topo. Troque o endereço em src. Use fotos com autorização de uso de imagem. -->
+    <div class="foto-topo">
+      <img src="https://static.wixstatic.com/media/d2b534_0bff27bcb02c4c3dbee129769b719f40~mv2.jpeg/v1/fill/w_900,h_675,al_c,q_80/d2b534_0bff27bcb02c4c3dbee129769b719f40~mv2.jpeg" alt="Aula do AJA com jovens e adultos" loading="eager">
+    </div>
+  </div>
+</section>
+
+
+<!-- ==========================================================================
+     FAIXA ANIMADA
+     EDITAR: frases, cores e velocidade ficam em "CONFIGURAÇÃO DA FAIXA",
+     no script do fim da página.
+     ========================================================================== -->
+<div class="faixa">
+  <div class="faixa-rail" role="img" aria-label="Faixa animada">
+    <div class="faixa-track"></div>
+  </div>
+</div>
+
+
+<!-- ==========================================================================
+     SEÇÃO 2 · COMO FUNCIONA
+     Descrição do projeto e quadro de informações.
+     ========================================================================== -->
+<section class="funciona" aria-labelledby="titulo-funciona">
+  <div class="conteudo">
+    <div>
+      <!-- EDITAR: área do projeto -->
+      <p class="chapeu">AJA · Educação de jovens e adultos</p>
+      <h2 class="titulo-secao" id="titulo-funciona">Como <strong>funciona</strong></h2>
+      <!-- EDITAR: descrição -->
+      <p class="descricao">Aulas adaptadas para jovens e adultos, com foco na alfabetização básica e no desenvolvimento da leitura e da escrita, num ambiente acolhedor para pessoas de diferentes idades e histórias de vida.</p>
+    </div>
+
+    <!-- EDITAR: quadro de informações.
+         Cada informação é um bloco <div class="info">.
+         <dt> é o rótulo (ex.: Dias) e <dd> é o valor (ex.: Terças e quintas).
+         Para adicionar, copie um bloco inteiro; para remover, apague o bloco. -->
+    <dl class="infos">
+          <div class="info">
+            <dt>Para quem</dt>
+            <dd>Jovens e adultos</dd>
+          </div>
+          <div class="info">
+            <dt>Onde</dt>
+            <dd>Jacaré, Riachuelo, Jacarezinho e Sampaio</dd>
+          </div>
+          <div class="info">
+            <dt>Atendidos</dt>
+            <dd>Mais de 10 pessoas</dd>
+          </div>
+          <div class="info">
+            <dt>Custo</dt>
+            <dd>[Gratuito]</dd>
+          </div>
+    </dl>
+  </div>
+</section>
+
+
+<!-- ==========================================================================
+     SEÇÃO 3 · COMO PARTICIPAR + FORMULÁRIO
+     O formulário NÃO guarda dados no site: ao enviar, ele abre o WhatsApp
+     da AME com a mensagem já escrita, e a pessoa só precisa tocar em enviar.
+     ========================================================================== -->
+<section class="participar" id="inscricao" aria-labelledby="titulo-participar">
+  <div class="conteudo">
+    <div>
+      <p class="chapeu">Inscrição</p>
+      <h2 class="titulo-secao" id="titulo-participar">Como <strong>participar</strong></h2>
+      <!-- EDITAR: passo a passo. Cada passo é um <li>. -->
+      <ol class="passos">
+          <li><span class="num" aria-hidden="true">1</span><span>Preencha o formulário desta página.</span></li>
+          <li><span class="num" aria-hidden="true">2</span><span>A mensagem chega no WhatsApp da AME.</span></li>
+          <li><span class="num" aria-hidden="true">3</span><span>A equipe responde com os dias, horários e local das aulas.</span></li>
+      </ol>
+    </div>
+
+    <!-- EDITAR: título e campos do formulário.
+         Se mudar os campos, ajuste também a lista CAMPOS no script no fim da página. -->
+    <form class="formulario" id="form-inscricao" novalidate>
+      <h3>Quero participar</h3>
+          <label class="campo">Seu nome
+            <input type="text" name="nome" id="nome" required>
+          </label>
+          <label class="campo">Seu WhatsApp
+            <input type="tel" name="whatsapp" id="whatsapp" required autocomplete="tel">
+          </label>
+      <p class="erro" id="erro-form" role="alert" hidden>Preencha todos os campos para continuar.</p>
+      <button class="botao botao-roxo" type="submit">Enviar pelo WhatsApp</button>
+      <p class="aviso-form">Ao enviar, abrimos o WhatsApp da AME com a sua mensagem pronta. Seus dados não ficam salvos neste site.</p>
+    </form>
+  </div>
+</section>
+
+
+<!-- ==========================================================================
+     SEÇÃO 4 · APOIE O PROJETO
+     ========================================================================== -->
+<section class="apoio" aria-labelledby="titulo-apoio">
+  <div class="conteudo">
+    <div class="apoio-caixa">
+      <div class="apoio-texto">
+        <p class="chapeu">Faça parte dessa história</p>
+        <h2 id="titulo-apoio">Quer ajudar o <strong>AJA</strong>?</h2>
+        <!-- EDITAR: texto de convite -->
+        <p>Voluntários ajudam nas aulas de alfabetização de jovens e adultos. Doações também mantêm o projeto funcionando.</p>
+        <div class="acoes">
+          <!-- EDITAR: link do WhatsApp para voluntários (mensagem pronta depois de ?text=).
+               Os links abrem pela ponte do Velo (velo-pagina.js). -->
+          <a class="botao botao-amarelo" href="https://wa.me/5521977180459?text=Ol%C3%A1%2C%20vim%20do%20site%20e%20gostaria%20de%20ser%20volunt%C3%A1rio%20no%20projeto%20AJA">Quero ser voluntário</a>
+          <!-- EDITAR: link para doar (página inicial, seção Como apoiar) -->
+          <a class="botao botao-contorno" href="https://www.maiseducacao.org/">Quero doar</a>
+        </div>
+      </div>
+      <!-- EDITAR: foto do bloco de apoio (PNG com recorte diagonal transparente, como na página inicial) -->
+      <div class="apoio-foto">
+        <img src="https://static.wixstatic.com/media/d2b534_b9546021684c4c79873754f3c03b7360~mv2.png" alt="Crianças e voluntários da AME reunidos" loading="lazy">
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ==========================================================================
+     SEÇÃO 5 · OUTROS PROJETOS
+     Cards com link para as páginas dos outros projetos.
+     EDITAR: o endereço de cada página fica em href.
+     ========================================================================== -->
+<section class="outros" aria-labelledby="titulo-outros">
+  <div class="conteudo">
+    <p class="chapeu">Outros projetos</p>
+    <h2 class="titulo-secao" id="titulo-outros">Conheça o que mais <strong>a AME faz</strong></h2>
+    <div class="outros-lista">
+        <a class="outro" href="https://www.maiseducacao.org/pre-vestibular" style="--c:#3e64b0">
+          <span class="outro-faixa" aria-hidden="true"></span>
+          <span class="outro-area">Preparação para o ensino superior</span>
+          <span class="outro-nome">Pré-Vestibular AME</span>
+          <span class="outro-ver">Conhecer o projeto</span>
+        </a>
+        <a class="outro" href="https://www.maiseducacao.org/ame-qualifica" style="--c:#bf5236">
+          <span class="outro-faixa" aria-hidden="true"></span>
+          <span class="outro-area">Qualificação profissional</span>
+          <span class="outro-nome">AME Qualifica</span>
+          <span class="outro-ver">Conhecer o projeto</span>
+        </a>
+        <a class="outro" href="https://www.maiseducacao.org/atendimento-juridico" style="--c:#2e7d73">
+          <span class="outro-faixa" aria-hidden="true"></span>
+          <span class="outro-area">Orientação e acesso a direitos</span>
+          <span class="outro-nome">Atendimento Jurídico AME</span>
+          <span class="outro-ver">Conhecer o projeto</span>
+        </a>
+        <a class="outro" href="https://www.maiseducacao.org/reforca-jacare" style="--c:#e8b950">
+          <span class="outro-faixa" aria-hidden="true"></span>
+          <span class="outro-area">Reforço escolar</span>
+          <span class="outro-nome">Reforça Jacaré</span>
+          <span class="outro-ver">Conhecer o projeto</span>
+        </a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+
+<!-- ==========================================================================
+     SCRIPT (comportamento da página). Normalmente não precisa editar.
+     ========================================================================== -->
+<script>
+(() => {
+  /* ======================================================================
+     CONFIGURAÇÃO DA FAIXA
+     EDITAR: tudo o que muda a faixa fica neste bloco.
+     ====================================================================== */
+  const CONFIG = {
+    frases: ['Mais educação', 'Mais oportunidades', 'Mais caminhos', 'Mais futuro'],
+    tema: 'ameixa',
+    separador: 'lapis',
+    alternarCores: true,
+    direcao: 'esquerda',
+    velocidade: 70
+  };
+  /*
+     frases:        as palavras que passam na faixa (quantas quiser)
+     tema:          "ameixa" (roxo escuro), "roxo", "amarelo" ou "creme"
+     separador:     "lapis" (ponta do lápis), "logo" (logo da AME) ou "nenhum"
+     alternarCores: true = uma frase sim, outra não fica na cor de destaque
+     direcao:       "esquerda" ou "direita"
+     velocidade:    maior = mais rápido (70 é o padrão)
+  */
+
+  /* Paletas disponíveis (use o nome em CONFIG.tema) */
+  const TEMAS = {
+    ameixa:  { fundo: "#562568", texto: "#FCF8F0", destaque: "#E8B950" },
+    roxo:    { fundo: "#614998", texto: "#FCF8F0", destaque: "#E8B950" },
+    amarelo: { fundo: "#E8B950", texto: "#292530", destaque: "#562568" },
+    creme:   { fundo: "#FCF8F0", texto: "#614998", destaque: "#562568" }
+  };
+
+  /* ---------------- daqui para baixo, normalmente não precisa editar ---------------- */
+  const rail  = document.querySelector('.faixa-rail');
+  const track = document.querySelector('.faixa-track');
+  const tema  = TEMAS[CONFIG.tema] || TEMAS.ameixa;
+  rail.style.setProperty('--f-fundo', tema.fundo);
+  rail.style.setProperty('--f-texto', tema.texto);
+  rail.style.setProperty('--f-destaque', tema.destaque);
+  if (CONFIG.direcao === 'direita') track.classList.add('direita');
+  rail.setAttribute('aria-label', 'Faixa com as frases: ' + CONFIG.frases.join(', '));
+
+  const SIMBOLOS = {
+    lapis: '<span class="faixa-simbolo"><svg viewBox="0 0 100 100" aria-hidden="true"><path fill="currentColor" d="M0 100 47.24 29.43C56.14 15.77 72.33 0 88.84 0H100V100Z"/></svg></span>',
+    logo:  '<span class="faixa-simbolo logo"><svg aria-hidden="true"><use href="#logo-ame"/></svg></span>',
+    nenhum: ''
+  };
+
+  function makeItem(text, alt) {
+    const span = document.createElement('span');
+    span.className = 'faixa-item' + (CONFIG.alternarCores && alt ? ' alt' : '');
+    span.innerHTML = (SIMBOLOS[CONFIG.separador] || SIMBOLOS.lapis) + '<span class="faixa-palavra"></span>';
+    span.querySelector('.faixa-palavra').textContent = text;
+    return span;
+  }
+
+  function build() {
+    track.style.animation = 'none';
+    track.innerHTML = '';
+    const seq = document.createElement('div');
+    seq.className = 'faixa-seq';
+    track.appendChild(seq);      /* precisa estar na página para medir a largura */
+    let i = 0;
+    /* Repete as frases até a sequência ficar maior que a largura visível */
+    while (seq.getBoundingClientRect().width < rail.clientWidth * 1.35 || i < 4) {
+      CONFIG.frases.forEach((text, idx) => seq.appendChild(makeItem(text, ((i * CONFIG.frases.length) + idx) % 2 === 1)));
+      i++;
+      if (i > 20) break;
+    }
+    track.appendChild(seq.cloneNode(true));
+    const distance = Math.ceil(seq.getBoundingClientRect().width);
+    if (!distance || !rail.clientWidth) { setTimeout(build, 200); return; }  /* bloco ainda sem tamanho: tenta de novo */
+    track.style.setProperty('--f-loop', distance + 'px');
+    track.style.setProperty('--f-speed', Math.max(18, distance / CONFIG.velocidade) + 's');
+    track.offsetHeight;          /* reinicia a animação */
+    track.style.animation = '';
+  }
+
+  /* Monta já na abertura (a faixa começa andando) e refaz se a tela mudar de tamanho */
+  build();
+  let raf;
+  function rebuild() { cancelAnimationFrame(raf); raf = requestAnimationFrame(build); }
+  window.addEventListener('resize', rebuild);
+  window.addEventListener('load', rebuild);
+  /* Refaz quando o Wix der (ou mudar) o tamanho do bloco */
+  if ('ResizeObserver' in window) {
+    let ultimaLargura = 0;
+    new ResizeObserver(() => {
+      if (rail.clientWidth && rail.clientWidth !== ultimaLargura) { ultimaLargura = rail.clientWidth; rebuild(); }
+    }).observe(rail);
+  }
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(rebuild);
+})();
+</script>
+<script>
+(function () {
+  /* ======================================================================
+     PONTE DE LINKS (não precisa editar)
+     O Wix não deixa um bloco de código abrir links sozinho. Então o bloco
+     pede para a página abrir, pelo código do Velo (arquivo velo-pagina.js).
+     Se o Velo não responder, aparece uma caixa com o contato e a mensagem.
+     ====================================================================== */
+  var TELEFONE_VISIVEL = "(21) 97718-0459";   /* EDITAR se o WhatsApp mudar */
+  var esperando = null;
+
+  window.addEventListener("message", function (ev) {
+    if (ev.data && ev.data.tipo === "ame-link-ok" && esperando) {
+      clearTimeout(esperando.timer); esperando = null;
+    }
+  });
+
+  function ehWhatsApp(url) { return /^https:\/\/(wa\.me|api\.whatsapp\.com)\//.test(url); }
+
+  function textoDaMensagem(url) {
+    try { return new URL(url).searchParams.get("text") || ""; } catch (e) { return ""; }
+  }
+
+  function copiar(texto, botao) {
+    function ok(sucesso) {
+      botao.textContent = sucesso ? "Mensagem copiada" : "Não foi possível copiar";
+      setTimeout(function () { botao.textContent = "Copiar mensagem"; }, 2500);
+    }
+    if (navigator.clipboard && window.isSecureContext) {
+      navigator.clipboard.writeText(texto).then(function () { ok(true); }, function () { ok(antigo()); });
+    } else { ok(antigo()); }
+    function antigo() {
+      var t = document.createElement("textarea"); t.value = texto; t.setAttribute("readonly", "");
+      t.style.position = "absolute"; t.style.left = "-9999px"; document.body.appendChild(t); t.select();
+      var r = false; try { r = document.execCommand("copy"); } catch (e) {}
+      document.body.removeChild(t); return r;
+    }
+  }
+
+  function planoB(url, perto) {
+    if (!ehWhatsApp(url)) { window.open(url, "_blank"); return; }
+    var antiga = document.querySelector(".ame-plano-b"); if (antiga) antiga.remove();
+    var msg = textoDaMensagem(url);
+    var caixa = document.createElement("div");
+    caixa.className = "ame-plano-b"; caixa.setAttribute("role", "status");
+    caixa.innerHTML =
+      '<p><strong>Fale com a AME pelo WhatsApp</strong></p>' +
+      '<p>Mande uma mensagem para <strong>' + TELEFONE_VISIVEL + '</strong>.' +
+      (msg ? ' Se quiser, copie a mensagem pronta e cole na conversa.' : '') + '</p>' +
+      (msg ? '<button type="button" class="ame-plano-b-copiar">Copiar mensagem</button>' : '');
+    (perto && perto.parentNode ? perto.parentNode : document.body).insertBefore(caixa, perto ? perto.nextSibling : null);
+    var b = caixa.querySelector(".ame-plano-b-copiar");
+    if (b) b.addEventListener("click", function () { copiar(msg, b); });
+  }
+
+  function ehCelular() {
+    return /Android|iPhone|iPad|iPod/i.test(navigator.userAgent) ||
+           (window.matchMedia && window.matchMedia("(pointer: coarse)").matches);
+  }
+
+  /* Converte wa.me/numero?text=... em whatsapp://send?phone=numero&text=... (abre o app) */
+  function linkDoApp(url) {
+    try {
+      var u = new URL(url);
+      var fone = u.hostname === "wa.me" ? u.pathname.replace(/\D/g, "") : (u.searchParams.get("phone") || "");
+      var texto = u.searchParams.get("text") || "";
+      if (!fone) return null;
+      return "whatsapp://send?phone=" + fone + (texto ? "&text=" + encodeURIComponent(texto) : "");
+    } catch (e) { return null; }
+  }
+
+  /* No celular: tenta abrir o app do WhatsApp sem sair do site.
+     Se o app não abrir em 3 segundos, usa o caminho normal (pela página do Wix). */
+  function tentarApp(url, perto) {
+    var app = linkDoApp(url);
+    if (!app) return false;
+    var abriu = false;
+    function saiu() { if (document.hidden) abriu = true; }
+    document.addEventListener("visibilitychange", saiu);
+    window.addEventListener("pagehide", function () { abriu = true; }, { once: true });
+    window.addEventListener("blur", function () { abriu = true; }, { once: true });
+    setTimeout(function () {
+      document.removeEventListener("visibilitychange", saiu);
+      if (!abriu) pedirParaPagina(url, perto);
+    }, 3000);
+    try { window.location.href = app; } catch (e) { return false; }
+    return true;
+  }
+
+  /* Função usada pelos links e pelo formulário */
+  window.AME_abrirLink = function (url, perto) {
+    if (ehWhatsApp(url) && ehCelular() && tentarApp(url, perto)) return;
+    pedirParaPagina(url, perto);
+  };
+
+  function pedirParaPagina(url, perto) {
+    if (esperando) clearTimeout(esperando.timer);
+    esperando = { timer: setTimeout(function () { esperando = null; planoB(url, perto); }, 700) };
+    try { window.parent.postMessage({ tipo: "ame-abrir-link", url: url }, "*"); }
+    catch (e) { clearTimeout(esperando.timer); esperando = null; planoB(url, perto); }
+  };
+
+  /* Rola a página do site até um ponto deste bloco (ex.: botão "Doe agora").
+     O Velo rola a página; sem Velo, tenta rolar direto. */
+  window.AME_rolar = function (alvo) {
+    var y = Math.max(0, Math.round(alvo.getBoundingClientRect().top + (window.scrollY || 0)) - 16);
+    var feito = false;
+    function ok(ev) { if (ev.data && ev.data.tipo === "ame-rolar-ok") { feito = true; window.removeEventListener("message", ok); } }
+    window.addEventListener("message", ok);
+    try { window.parent.postMessage({ tipo: "ame-rolar", y: y }, "*"); } catch (e) {}
+    setTimeout(function () {
+      window.removeEventListener("message", ok);
+      if (!feito) { try { alvo.scrollIntoView({ behavior: "smooth", block: "start" }); } catch (e) {} }
+    }, 500);
+  };
+
+  /* Links internos do bloco (href="#secao") rolam a página até a seção */
+  document.addEventListener("click", function (ev) {
+    var a = ev.target.closest && ev.target.closest('a[href^="#"]');
+    if (!a || a.getAttribute("href").length < 2) return;
+    var alvo = document.getElementById(a.getAttribute("href").slice(1));
+    if (!alvo) return;
+    ev.preventDefault();
+    window.AME_rolar(alvo);
+  });
+
+  /* Todo link para fora do bloco passa pela ponte */
+  document.addEventListener("click", function (ev) {
+    var a = ev.target.closest && ev.target.closest('a[href^="http"]');
+    if (!a) return;
+    ev.preventDefault();
+    window.AME_abrirLink(a.href, a.closest(".acoes") || a);
+  });
+})();
+</script>
+<script>
+(function () {
+  /* EDITAR: número do WhatsApp da AME (só números, com 55 e DDD) */
+  var WHATSAPP = "5521977180459";
+
+  /* EDITAR: frase que abre a mensagem enviada pelo formulário */
+  var INICIO = "Olá! Vim do site e quero participar do AJA.";
+
+  /* Campos do formulário: [id do campo, como aparece na mensagem] */
+  var CAMPOS = [["nome","Nome"], ["whatsapp","WhatsApp"]];
+
+  /* Formulário: monta a mensagem e abre o WhatsApp */
+  var form = document.getElementById("form-inscricao");
+  var erro = document.getElementById("erro-form");
+  form.addEventListener("submit", function (ev) {
+    ev.preventDefault();
+    var linhas = [INICIO, ""];
+    var faltando = false;
+    CAMPOS.forEach(function (c) {
+      var campo = document.getElementById(c[0]);
+      var valor = (campo.value || "").trim();
+      campo.setAttribute("aria-invalid", valor ? "false" : "true");
+      if (!valor) faltando = true;
+      linhas.push(c[1] + ": " + valor);
+    });
+    erro.hidden = !faltando;
+    if (faltando) return;
+    var url = "https://wa.me/" + WHATSAPP + "?text=" + encodeURIComponent(linhas.join("\n"));
+    /* Pede para a página do Wix abrir o WhatsApp (veja velo-pagina.js) */
+    window.AME_abrirLink(url, form.querySelector("button[type=submit]"));
+  });
+})();
+</script>
+</body>
+</html>

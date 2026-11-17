@@ -87,6 +87,10 @@ a:focus-visible, button:focus-visible, input:focus-visible { outline: 3px solid 
 .voltar { display: inline-flex; align-items: center; gap: 6px; min-height: 44px; margin-bottom: 20px; color: var(--roxo); font-weight: 600; font-size: 15px; text-decoration: none; }
 .voltar:hover { text-decoration: underline; }
 .assinatura { height: 52px; width: auto; margin-bottom: 28px; }
+/* Assinatura provisória (projeto ainda sem assinatura oficial): logo + etiqueta inclinada */
+.assinatura-provisoria { display: inline-flex; align-items: center; gap: 0; }
+.assinatura-provisoria img { height: 100%; width: auto; }
+.assinatura-provisoria .etiqueta { margin-left: -6px; padding: 6px 18px 6px 22px; background: var(--projeto); color: var(--projeto-texto); font-size: 15px; font-weight: 700; clip-path: polygon(14px 0, 100% 0, 100% 100%, 0 100%); border-radius: 0 6px 6px 0; }
 .topo h1 { margin: 0 0 20px; font-size: clamp(42px, 5.6vw, 68px); line-height: 1.02; font-weight: 300; letter-spacing: -.025em; }
 .topo h1 strong { display: block; font-weight: 700; color: var(--roxo); }
 .topo .intro { margin: 0 0 24px; max-width: 480px; font-size: 19px; line-height: 1.55; color: var(--suave); }
@@ -144,7 +148,10 @@ a:focus-visible, button:focus-visible, input:focus-visible { outline: 3px solid 
 .formulario h3 { margin: 0 0 4px; font-size: 26px; font-weight: 600; }
 .campo { display: flex; flex-direction: column; gap: 6px; font-size: 15px; font-weight: 600; }
 .campo input { min-height: 50px; padding: 0 14px; border: 2px solid var(--borda); border-radius: 10px; font: 400 17px "DM Sans", sans-serif; color: var(--grafite); background: #fff; }
-.campo input:focus { border-color: var(--roxo); outline: none; }
+.campo input:focus, .campo select:focus, .campo textarea:focus { border-color: var(--roxo); outline: none; }
+.campo select, .campo textarea { min-height: 50px; padding: 12px 14px; border: 2px solid var(--borda); border-radius: 10px; font: 400 17px "DM Sans", sans-serif; color: var(--grafite); background: #fff; }
+.campo textarea { resize: vertical; }
+.dica { font-size: 13px; font-weight: 400; color: var(--suave); }
 .aviso-form { margin: 0; font-size: 13px; line-height: 1.5; color: var(--suave); }
 .erro { margin: 0; font-size: 14px; font-weight: 600; color: #a3341c; }
 
@@ -170,7 +177,7 @@ a:focus-visible, button:focus-visible, input:focus-visible { outline: 3px solid 
    SEÇÃO 5 · OUTROS PROJETOS
    ========================================================================== */
 .outros { padding: 48px 0 96px; }
-.outros-lista { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.outros-lista { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 16px; }
 .outro { position: relative; display: flex; flex-direction: column; gap: 8px; padding: 26px 22px 22px; border-radius: 16px; border: 1px solid var(--borda); background: #fff; color: var(--grafite); text-decoration: none; overflow: hidden; transition: border-color .2s; }
 .outro-faixa { position: absolute; left: 0; right: 0; top: 0; height: 6px; background: var(--c); transition: height .25s ease; }
 .outro:hover { border-color: var(--c); }
@@ -188,6 +195,7 @@ a:focus-visible, button:focus-visible, input:focus-visible { outline: 3px solid 
   .topo { padding: 24px 0 48px; }
   .topo .conteudo, .funciona .conteudo, .participar .conteudo { grid-template-columns: 1fr; gap: 36px; }
   .assinatura { height: 40px; margin-bottom: 20px; }
+  .assinatura-provisoria .etiqueta { font-size: 13px; }
   .topo .intro { font-size: 17px; }
   .topo .acoes .botao { width: 100%; }
   .foto-topo { aspect-ratio: 4 / 3.2; }
@@ -397,6 +405,12 @@ a:focus-visible, button:focus-visible, input:focus-visible { outline: 3px solid 
           <span class="outro-faixa" aria-hidden="true"></span>
           <span class="outro-area">Orientação e acesso a direitos</span>
           <span class="outro-nome">Atendimento Jurídico AME</span>
+          <span class="outro-ver">Conhecer o projeto</span>
+        </a>
+        <a class="outro" href="https://www.maiseducacao.org/aja" style="--c:#562568">
+          <span class="outro-faixa" aria-hidden="true"></span>
+          <span class="outro-area">Aprendizado de Jovens e Adultos</span>
+          <span class="outro-nome">AJA</span>
           <span class="outro-ver">Conhecer o projeto</span>
         </a>
     </div>
@@ -643,7 +657,7 @@ a:focus-visible, button:focus-visible, input:focus-visible { outline: 3px solid 
   var WHATSAPP = "5521977180459";
 
   /* EDITAR: frase que abre a mensagem enviada pelo formulário */
-  var INICIO = 'Olá! Vim do site e quero inscrever meu filho no Reforça Jacaré.';
+  var INICIO = "Olá! Vim do site e quero inscrever meu filho no Reforça Jacaré.";
 
   /* Campos do formulário: [id do campo, como aparece na mensagem] */
   var CAMPOS = [["responsavel","Responsável"], ["whatsapp","WhatsApp"], ["idade","Idade da criança"]];

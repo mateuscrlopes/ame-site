@@ -1,0 +1,685 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex"><!-- esta cópia fica no GitHub só para aparecer dentro do Wix; o Google deve indexar o maiseducacao.org -->
+<title>Atendimento Jurídico AME · AME</title>
+
+<!--
+==========================================================================
+  PÁGINA: ATENDIMENTO JURÍDICO AME
+  Associação Mais Educação (AME) · maiseducacao.org/atendimento-juridico
+
+  COMO USAR NO WIX
+  1. Crie a página com o endereço /atendimento-juridico.
+  2. Adicionar > Incorporar código > Incorporar HTML (código) e cole TUDO.
+  3. Deixe o elemento com a largura total da página.
+  4. Altura: veja a mensagem do Claude (computador e celular são diferentes).
+     No editor de celular, ajuste a altura do elemento separadamente.
+  5. O menu e o rodapé continuam sendo os do Wix (ficam fora deste código).
+  6. Em Configurações da página > SEO, preencha título e descrição.
+  7. LINKS: ative o Modo Dev e cole o arquivo velo-pagina.js no código da
+     página. Sem ele, os botões de WhatsApp e links não conseguem abrir.
+
+  COMO EDITAR
+  - Procure pelos comentários "EDITAR" (como este bloco cinza entre
+    os sinais de comentário). Eles indicam o que pode ser trocado.
+  - Textos entre colchetes [ ] são informações a confirmar.
+  - Comentários não aparecem no site: servem só de guia.
+==========================================================================
+-->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,600;9..40,700&display=swap">
+
+<style>
+/* ==========================================================================
+   CORES E MEDIDAS
+   EDITAR: as cores da AME e a cor do projeto ficam todas aqui.
+   ========================================================================== */
+:root {
+  --roxo: #614998;        /* cor principal da AME */
+  --ameixa: #562568;      /* roxo escuro */
+  --lilas: #e9ddf8;       /* fundo leve */
+  --amarelo: #e8b950;     /* destaque (ponta do lápis) */
+  --creme: #fcf8f0;       /* fundo neutro */
+  --grafite: #292530;     /* texto */
+  --suave: rgba(41, 37, 48, .74);   /* texto secundário */
+  --borda: rgba(97, 73, 152, .2);   /* linhas e contornos */
+
+  /* Cor deste projeto (muda de página para página) */
+  --projeto: #2e7d73;
+  --projeto-texto: #ffffff;   /* cor do texto SOBRE a cor do projeto */
+
+  --largura: 1120px;      /* largura máxima do conteúdo */
+}
+
+* { box-sizing: border-box; }
+html, body {
+  margin: 0; background: #fff; color: var(--grafite);
+  font-family: "DM Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+img { max-width: 100%; display: block; }
+.conteudo { max-width: var(--largura); margin: 0 auto; padding: 0 24px; }
+.chapeu { margin: 0 0 12px; font-size: 12px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--roxo); }
+.titulo-secao { margin: 0 0 20px; font-size: clamp(30px, 4vw, 44px); line-height: 1.08; font-weight: 300; letter-spacing: -.02em; }
+.titulo-secao strong { font-weight: 700; }
+a:focus-visible, button:focus-visible, input:focus-visible { outline: 3px solid var(--roxo); outline-offset: 3px; border-radius: 8px; }
+
+/* Botões */
+.botao {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  min-height: 52px; padding: 0 28px; border: 0; border-radius: 999px;
+  font: 700 16px "DM Sans", sans-serif; text-decoration: none; cursor: pointer;
+}
+.botao-projeto { background: var(--projeto); color: var(--projeto-texto); }
+.botao-projeto:hover { filter: brightness(1.06); }
+.botao-roxo { background: var(--roxo); color: #fff; }
+.botao-roxo:hover { background: var(--ameixa); }
+
+/* ==========================================================================
+   SEÇÃO 1 · TOPO
+   ========================================================================== */
+.topo { padding: 40px 0 72px; }
+.topo .conteudo { display: grid; grid-template-columns: 1fr 1.05fr; gap: 56px; align-items: center; }
+.voltar { display: inline-flex; align-items: center; gap: 6px; min-height: 44px; margin-bottom: 20px; color: var(--roxo); font-weight: 600; font-size: 15px; text-decoration: none; }
+.voltar:hover { text-decoration: underline; }
+.assinatura { height: 52px; width: auto; margin-bottom: 28px; }
+/* Assinatura provisória (projeto ainda sem assinatura oficial): logo + etiqueta inclinada */
+.assinatura-provisoria { display: inline-flex; align-items: center; gap: 0; }
+.assinatura-provisoria img { height: 100%; width: auto; }
+.assinatura-provisoria .etiqueta { margin-left: -6px; padding: 6px 18px 6px 22px; background: var(--projeto); color: var(--projeto-texto); font-size: 15px; font-weight: 700; clip-path: polygon(14px 0, 100% 0, 100% 100%, 0 100%); border-radius: 0 6px 6px 0; }
+.topo h1 { margin: 0 0 20px; font-size: clamp(42px, 5.6vw, 68px); line-height: 1.02; font-weight: 300; letter-spacing: -.025em; }
+.topo h1 strong { display: block; font-weight: 700; color: var(--roxo); }
+.topo .intro { margin: 0 0 24px; max-width: 480px; font-size: 19px; line-height: 1.55; color: var(--suave); }
+.status { display: inline-flex; align-items: center; gap: 10px; margin: 0 0 28px; padding: 8px 16px; border-radius: 999px; background: var(--creme); border: 1px solid var(--borda); font-size: 15px; font-weight: 600; }
+.status .ponto { width: 10px; height: 10px; border-radius: 999px; background: var(--projeto); }
+.topo .acoes { display: flex; flex-wrap: wrap; gap: 12px; }
+
+/* Foto com o recorte diagonal da página inicial */
+.foto-topo {
+  position: relative; aspect-ratio: 4 / 3; width: 100%;
+  clip-path: polygon(38% 0, 100% 0, 100% 100%, 0 100%, 0 62%);
+  border-radius: 0 24px 24px 0; overflow: hidden; background: var(--lilas);
+}
+.foto-topo img { width: 100%; height: 100%; object-fit: cover; }
+
+/* ==========================================================================
+   FAIXA ANIMADA (mesmo código da faixa da página inicial)
+   ========================================================================== */
+.faixa { height: 52px; }
+
+.faixa-rail{width:100%;height:100%;overflow:hidden;display:flex;align-items:center;background:var(--f-fundo)}
+.faixa-track{display:flex;flex:0 0 auto;width:max-content;will-change:transform;animation:faixa-run var(--f-speed,22s) linear infinite}
+.faixa-track.direita{animation-direction:reverse}
+.faixa-seq{display:flex;flex:0 0 auto;align-items:center}
+.faixa-item{display:flex;flex:0 0 auto;align-items:center;gap:18px;padding:0 26px;white-space:nowrap;line-height:1;font-family:"DM Sans",Arial,sans-serif;font-size:clamp(15px,1.55vw,20px);font-weight:800;letter-spacing:-.02em;color:var(--f-texto)}
+.faixa-item.alt{color:var(--f-destaque)}
+.faixa-simbolo{width:17px;height:17px;color:var(--f-destaque);display:block;flex:0 0 auto}
+.faixa-item.alt .faixa-simbolo{color:var(--f-texto)}
+.faixa-simbolo.logo{width:auto;height:15px;aspect-ratio:1018/362.5}
+.faixa-simbolo svg{width:100%;height:100%;display:block}
+@keyframes faixa-run{from{transform:translateX(0)}to{transform:translateX(calc(-1 * var(--f-loop, 400px)))}}
+@media(max-width:600px){.faixa-item{gap:12px;padding:0 18px;font-size:15px}.faixa-simbolo{width:14px;height:14px}.faixa-simbolo.logo{height:12px}}
+
+
+/* ==========================================================================
+   SEÇÃO 2 · COMO FUNCIONA
+   ========================================================================== */
+.funciona { padding: 88px 0; }
+.funciona .conteudo { display: grid; grid-template-columns: 1fr 1.1fr; gap: 56px; align-items: start; }
+.funciona .descricao { margin: 0; font-size: 18px; line-height: 1.6; max-width: 460px; }
+.infos { margin: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.info { padding: 18px 18px 20px; border-radius: 16px; background: #fff; border: 1px solid var(--borda); border-bottom: 4px solid var(--projeto); }
+.info dt { font-size: 12px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--roxo); }
+.info dd { margin: 6px 0 0; font-size: 17px; font-weight: 600; line-height: 1.35; }
+
+/* ==========================================================================
+   SEÇÃO 3 · COMO PARTICIPAR + FORMULÁRIO
+   ========================================================================== */
+.participar { padding: 88px 0; background: var(--creme); }
+.participar .conteudo { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: start; }
+.passos { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 18px; }
+.passos li { display: flex; gap: 16px; align-items: flex-start; font-size: 17px; line-height: 1.5; }
+.num { flex: none; width: 36px; height: 36px; margin-top: -5px; border-radius: 999px; background: var(--roxo); color: #fff; font-weight: 700; display: flex; align-items: center; justify-content: center; }
+.formulario { padding: 32px; border-radius: 24px; background: #fff; border: 1px solid var(--borda); display: flex; flex-direction: column; gap: 16px; }
+.formulario h3 { margin: 0 0 4px; font-size: 26px; font-weight: 600; }
+.campo { display: flex; flex-direction: column; gap: 6px; font-size: 15px; font-weight: 600; }
+.campo input { min-height: 50px; padding: 0 14px; border: 2px solid var(--borda); border-radius: 10px; font: 400 17px "DM Sans", sans-serif; color: var(--grafite); background: #fff; }
+.campo input:focus, .campo select:focus, .campo textarea:focus { border-color: var(--roxo); outline: none; }
+.campo select, .campo textarea { min-height: 50px; padding: 12px 14px; border: 2px solid var(--borda); border-radius: 10px; font: 400 17px "DM Sans", sans-serif; color: var(--grafite); background: #fff; }
+.campo textarea { resize: vertical; }
+.dica { font-size: 13px; font-weight: 400; color: var(--suave); }
+.aviso-form { margin: 0; font-size: 13px; line-height: 1.5; color: var(--suave); }
+.erro { margin: 0; font-size: 14px; font-weight: 600; color: #a3341c; }
+
+/* ==========================================================================
+   SEÇÃO 4 · APOIE O PROJETO
+   ========================================================================== */
+.apoio { padding: 88px 0 40px; }
+.apoio-caixa { display: grid; grid-template-columns: 1.3fr 1fr; align-items: stretch; border-radius: 24px; background: var(--roxo); color: #fff; overflow: hidden; }
+.apoio-texto { padding: 48px; display: flex; flex-direction: column; gap: 16px; }
+.apoio-texto .chapeu { color: var(--lilas); margin: 0; }
+.apoio-texto h2 { margin: 0; font-size: clamp(28px, 3.4vw, 40px); line-height: 1.1; font-weight: 300; }
+.apoio-texto h2 strong { font-weight: 700; }
+.apoio-texto p { margin: 0; font-size: 17px; line-height: 1.55; color: var(--lilas); }
+.apoio-texto .acoes { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 8px; }
+.botao-contorno { background: transparent; color: #fff; border: 2px solid var(--lilas); }
+.botao-contorno:hover { background: rgba(233, 221, 248, .12); }
+.botao-amarelo { background: var(--amarelo); color: var(--grafite); }
+.apoio-caixa a:focus-visible { outline-color: var(--amarelo); }
+.apoio-foto { position: relative; min-height: 300px; }
+.apoio-foto img { position: absolute; inset: 24px 0 0 0; width: 100%; height: calc(100% - 24px); object-fit: contain; object-position: right bottom; }
+
+/* ==========================================================================
+   SEÇÃO 5 · OUTROS PROJETOS
+   ========================================================================== */
+.outros { padding: 48px 0 96px; }
+.outros-lista { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 16px; }
+.outro { position: relative; display: flex; flex-direction: column; gap: 8px; padding: 26px 22px 22px; border-radius: 16px; border: 1px solid var(--borda); background: #fff; color: var(--grafite); text-decoration: none; overflow: hidden; transition: border-color .2s; }
+.outro-faixa { position: absolute; left: 0; right: 0; top: 0; height: 6px; background: var(--c); transition: height .25s ease; }
+.outro:hover { border-color: var(--c); }
+.outro:hover .outro-faixa { height: 10px; }
+.outro-area { margin-top: 6px; font-size: 12px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--suave); }
+.outro-nome { font-size: 20px; font-weight: 700; }
+.outro-ver { margin-top: 8px; font-size: 15px; font-weight: 600; color: var(--roxo); }
+@media (prefers-reduced-motion: reduce) { .outro, .outro-faixa { transition: none; } }
+
+/* ==========================================================================
+   CELULAR (telas até 820px)
+   ========================================================================== */
+@media (max-width: 820px) {
+  .conteudo { padding: 0 16px; }
+  .topo { padding: 24px 0 48px; }
+  .topo .conteudo, .funciona .conteudo, .participar .conteudo { grid-template-columns: 1fr; gap: 36px; }
+  .assinatura { height: 40px; margin-bottom: 20px; }
+  .assinatura-provisoria .etiqueta { font-size: 13px; }
+  .topo .intro { font-size: 17px; }
+  .topo .acoes .botao { width: 100%; }
+  .foto-topo { aspect-ratio: 4 / 3.2; }
+  .faixa { height: 44px; }
+  .funciona, .participar { padding: 56px 0; }
+  .formulario { padding: 24px 20px; }
+  .apoio { padding: 56px 0 24px; }
+  .apoio-caixa { grid-template-columns: 1fr; }
+  .apoio-texto { padding: 28px 20px 32px; }
+  .apoio-texto .botao { width: 100%; }
+  .apoio-foto { order: -1; min-height: 0; aspect-ratio: 1 / 0.9; }
+  .outros { padding: 32px 0 64px; }
+  .outros-lista { grid-template-columns: 1fr; gap: 12px; }
+}
+@media (max-width: 360px) { .infos { grid-template-columns: 1fr; } }
+/* Caixa que aparece se o link não puder ser aberto */
+
+.ame-plano-b{margin-top:16px;padding:16px 18px;border-radius:14px;background:#fcf8f0;color:#292530;border:2px solid #e8b950;font-family:"DM Sans",sans-serif;font-size:15px;line-height:1.5;text-align:left;flex-basis:100%}
+.ame-plano-b p{margin:0 0 8px;color:#292530}
+.ame-plano-b-copiar{min-height:44px;padding:0 18px;border:0;border-radius:999px;background:#614998;color:#fff;font:600 15px "DM Sans",sans-serif;cursor:pointer}
+
+</style>
+</head>
+
+<body>
+<main>
+
+<!-- ==========================================================================
+     SEÇÃO 1 · TOPO
+     Assinatura do projeto, título, texto de abertura, situação das inscrições
+     e foto.
+     ========================================================================== -->
+<section class="topo" aria-labelledby="titulo-pagina">
+  <div class="conteudo">
+    <div>
+      <!-- Assinatura oficial do projeto (logo AME + etiqueta). Não trocar por outra imagem. -->
+      <img class="assinatura" src="data:image/webp;base64,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" alt="AME Atendimento Jurídico AME">
+
+      <!-- EDITAR: título (a primeira linha fica leve, a segunda em negrito roxo) -->
+      <h1 id="titulo-pagina">Atendimento <strong>Jurídico</strong></h1>
+
+      <!-- EDITAR: texto de abertura -->
+      <p class="intro">Orientação jurídica para a comunidade, para que cada pessoa conheça e consiga acessar os seus direitos.</p>
+
+      <!-- EDITAR: situação das inscrições. Ex.: "Inscrições abertas", "Inscrições encerradas", "Lista de espera" -->
+      <p class="status"><span class="ponto" aria-hidden="true"></span>Em breve</p>
+
+      <div class="acoes">
+        <a class="botao botao-projeto" href="#inscricao">Quero orientação</a>
+      </div>
+    </div>
+
+    <!-- EDITAR: foto do topo. Troque o endereço em src. Use fotos com autorização de uso de imagem. -->
+    <div class="foto-topo">
+      <img src="https://static.wixstatic.com/media/nsplsh_d36a47fd47a743fdbcaa691cfb05d6f4~mv2.jpg/v1/fill/w_900,h_675,al_c,q_80/nsplsh_d36a47fd47a743fdbcaa691cfb05d6f4~mv2.jpg" alt="Estátua da Justiça segurando uma balança" loading="eager">
+    </div>
+  </div>
+</section>
+
+
+<!-- ==========================================================================
+     FAIXA ANIMADA
+     EDITAR: frases, cores e velocidade ficam em "CONFIGURAÇÃO DA FAIXA",
+     no script do fim da página.
+     ========================================================================== -->
+<div class="faixa">
+  <div class="faixa-rail" role="img" aria-label="Faixa animada">
+    <div class="faixa-track"></div>
+  </div>
+</div>
+
+
+<!-- ==========================================================================
+     SEÇÃO 2 · COMO FUNCIONA
+     Descrição do projeto e quadro de informações.
+     ========================================================================== -->
+<section class="funciona" aria-labelledby="titulo-funciona">
+  <div class="conteudo">
+    <div>
+      <!-- EDITAR: área do projeto -->
+      <p class="chapeu">Orientação e acesso a direitos</p>
+      <h2 class="titulo-secao" id="titulo-funciona">Como <strong>funciona</strong></h2>
+      <!-- EDITAR: descrição -->
+      <p class="descricao">[Descrição em duas ou três frases: que tipo de orientação é oferecida, quem atende e como funciona o agendamento.]</p>
+    </div>
+
+    <!-- EDITAR: quadro de informações.
+         Cada informação é um bloco <div class="info">.
+         <dt> é o rótulo (ex.: Dias) e <dd> é o valor (ex.: Terças e quintas).
+         Para adicionar, copie um bloco inteiro; para remover, apague o bloco. -->
+    <dl class="infos">
+          <div class="info">
+            <dt>Para quem</dt>
+            <dd>Moradores do Jacaré e entornos</dd>
+          </div>
+          <div class="info">
+            <dt>Atendimento</dt>
+            <dd>[dias e formato]</dd>
+          </div>
+          <div class="info">
+            <dt>Onde</dt>
+            <dd>[Sede da AME, no Jacaré]</dd>
+          </div>
+          <div class="info">
+            <dt>Custo</dt>
+            <dd>[Gratuito]</dd>
+          </div>
+    </dl>
+  </div>
+</section>
+
+
+<!-- ==========================================================================
+     SEÇÃO 3 · COMO PARTICIPAR + FORMULÁRIO
+     O formulário NÃO guarda dados no site: ao enviar, ele abre o WhatsApp
+     da AME com a mensagem já escrita, e a pessoa só precisa tocar em enviar.
+     ========================================================================== -->
+<section class="participar" id="inscricao" aria-labelledby="titulo-participar">
+  <div class="conteudo">
+    <div>
+      <p class="chapeu">Inscrição</p>
+      <h2 class="titulo-secao" id="titulo-participar">Como <strong>participar</strong></h2>
+      <!-- EDITAR: passo a passo. Cada passo é um <li>. -->
+      <ol class="passos">
+          <li><span class="num" aria-hidden="true">1</span><span>Conte em poucas palavras o assunto no formulário desta página.</span></li>
+          <li><span class="num" aria-hidden="true">2</span><span>A mensagem chega no WhatsApp da AME.</span></li>
+          <li><span class="num" aria-hidden="true">3</span><span>A equipe responde para combinar o atendimento.</span></li>
+      </ol>
+    </div>
+
+    <!-- EDITAR: título e campos do formulário.
+         Se mudar os campos, ajuste também a lista CAMPOS no script no fim da página. -->
+    <form class="formulario" id="form-inscricao" novalidate>
+      <h3>Peça orientação</h3>
+          <label class="campo">Seu nome
+            <input type="text" name="nome" id="nome" required>
+          </label>
+          <label class="campo">Seu WhatsApp
+            <input type="tel" name="whatsapp" id="whatsapp" required autocomplete="tel">
+          </label>
+          <label class="campo">Sobre o que você precisa de orientação?
+            <textarea name="duvida" id="duvida" rows="3" required></textarea>
+            <span class="dica">Só o assunto, em poucas palavras. Os detalhes você conta no atendimento.</span>
+          </label>
+      <p class="erro" id="erro-form" role="alert" hidden>Preencha todos os campos para continuar.</p>
+      <button class="botao botao-roxo" type="submit">Enviar pelo WhatsApp</button>
+      <p class="aviso-form">Ao enviar, abrimos o WhatsApp da AME com a sua mensagem pronta. Seus dados não ficam salvos neste site.</p>
+    </form>
+  </div>
+</section>
+
+
+<!-- ==========================================================================
+     SEÇÃO 4 · APOIE O PROJETO
+     ========================================================================== -->
+<section class="apoio" aria-labelledby="titulo-apoio">
+  <div class="conteudo">
+    <div class="apoio-caixa">
+      <div class="apoio-texto">
+        <p class="chapeu">Faça parte dessa história</p>
+        <h2 id="titulo-apoio">Quer ajudar o <strong>Atendimento Jurídico AME</strong>?</h2>
+        <!-- EDITAR: texto de convite -->
+        <p>Advogados e estudantes de Direito podem apoiar os atendimentos. Doações também mantêm o projeto funcionando.</p>
+        <div class="acoes">
+          <!-- EDITAR: link do WhatsApp para voluntários (mensagem pronta depois de ?text=).
+               Os links abrem pela ponte do Velo (velo-pagina.js). -->
+          <a class="botao botao-amarelo" href="https://wa.me/5521977180459?text=Ol%C3%A1%2C%20vim%20do%20site%20e%20gostaria%20de%20ser%20volunt%C3%A1rio%20no%20projeto%20Atendimento%20Jur%C3%ADdico%20AME">Quero ser voluntário</a>
+          <!-- EDITAR: link para doar (página inicial, seção Como apoiar) -->
+          <a class="botao botao-contorno" href="https://www.maiseducacao.org/">Quero doar</a>
+        </div>
+      </div>
+      <!-- EDITAR: foto do bloco de apoio (PNG com recorte diagonal transparente, como na página inicial) -->
+      <div class="apoio-foto">
+        <img src="https://static.wixstatic.com/media/d2b534_b9546021684c4c79873754f3c03b7360~mv2.png" alt="Crianças e voluntários da AME reunidos" loading="lazy">
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ==========================================================================
+     SEÇÃO 5 · OUTROS PROJETOS
+     Cards com link para as páginas dos outros projetos.
+     EDITAR: o endereço de cada página fica em href.
+     ========================================================================== -->
+<section class="outros" aria-labelledby="titulo-outros">
+  <div class="conteudo">
+    <p class="chapeu">Outros projetos</p>
+    <h2 class="titulo-secao" id="titulo-outros">Conheça o que mais <strong>a AME faz</strong></h2>
+    <div class="outros-lista">
+        <a class="outro" href="https://www.maiseducacao.org/pre-vestibular" style="--c:#3e64b0">
+          <span class="outro-faixa" aria-hidden="true"></span>
+          <span class="outro-area">Preparação para o ensino superior</span>
+          <span class="outro-nome">Pré-Vestibular AME</span>
+          <span class="outro-ver">Conhecer o projeto</span>
+        </a>
+        <a class="outro" href="https://www.maiseducacao.org/ame-qualifica" style="--c:#bf5236">
+          <span class="outro-faixa" aria-hidden="true"></span>
+          <span class="outro-area">Qualificação profissional</span>
+          <span class="outro-nome">AME Qualifica</span>
+          <span class="outro-ver">Conhecer o projeto</span>
+        </a>
+        <a class="outro" href="https://www.maiseducacao.org/reforca-jacare" style="--c:#e8b950">
+          <span class="outro-faixa" aria-hidden="true"></span>
+          <span class="outro-area">Reforço escolar</span>
+          <span class="outro-nome">Reforça Jacaré</span>
+          <span class="outro-ver">Conhecer o projeto</span>
+        </a>
+        <a class="outro" href="https://www.maiseducacao.org/aja" style="--c:#562568">
+          <span class="outro-faixa" aria-hidden="true"></span>
+          <span class="outro-area">Aprendizado de Jovens e Adultos</span>
+          <span class="outro-nome">AJA</span>
+          <span class="outro-ver">Conhecer o projeto</span>
+        </a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+
+<!-- ==========================================================================
+     SCRIPT (comportamento da página). Normalmente não precisa editar.
+     ========================================================================== -->
+<script>
+(() => {
+  /* ======================================================================
+     CONFIGURAÇÃO DA FAIXA
+     EDITAR: tudo o que muda a faixa fica neste bloco.
+     ====================================================================== */
+  const CONFIG = {
+    frases: ['Mais educação', 'Mais oportunidades', 'Mais caminhos', 'Mais futuro'],
+    tema: 'ameixa',
+    separador: 'lapis',
+    alternarCores: true,
+    direcao: 'esquerda',
+    velocidade: 70
+  };
+  /*
+     frases:        as palavras que passam na faixa (quantas quiser)
+     tema:          "ameixa" (roxo escuro), "roxo", "amarelo" ou "creme"
+     separador:     "lapis" (ponta do lápis), "logo" (logo da AME) ou "nenhum"
+     alternarCores: true = uma frase sim, outra não fica na cor de destaque
+     direcao:       "esquerda" ou "direita"
+     velocidade:    maior = mais rápido (70 é o padrão)
+  */
+
+  /* Paletas disponíveis (use o nome em CONFIG.tema) */
+  const TEMAS = {
+    ameixa:  { fundo: "#562568", texto: "#FCF8F0", destaque: "#E8B950" },
+    roxo:    { fundo: "#614998", texto: "#FCF8F0", destaque: "#E8B950" },
+    amarelo: { fundo: "#E8B950", texto: "#292530", destaque: "#562568" },
+    creme:   { fundo: "#FCF8F0", texto: "#614998", destaque: "#562568" }
+  };
+
+  /* ---------------- daqui para baixo, normalmente não precisa editar ---------------- */
+  const rail  = document.querySelector('.faixa-rail');
+  const track = document.querySelector('.faixa-track');
+  const tema  = TEMAS[CONFIG.tema] || TEMAS.ameixa;
+  rail.style.setProperty('--f-fundo', tema.fundo);
+  rail.style.setProperty('--f-texto', tema.texto);
+  rail.style.setProperty('--f-destaque', tema.destaque);
+  if (CONFIG.direcao === 'direita') track.classList.add('direita');
+  rail.setAttribute('aria-label', 'Faixa com as frases: ' + CONFIG.frases.join(', '));
+
+  const SIMBOLOS = {
+    lapis: '<span class="faixa-simbolo"><svg viewBox="0 0 100 100" aria-hidden="true"><path fill="currentColor" d="M0 100 47.24 29.43C56.14 15.77 72.33 0 88.84 0H100V100Z"/></svg></span>',
+    logo:  '<span class="faixa-simbolo logo"><svg aria-hidden="true"><use href="#logo-ame"/></svg></span>',
+    nenhum: ''
+  };
+
+  function makeItem(text, alt) {
+    const span = document.createElement('span');
+    span.className = 'faixa-item' + (CONFIG.alternarCores && alt ? ' alt' : '');
+    span.innerHTML = (SIMBOLOS[CONFIG.separador] || SIMBOLOS.lapis) + '<span class="faixa-palavra"></span>';
+    span.querySelector('.faixa-palavra').textContent = text;
+    return span;
+  }
+
+  function build() {
+    track.style.animation = 'none';
+    track.innerHTML = '';
+    const seq = document.createElement('div');
+    seq.className = 'faixa-seq';
+    track.appendChild(seq);      /* precisa estar na página para medir a largura */
+    let i = 0;
+    /* Repete as frases até a sequência ficar maior que a largura visível */
+    while (seq.getBoundingClientRect().width < rail.clientWidth * 1.35 || i < 4) {
+      CONFIG.frases.forEach((text, idx) => seq.appendChild(makeItem(text, ((i * CONFIG.frases.length) + idx) % 2 === 1)));
+      i++;
+      if (i > 20) break;
+    }
+    track.appendChild(seq.cloneNode(true));
+    const distance = Math.ceil(seq.getBoundingClientRect().width);
+    if (!distance || !rail.clientWidth) { setTimeout(build, 200); return; }  /* bloco ainda sem tamanho: tenta de novo */
+    track.style.setProperty('--f-loop', distance + 'px');
+    track.style.setProperty('--f-speed', Math.max(18, distance / CONFIG.velocidade) + 's');
+    track.offsetHeight;          /* reinicia a animação */
+    track.style.animation = '';
+  }
+
+  /* Monta já na abertura (a faixa começa andando) e refaz se a tela mudar de tamanho */
+  build();
+  let raf;
+  function rebuild() { cancelAnimationFrame(raf); raf = requestAnimationFrame(build); }
+  window.addEventListener('resize', rebuild);
+  window.addEventListener('load', rebuild);
+  /* Refaz quando o Wix der (ou mudar) o tamanho do bloco */
+  if ('ResizeObserver' in window) {
+    let ultimaLargura = 0;
+    new ResizeObserver(() => {
+      if (rail.clientWidth && rail.clientWidth !== ultimaLargura) { ultimaLargura = rail.clientWidth; rebuild(); }
+    }).observe(rail);
+  }
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(rebuild);
+})();
+</script>
+<script>
+(function () {
+  /* ======================================================================
+     PONTE DE LINKS (não precisa editar)
+     O Wix não deixa um bloco de código abrir links sozinho. Então o bloco
+     pede para a página abrir, pelo código do Velo (arquivo velo-pagina.js).
+     Se o Velo não responder, aparece uma caixa com o contato e a mensagem.
+     ====================================================================== */
+  var TELEFONE_VISIVEL = "(21) 97718-0459";   /* EDITAR se o WhatsApp mudar */
+  var esperando = null;
+
+  window.addEventListener("message", function (ev) {
+    if (ev.data && ev.data.tipo === "ame-link-ok" && esperando) {
+      clearTimeout(esperando.timer); esperando = null;
+    }
+  });
+
+  function ehWhatsApp(url) { return /^https:\/\/(wa\.me|api\.whatsapp\.com)\//.test(url); }
+
+  function textoDaMensagem(url) {
+    try { return new URL(url).searchParams.get("text") || ""; } catch (e) { return ""; }
+  }
+
+  function copiar(texto, botao) {
+    function ok(sucesso) {
+      botao.textContent = sucesso ? "Mensagem copiada" : "Não foi possível copiar";
+      setTimeout(function () { botao.textContent = "Copiar mensagem"; }, 2500);
+    }
+    if (navigator.clipboard && window.isSecureContext) {
+      navigator.clipboard.writeText(texto).then(function () { ok(true); }, function () { ok(antigo()); });
+    } else { ok(antigo()); }
+    function antigo() {
+      var t = document.createElement("textarea"); t.value = texto; t.setAttribute("readonly", "");
+      t.style.position = "absolute"; t.style.left = "-9999px"; document.body.appendChild(t); t.select();
+      var r = false; try { r = document.execCommand("copy"); } catch (e) {}
+      document.body.removeChild(t); return r;
+    }
+  }
+
+  function planoB(url, perto) {
+    if (!ehWhatsApp(url)) { window.open(url, "_blank"); return; }
+    var antiga = document.querySelector(".ame-plano-b"); if (antiga) antiga.remove();
+    var msg = textoDaMensagem(url);
+    var caixa = document.createElement("div");
+    caixa.className = "ame-plano-b"; caixa.setAttribute("role", "status");
+    caixa.innerHTML =
+      '<p><strong>Fale com a AME pelo WhatsApp</strong></p>' +
+      '<p>Mande uma mensagem para <strong>' + TELEFONE_VISIVEL + '</strong>.' +
+      (msg ? ' Se quiser, copie a mensagem pronta e cole na conversa.' : '') + '</p>' +
+      (msg ? '<button type="button" class="ame-plano-b-copiar">Copiar mensagem</button>' : '');
+    (perto && perto.parentNode ? perto.parentNode : document.body).insertBefore(caixa, perto ? perto.nextSibling : null);
+    var b = caixa.querySelector(".ame-plano-b-copiar");
+    if (b) b.addEventListener("click", function () { copiar(msg, b); });
+  }
+
+  function ehCelular() {
+    return /Android|iPhone|iPad|iPod/i.test(navigator.userAgent) ||
+           (window.matchMedia && window.matchMedia("(pointer: coarse)").matches);
+  }
+
+  /* Converte wa.me/numero?text=... em whatsapp://send?phone=numero&text=... (abre o app) */
+  function linkDoApp(url) {
+    try {
+      var u = new URL(url);
+      var fone = u.hostname === "wa.me" ? u.pathname.replace(/\D/g, "") : (u.searchParams.get("phone") || "");
+      var texto = u.searchParams.get("text") || "";
+      if (!fone) return null;
+      return "whatsapp://send?phone=" + fone + (texto ? "&text=" + encodeURIComponent(texto) : "");
+    } catch (e) { return null; }
+  }
+
+  /* No celular: tenta abrir o app do WhatsApp sem sair do site.
+     Se o app não abrir em 3 segundos, usa o caminho normal (pela página do Wix). */
+  function tentarApp(url, perto) {
+    var app = linkDoApp(url);
+    if (!app) return false;
+    var abriu = false;
+    function saiu() { if (document.hidden) abriu = true; }
+    document.addEventListener("visibilitychange", saiu);
+    window.addEventListener("pagehide", function () { abriu = true; }, { once: true });
+    window.addEventListener("blur", function () { abriu = true; }, { once: true });
+    setTimeout(function () {
+      document.removeEventListener("visibilitychange", saiu);
+      if (!abriu) pedirParaPagina(url, perto);
+    }, 3000);
+    try { window.location.href = app; } catch (e) { return false; }
+    return true;
+  }
+
+  /* Função usada pelos links e pelo formulário */
+  window.AME_abrirLink = function (url, perto) {
+    if (ehWhatsApp(url) && ehCelular() && tentarApp(url, perto)) return;
+    pedirParaPagina(url, perto);
+  };
+
+  function pedirParaPagina(url, perto) {
+    if (esperando) clearTimeout(esperando.timer);
+    esperando = { timer: setTimeout(function () { esperando = null; planoB(url, perto); }, 700) };
+    try { window.parent.postMessage({ tipo: "ame-abrir-link", url: url }, "*"); }
+    catch (e) { clearTimeout(esperando.timer); esperando = null; planoB(url, perto); }
+  };
+
+  /* Rola a página do site até um ponto deste bloco (ex.: botão "Doe agora").
+     O Velo rola a página; sem Velo, tenta rolar direto. */
+  window.AME_rolar = function (alvo) {
+    var y = Math.max(0, Math.round(alvo.getBoundingClientRect().top + (window.scrollY || 0)) - 16);
+    var feito = false;
+    function ok(ev) { if (ev.data && ev.data.tipo === "ame-rolar-ok") { feito = true; window.removeEventListener("message", ok); } }
+    window.addEventListener("message", ok);
+    try { window.parent.postMessage({ tipo: "ame-rolar", y: y }, "*"); } catch (e) {}
+    setTimeout(function () {
+      window.removeEventListener("message", ok);
+      if (!feito) { try { alvo.scrollIntoView({ behavior: "smooth", block: "start" }); } catch (e) {} }
+    }, 500);
+  };
+
+  /* Links internos do bloco (href="#secao") rolam a página até a seção */
+  document.addEventListener("click", function (ev) {
+    var a = ev.target.closest && ev.target.closest('a[href^="#"]');
+    if (!a || a.getAttribute("href").length < 2) return;
+    var alvo = document.getElementById(a.getAttribute("href").slice(1));
+    if (!alvo) return;
+    ev.preventDefault();
+    window.AME_rolar(alvo);
+  });
+
+  /* Todo link para fora do bloco passa pela ponte */
+  document.addEventListener("click", function (ev) {
+    var a = ev.target.closest && ev.target.closest('a[href^="http"]');
+    if (!a) return;
+    ev.preventDefault();
+    window.AME_abrirLink(a.href, a.closest(".acoes") || a);
+  });
+})();
+</script>
+<script>
+(function () {
+  /* EDITAR: número do WhatsApp da AME (só números, com 55 e DDD) */
+  var WHATSAPP = "5521977180459";
+
+  /* EDITAR: frase que abre a mensagem enviada pelo formulário */
+  var INICIO = "Olá! Vim do site e gostaria de orientação do Atendimento Jurídico da AME.";
+
+  /* Campos do formulário: [id do campo, como aparece na mensagem] */
+  var CAMPOS = [["nome","Nome"], ["whatsapp","WhatsApp"], ["duvida","Assunto"]];
+
+  /* Formulário: monta a mensagem e abre o WhatsApp */
+  var form = document.getElementById("form-inscricao");
+  var erro = document.getElementById("erro-form");
+  form.addEventListener("submit", function (ev) {
+    ev.preventDefault();
+    var linhas = [INICIO, ""];
+    var faltando = false;
+    CAMPOS.forEach(function (c) {
+      var campo = document.getElementById(c[0]);
+      var valor = (campo.value || "").trim();
+      campo.setAttribute("aria-invalid", valor ? "false" : "true");
+      if (!valor) faltando = true;
+      linhas.push(c[1] + ": " + valor);
+    });
+    erro.hidden = !faltando;
+    if (faltando) return;
+    var url = "https://wa.me/" + WHATSAPP + "?text=" + encodeURIComponent(linhas.join("\n"));
+    /* Pede para a página do Wix abrir o WhatsApp (veja velo-pagina.js) */
+    window.AME_abrirLink(url, form.querySelector("button[type=submit]"));
+  });
+})();
+</script>
+</body>
+</html>
