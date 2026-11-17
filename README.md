@@ -16,11 +16,10 @@ O menu e o rodapé são os do próprio Wix e ficam fora destes arquivos.
 | Pasta | O que é | Onde fica no Wix | Altura no Wix (computador / celular) |
 |---|---|---|---|
 | `inicio-celular/` | Página inicial inteira, só para o celular | Página inicial, bloco com ID `inicioCelular`, recolhido ao carregar | — / 7700 px |
-| `reforca-jacare/` | Página do projeto Reforça Jacaré | `/reforca-jacare` | 2900 / 4300 px |
-| `pre-vestibular/` | Página do Pré-Vestibular AME | `/pre-vestibular` | 2720 / 4060 px |
-| `ame-qualifica/` | Página do AME Qualifica | `/ame-qualifica` | 2780 / 4190 px |
-| `atendimento-juridico/` | Página do Atendimento Jurídico AME (solicitação pelo Google Forms) | `/atendimento-juridico` | 2760 / 4400 px |
-| `aja/` | Página do AJA (Aprendizado de Jovens e Adultos) | `/aja` | 2720 / 4300 px |
+| `reforca-jacare/` | Página do projeto Reforça Jacaré | `/reforca-jacare` | 2800 / 4200 px |
+| `pre-vestibular/` | Página do Pré-Vestibular AME | `/pre-vestibular` | 2600 / 3950 px |
+| `ame-qualifica/` | Página do AME Qualifica | `/ame-qualifica` | 2650 / 4080 px |
+| `atendimento-juridico/` | Página do Atendimento Jurídico AME (solicitação pelo Google Forms) | `/atendimento-juridico` | 2700 / 4300 px |
 | `blocos/como-apoiar/` | Seção Como apoiar (Pix, QR Code, voluntariado, parceria) | Página inicial (computador) | 650 / 1550 px |
 | `faixas/topo/` | Faixa animada abaixo do topo | Página inicial (computador) | 48 / 42 px |
 | `faixas/apoio-impacto/` | Faixa entre Como apoiar e Nosso impacto | Página inicial (computador) | 48 / 42 px |
@@ -45,8 +44,8 @@ O menu e o rodapé são os do próprio Wix e ficam fora destes arquivos.
 
 ## Pendências
 
-- Criar no Wix as páginas de Pré-Vestibular, AME Qualifica, Atendimento Jurídico e AJA (os arquivos já estão aqui).
+- Criar no Wix as páginas de Pré-Vestibular, AME Qualifica e Atendimento Jurídico (os arquivos já estão aqui).
 - Páginas de Transparência e Política de privacidade.
-- Assinatura oficial e cor do AJA (hoje com assinatura provisória, em ameixa).
+- AJA e Atendimento AME (apoio psicanalítico) estão inativos: as páginas antigas continuam ocultas no Wix.
 - Dados entre colchetes: dias, horários, documentos de matrícula, carga horária, fonte e período dos números de impacto.
 - Depoimentos reais (os atuais são de demonstração).
