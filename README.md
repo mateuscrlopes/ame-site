@@ -15,7 +15,7 @@ O menu e o rodapé são os do próprio Wix e ficam fora destes arquivos.
 
 | Pasta | O que é | Onde fica no Wix | Altura no Wix (computador / celular) |
 |---|---|---|---|
-| `inicio-celular/` | Página inicial inteira, só para o celular | Página inicial, bloco com ID `inicioCelular`, recolhido ao carregar | — / 7600 px |
+| `inicio-celular/` | Página inicial inteira, só para o celular | Página inicial, bloco com ID `inicioCelular`, recolhido ao carregar | — / 7700 px |
 | `reforca-jacare/` | Página do projeto Reforça Jacaré | `/reforca-jacare` | 2800 / 4200 px |
 | `blocos/como-apoiar/` | Seção Como apoiar (Pix, QR Code, voluntariado, parceria) | Página inicial (computador) | 650 / 1550 px |
 | `faixas/topo/` | Faixa animada abaixo do topo | Página inicial (computador) | 48 / 42 px |
