@@ -1,0 +1,4 @@
+# Estas páginas aparecem dentro do site oficial (maiseducacao.org).
+# A cópia no GitHub não deve ser indexada.
+User-agent: *
+Disallow: /

@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Faixa 2 · entre Como apoiar e Nosso impacto</title>
+<!--
+==========================================================================
+  FAIXA ANIMADA · Faixa 2 · entre Como apoiar e Nosso impacto
+  Divide as seções Como apoiar e Nosso impacto. Fundo amarelo, logo da AME como separador e o 'Mais' que soma.
+
+  COMO USAR NO WIX
+  Adicionar > Incorporar código > Incorporar HTML (código) e cole tudo.
+  Largura: total da página. Altura: 48 px no computador e 42 px no celular.
+
+  COMO EDITAR
+  Vá até "CONFIGURAÇÃO DA FAIXA", no script do fim do arquivo:
+  frases, cores, separador, direção e velocidade ficam lá.
+==========================================================================
+-->
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700;800&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box}
+html,body{margin:0;width:100%;height:100%;overflow:hidden;background:transparent}
+
+.faixa-rail{width:100%;height:100%;overflow:hidden;display:flex;align-items:center;background:var(--f-fundo)}
+.faixa-track{display:flex;flex:0 0 auto;width:max-content;will-change:transform;animation:faixa-run var(--f-speed,22s) linear infinite}
+.faixa-track.direita{animation-direction:reverse}
+.faixa-seq{display:flex;flex:0 0 auto;align-items:center}
+.faixa-item{display:flex;flex:0 0 auto;align-items:center;gap:18px;padding:0 26px;white-space:nowrap;line-height:1;font-family:"DM Sans",Arial,sans-serif;font-size:clamp(15px,1.55vw,20px);font-weight:800;letter-spacing:-.02em;color:var(--f-texto)}
+.faixa-item.alt{color:var(--f-destaque)}
+.faixa-simbolo{width:17px;height:17px;color:var(--f-destaque);display:block;flex:0 0 auto}
+.faixa-item.alt .faixa-simbolo{color:var(--f-texto)}
+.faixa-simbolo.logo{width:auto;height:15px;aspect-ratio:1018/362.5}
+.faixa-simbolo svg{width:100%;height:100%;display:block}
+@keyframes faixa-run{from{transform:translateX(0)}to{transform:translateX(calc(-1 * var(--f-loop, 400px)))}}
+@media(max-width:600px){.faixa-item{gap:12px;padding:0 18px;font-size:15px}.faixa-simbolo{width:14px;height:14px}.faixa-simbolo.logo{height:12px}}
+
+</style>
+</head>
+<body>
+<!-- Logo da AME guardado como símbolo (usado quando o separador é "logo"). Não editar. -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="logo-ame" viewBox="91 426.5 1018 362.5"><g fill="currentColor"><path d="M 579.425781 578.753906 L 567.589844 738.773438 C 565.550781 754.085938 558.738281 766.390625 543.296875 767.984375 C 528.710938 769.492188 520.355469 768.761719 514.484375 767.863281 C 497.382812 765.234375 494.371094 749.894531 495.304688 732.765625 L 508.367188 492.40625 C 508.984375 481.003906 513.332031 470.601562 520.144531 462.25 C 533.1875 446.265625 557.714844 446.035156 578.273438 448 C 594.515625 449.554688 608.003906 458.878906 615.988281 472.734375 L 627.316406 495.714844 L 663.175781 577.101562 C 664.03125 579.050781 665.761719 580.128906 667.269531 580.296875 C 669.238281 580.515625 670.953125 579.28125 672.257812 577.214844 L 728.996094 487.296875 C 744.472656 462.769531 764.851562 445.707031 794.734375 446.933594 C 803.8125 447.304688 812.417969 448.234375 820.636719 451.992188 C 837.585938 459.746094 845.164062 475.78125 843.1875 494.261719 L 825.980469 655.140625 L 818.851562 719.917969 C 817.808594 729.398438 817.824219 738.449219 814.984375 747.546875 C 811.644531 758.257812 803.40625 765.09375 792.121094 767.375 C 782.6875 769.285156 771.621094 769.285156 761.976562 767.648438 C 750.875 765.761719 742.773438 758.542969 741.234375 747.59375 C 739.832031 740.46875 740.203125 733.765625 740.789062 726.160156 L 753.21875 580.199219 L 696.808594 685.175781 L 688.519531 699.769531 C 681.75 710.960938 670.257812 716.984375 657.261719 717.140625 C 643.171875 717.308594 631.496094 710.101562 625.640625 697.121094 L 600.304688 631.585938 Z M 579.425781 578.753906"/><path d="M 938.015625 638.609375 C 934.164062 638.621094 932.804688 641.4375 932.546875 644.273438 L 929.160156 681.078125 C 928.429688 689.03125 933.945312 695.335938 942.414062 695.359375 L 1065.160156 695.652344 C 1070.074219 695.664062 1074.320312 697.941406 1076.917969 700.710938 C 1079.972656 703.964844 1081.140625 708.84375 1080.429688 713.570312 C 1078.566406 725.9375 1075.820312 738.023438 1071.101562 749.386719 C 1066.402344 760.699219 1056.964844 767.703125 1044.414062 767.699219 L 889.210938 767.644531 C 879.617188 767.640625 870.882812 764.894531 862.996094 760.375 C 844.742188 749.910156 842.496094 727.40625 844.695312 706.636719 L 865.957031 505.636719 C 869.386719 473.222656 893.933594 447.601562 925.304688 447.53125 L 1074.640625 447.191406 C 1083.347656 447.171875 1089.601562 454.875 1088.589844 463.046875 C 1086.980469 476.050781 1083.835938 488.53125 1079.3125 500.738281 C 1075.5 511.027344 1067.105469 518.011719 1055.820312 518.058594 L 961.5 518.425781 C 952.003906 518.464844 945.351562 524.664062 944.335938 533.734375 L 941.09375 562.726562 C 940.90625 564.394531 942.335938 565.90625 944.128906 565.910156 L 1041.195312 566.144531 C 1049.570312 566.164062 1056.132812 573.378906 1055.273438 581.800781 C 1053.882812 595.421875 1050.925781 608.632812 1046.460938 621.460938 C 1042.96875 631.496094 1034.355469 638.277344 1023.472656 638.316406 Z M 938.015625 638.609375"/><path d="M 402.566406 524.035156 L 406.601562 557.617188 L 379.09375 548.625 Z M 402.566406 524.035156"/><path d="M 466.617188 449.6875 C 459.195312 447.761719 451.234375 447.488281 446.648438 447.488281 L 400.003906 447.488281 C 370.953125 447.488281 342.453125 475.253906 326.789062 499.300781 L 294.398438 547.667969 L 256.761719 605.132812 C 221.957031 604.8125 187.847656 608.75 154.800781 619.242188 C 141.382812 623.496094 129.109375 628.515625 117.449219 635.910156 C 112.101562 638.546875 110.265625 643.769531 111.851562 649.417969 L 126.03125 699.546875 C 126.566406 701.445312 128.585938 702.695312 129.800781 703.050781 C 131.113281 703.421875 132.941406 703.085938 134.375 702.082031 C 157.839844 685.730469 185.039062 675.570312 213.726562 674.335938 L 159.550781 764.058594 C 158.914062 765.152344 157.816406 766.96875 157.273438 767.902344 C 157.238281 767.960938 157.238281 768.042969 157.273438 768.105469 C 157.300781 768.175781 157.378906 768.226562 157.46875 768.226562 L 194.492188 768.226562 C 203.828125 768.226562 209.480469 768.226562 216.121094 767.902344 C 219.492188 767.730469 223.125 767.484375 227.613281 767.101562 C 238.820312 766.152344 245.597656 756.425781 251.34375 746.964844 L 294.441406 675.949219 L 322.507812 620.332031 L 347.726562 570.371094 L 402.34375 511.488281 C 403.417969 510.335938 405.121094 510.070312 406.46875 510.210938 C 406.523438 510.210938 406.582031 510.21875 406.636719 510.226562 C 406.707031 510.238281 406.769531 510.246094 406.832031 510.261719 C 406.9375 510.28125 407.042969 510.300781 407.144531 510.324219 C 407.320312 510.363281 407.480469 510.414062 407.628906 510.46875 C 407.941406 510.582031 408.222656 510.734375 408.480469 510.902344 C 408.648438 511.027344 408.808594 511.152344 408.960938 511.300781 C 409.046875 511.378906 409.128906 511.46875 409.207031 511.558594 C 409.367188 511.746094 409.507812 511.941406 409.644531 512.152344 C 409.742188 512.3125 409.828125 512.488281 409.910156 512.667969 C 409.925781 512.683594 409.9375 512.710938 409.9375 512.738281 C 410.015625 512.886719 410.078125 513.054688 410.140625 513.226562 C 410.226562 513.484375 410.308594 513.757812 410.371094 514.050781 C 410.421875 514.308594 410.46875 514.574219 410.503906 514.859375 L 415.476562 554.628906 L 420.433594 594.390625 L 411.460938 643.722656 L 408.046875 662.488281 L 394.71875 735.789062 C 399.578125 744.097656 403.558594 752.71875 407 761.871094 C 408.25 765.195312 411.070312 767.394531 414.582031 767.902344 C 415.105469 767.972656 415.648438 768.007812 416.195312 768.007812 L 434.535156 767.902344 L 451.222656 767.800781 C 465.394531 767.722656 470.511719 755.546875 470.296875 741.074219 L 483.652344 473.214844 C 484.195312 462.332031 477.152344 452.410156 466.617188 449.6875"/><path d="M 411.007812 595.085938 C 401.660156 598.019531 396.632812 595.324219 392.910156 586.96875 C 388.332031 590.039062 384.519531 590.214844 379.890625 588.796875 C 376.832031 587.867188 374.953125 583.652344 372.839844 580.871094 L 372.839844 580.859375 C 372.113281 581.179688 371.414062 581.453125 370.738281 581.695312 C 370.054688 581.933594 369.402344 582.136719 368.773438 582.296875 C 368.105469 582.464844 367.457031 582.589844 366.847656 582.667969 C 366.289062 582.75 365.738281 582.785156 365.214844 582.785156 C 364.203125 582.785156 363.246094 582.652344 362.324219 582.367188 C 359.585938 581.535156 357.207031 579.441406 354.804688 575.957031 L 332.421875 623.769531 L 306.855469 678.371094 C 335.878906 684.863281 364.1875 697.417969 383.144531 719.289062 C 383.164062 719.3125 383.191406 719.339844 383.214844 719.367188 L 397.503906 655.492188 Z M 411.007812 595.085938"/><path d="M 402.34375 511.488281 L 402.34375 511.476562 C 403.605469 510.121094 405.757812 509.988281 407.144531 510.324219 C 405.75 509.996094 403.605469 510.128906 402.34375 511.488281"/><path d="M 406.601562 557.617188 L 379.09375 548.625 L 402.566406 524.035156 Z M 406.601562 557.617188"/><path d="M 411.007812 595.085938 L 397.503906 655.492188 C 376.789062 642.546875 355.476562 631.761719 332.421875 623.769531 L 354.804688 575.957031 C 357.207031 579.441406 359.585938 581.535156 362.324219 582.367188 C 365.25 583.253906 368.59375 582.695312 372.839844 580.859375 L 372.839844 580.871094 C 374.953125 583.652344 376.832031 587.867188 379.890625 588.796875 C 384.519531 590.214844 388.332031 590.039062 392.910156 586.96875 C 396.632812 595.324219 401.660156 598.019531 411.007812 595.085938"/><path d="M 411.460938 643.722656 L 420.433594 594.390625 L 415.476562 554.628906 L 420.445312 594.390625 Z M 411.460938 643.722656"/><path d="M 372.839844 580.859375 L 372.839844 580.871094 C 368.59375 582.703125 365.25 583.253906 362.324219 582.367188 C 365.25 583.253906 368.59375 582.695312 372.839844 580.859375"/><path d="M 406.601562 557.617188 L 379.09375 548.625 L 402.566406 524.035156 Z M 406.601562 557.617188"/><path d="M 408.960938 511.300781 C 409.652344 511.957031 410.121094 512.886719 410.371094 514.050781 C 410.113281 512.886719 409.644531 511.957031 408.960938 511.300781"/><path d="M 406.601562 557.617188 L 379.09375 548.625 L 402.566406 524.035156 Z M 406.601562 557.617188"/><path d="M 406.601562 557.617188 L 379.09375 548.625 L 402.566406 524.035156 Z M 406.601562 557.617188"/></g></symbol></svg>
+
+<div class="faixa-rail" role="img" aria-label="Faixa animada">
+  <div class="faixa-track"></div>
+</div>
+
+<script>
+(() => {
+  /* ======================================================================
+     CONFIGURAÇÃO DA FAIXA
+     EDITAR: tudo o que muda a faixa fica neste bloco.
+     ====================================================================== */
+  const CONFIG = {
+    frases: ['+ futuro', '+ sonhos', '+ caminhos', '+ vozes', '+ oportunidades', '+ gente junto'],
+    tema: 'amarelo',
+    separador: 'logo',
+    alternarCores: false,
+    direcao: 'direita',
+    velocidade: 60
+  };
+  /*
+     frases:        as palavras que passam na faixa (quantas quiser)
+     tema:          "ameixa" (roxo escuro), "roxo", "amarelo" ou "creme"
+     separador:     "lapis" (ponta do lápis), "logo" (logo da AME) ou "nenhum"
+     alternarCores: true = uma frase sim, outra não fica na cor de destaque
+     direcao:       "esquerda" ou "direita"
+     velocidade:    maior = mais rápido (70 é o padrão)
+  */
+
+  /* Paletas disponíveis (use o nome em CONFIG.tema) */
+  const TEMAS = {
+    ameixa:  { fundo: "#562568", texto: "#FCF8F0", destaque: "#E8B950" },
+    roxo:    { fundo: "#614998", texto: "#FCF8F0", destaque: "#E8B950" },
+    amarelo: { fundo: "#E8B950", texto: "#292530", destaque: "#562568" },
+    creme:   { fundo: "#FCF8F0", texto: "#614998", destaque: "#562568" }
+  };
+
+  /* ---------------- daqui para baixo, normalmente não precisa editar ---------------- */
+  const rail  = document.querySelector('.faixa-rail');
+  const track = document.querySelector('.faixa-track');
+  const tema  = TEMAS[CONFIG.tema] || TEMAS.ameixa;
+  rail.style.setProperty('--f-fundo', tema.fundo);
+  rail.style.setProperty('--f-texto', tema.texto);
+  rail.style.setProperty('--f-destaque', tema.destaque);
+  if (CONFIG.direcao === 'direita') track.classList.add('direita');
+  rail.setAttribute('aria-label', 'Faixa com as frases: ' + CONFIG.frases.join(', '));
+
+  const SIMBOLOS = {
+    lapis: '<span class="faixa-simbolo"><svg viewBox="0 0 100 100" aria-hidden="true"><path fill="currentColor" d="M0 100 47.24 29.43C56.14 15.77 72.33 0 88.84 0H100V100Z"/></svg></span>',
+    logo:  '<span class="faixa-simbolo logo"><svg aria-hidden="true"><use href="#logo-ame"/></svg></span>',
+    nenhum: ''
+  };
+
+  function makeItem(text, alt) {
+    const span = document.createElement('span');
+    span.className = 'faixa-item' + (CONFIG.alternarCores && alt ? ' alt' : '');
+    span.innerHTML = (SIMBOLOS[CONFIG.separador] || SIMBOLOS.lapis) + '<span class="faixa-palavra"></span>';
+    span.querySelector('.faixa-palavra').textContent = text;
+    return span;
+  }
+
+  function build() {
+    track.style.animation = 'none';
+    track.innerHTML = '';
+    const seq = document.createElement('div');
+    seq.className = 'faixa-seq';
+    track.appendChild(seq);      /* precisa estar na página para medir a largura */
+    let i = 0;
+    /* Repete as frases até a sequência ficar maior que a largura visível */
+    while (seq.getBoundingClientRect().width < rail.clientWidth * 1.35 || i < 4) {
+      CONFIG.frases.forEach((text, idx) => seq.appendChild(makeItem(text, ((i * CONFIG.frases.length) + idx) % 2 === 1)));
+      i++;
+      if (i > 20) break;
+    }
+    track.appendChild(seq.cloneNode(true));
+    const distance = Math.ceil(seq.getBoundingClientRect().width);
+    if (!distance || !rail.clientWidth) { setTimeout(build, 200); return; }  /* bloco ainda sem tamanho: tenta de novo */
+    track.style.setProperty('--f-loop', distance + 'px');
+    track.style.setProperty('--f-speed', Math.max(18, distance / CONFIG.velocidade) + 's');
+    track.offsetHeight;          /* reinicia a animação */
+    track.style.animation = '';
+  }
+
+  /* Monta já na abertura (a faixa começa andando) e refaz se a tela mudar de tamanho */
+  build();
+  let raf;
+  function rebuild() { cancelAnimationFrame(raf); raf = requestAnimationFrame(build); }
+  window.addEventListener('resize', rebuild);
+  window.addEventListener('load', rebuild);
+  /* Refaz quando o Wix der (ou mudar) o tamanho do bloco */
+  if ('ResizeObserver' in window) {
+    let ultimaLargura = 0;
+    new ResizeObserver(() => {
+      if (rail.clientWidth && rail.clientWidth !== ultimaLargura) { ultimaLargura = rail.clientWidth; rebuild(); }
+    }).observe(rail);
+  }
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(rebuild);
+})();
+</script>
+</body>
+</html>
