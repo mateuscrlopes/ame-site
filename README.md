@@ -19,7 +19,7 @@ O menu e o rodapé são os do próprio Wix e ficam fora destes arquivos.
 | `reforca-jacare/` | Página do projeto Reforça Jacaré | `/reforca-jacare` | 2900 / 4300 px |
 | `pre-vestibular/` | Página do Pré-Vestibular AME | `/pre-vestibular` | 2720 / 4060 px |
 | `ame-qualifica/` | Página do AME Qualifica | `/ame-qualifica` | 2780 / 4190 px |
-| `atendimento-juridico/` | Página do Atendimento Jurídico AME | `/atendimento-juridico` | 2870 / 4300 px |
+| `atendimento-juridico/` | Página do Atendimento Jurídico AME (solicitação pelo Google Forms) | `/atendimento-juridico` | 2760 / 4400 px |
 | `aja/` | Página do AJA (Aprendizado de Jovens e Adultos) | `/aja` | 2720 / 4300 px |
 | `blocos/como-apoiar/` | Seção Como apoiar (Pix, QR Code, voluntariado, parceria) | Página inicial (computador) | 650 / 1550 px |
 | `faixas/topo/` | Faixa animada abaixo do topo | Página inicial (computador) | 48 / 42 px |

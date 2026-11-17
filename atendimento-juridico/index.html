@@ -152,6 +152,9 @@ a:focus-visible, button:focus-visible, input:focus-visible { outline: 3px solid 
 .campo select, .campo textarea { min-height: 50px; padding: 12px 14px; border: 2px solid var(--borda); border-radius: 10px; font: 400 17px "DM Sans", sans-serif; color: var(--grafite); background: #fff; }
 .campo textarea { resize: vertical; }
 .dica { font-size: 13px; font-weight: 400; color: var(--suave); }
+.fx-texto { margin: 0; font-size: 16px; line-height: 1.55; }
+.fx-rotulo { margin: 6px 0 0; font-size: 14px; font-weight: 700; color: var(--roxo); }
+.fx-lista { margin: 0; padding-left: 20px; display: grid; gap: 6px; font-size: 15px; line-height: 1.45; }
 .aviso-form { margin: 0; font-size: 13px; line-height: 1.5; color: var(--suave); }
 .erro { margin: 0; font-size: 14px; font-weight: 600; color: #a3341c; }
 
@@ -238,13 +241,13 @@ a:focus-visible, button:focus-visible, input:focus-visible { outline: 3px solid 
       <h1 id="titulo-pagina">Atendimento <strong>Jurídico</strong></h1>
 
       <!-- EDITAR: texto de abertura -->
-      <p class="intro">Orientação jurídica para a comunidade, para que cada pessoa conheça e consiga acessar os seus direitos.</p>
+      <p class="intro">Orientação jurídica gratuita para a comunidade, para que cada pessoa conheça e consiga acessar os seus direitos.</p>
 
       <!-- EDITAR: situação das inscrições. Ex.: "Inscrições abertas", "Inscrições encerradas", "Lista de espera" -->
-      <p class="status"><span class="ponto" aria-hidden="true"></span>Em breve</p>
+      <p class="status"><span class="ponto" aria-hidden="true"></span>[Solicitações abertas]</p>
 
       <div class="acoes">
-        <a class="botao botao-projeto" href="#inscricao">Quero orientação</a>
+        <a class="botao botao-projeto" href="#inscricao">Solicitar atendimento</a>
       </div>
     </div>
 
@@ -279,7 +282,7 @@ a:focus-visible, button:focus-visible, input:focus-visible { outline: 3px solid 
       <p class="chapeu">Orientação e acesso a direitos</p>
       <h2 class="titulo-secao" id="titulo-funciona">Como <strong>funciona</strong></h2>
       <!-- EDITAR: descrição -->
-      <p class="descricao">[Descrição em duas ou três frases: que tipo de orientação é oferecida, quem atende e como funciona o agendamento.]</p>
+      <p class="descricao">Atendemos casos de Direito de Família, do Consumidor, Trabalhista, Previdenciário (incluindo BPC/LOAS) e questões de moradia, como aluguel, vizinhança e despejo.</p>
     </div>
 
     <!-- EDITAR: quadro de informações.
@@ -292,12 +295,12 @@ a:focus-visible, button:focus-visible, input:focus-visible { outline: 3px solid 
             <dd>Moradores do Jacaré e entornos</dd>
           </div>
           <div class="info">
-            <dt>Atendimento</dt>
-            <dd>[dias e formato]</dd>
+            <dt>Áreas</dt>
+            <dd>Família, Consumidor, Trabalho, Previdência e Moradia</dd>
           </div>
           <div class="info">
-            <dt>Onde</dt>
-            <dd>[Sede da AME, no Jacaré]</dd>
+            <dt>Como pedir</dt>
+            <dd>Formulário on-line</dd>
           </div>
           <div class="info">
             <dt>Custo</dt>
@@ -320,30 +323,25 @@ a:focus-visible, button:focus-visible, input:focus-visible { outline: 3px solid 
       <h2 class="titulo-secao" id="titulo-participar">Como <strong>participar</strong></h2>
       <!-- EDITAR: passo a passo. Cada passo é um <li>. -->
       <ol class="passos">
-          <li><span class="num" aria-hidden="true">1</span><span>Conte em poucas palavras o assunto no formulário desta página.</span></li>
-          <li><span class="num" aria-hidden="true">2</span><span>A mensagem chega no WhatsApp da AME.</span></li>
-          <li><span class="num" aria-hidden="true">3</span><span>A equipe responde para combinar o atendimento.</span></li>
+          <li><span class="num" aria-hidden="true">1</span><span>Preencha o formulário de solicitação (leva de 5 a 10 minutos).</span></li>
+          <li><span class="num" aria-hidden="true">2</span><span>A equipe analisa o seu caso.</span></li>
+          <li><span class="num" aria-hidden="true">3</span><span>Entramos em contato pelo meio que você escolher: WhatsApp, e-mail ou ligação.</span></li>
       </ol>
     </div>
 
-    <!-- EDITAR: título e campos do formulário.
-         Se mudar os campos, ajuste também a lista CAMPOS no script no fim da página. -->
-    <form class="formulario" id="form-inscricao" novalidate>
-      <h3>Peça orientação</h3>
-          <label class="campo">Seu nome
-            <input type="text" name="nome" id="nome" required>
-          </label>
-          <label class="campo">Seu WhatsApp
-            <input type="tel" name="whatsapp" id="whatsapp" required autocomplete="tel">
-          </label>
-          <label class="campo">Sobre o que você precisa de orientação?
-            <textarea name="duvida" id="duvida" rows="3" required></textarea>
-            <span class="dica">Só o assunto, em poucas palavras. Os detalhes você conta no atendimento.</span>
-          </label>
-      <p class="erro" id="erro-form" role="alert" hidden>Preencha todos os campos para continuar.</p>
-      <button class="botao botao-roxo" type="submit">Enviar pelo WhatsApp</button>
-      <p class="aviso-form">Ao enviar, abrimos o WhatsApp da AME com a sua mensagem pronta. Seus dados não ficam salvos neste site.</p>
-    </form>
+    <!-- EDITAR: formulário externo (Google Forms). O link fica em href do botão. -->
+    <div class="formulario formulario-externo" id="formulario">
+      <h3>Solicite atendimento</h3>
+      <p class="fx-texto">O pedido é feito por um formulário que conta o seu caso para a equipe avaliar. Suas informações são confidenciais.</p>
+      <p class="fx-rotulo">Tenha em mãos:</p>
+      <ul class="fx-lista">
+          <li>Documento de identidade (foto ou PDF)</li>
+          <li>Comprovante de endereço (foto ou PDF)</li>
+          <li>Uma conta Google, para enviar os arquivos</li>
+      </ul>
+      <a class="botao botao-roxo" href="https://docs.google.com/forms/d/e/1FAIpQLSezjAVjHAfZr7zhwG_4DaYRbQQN1-YAK75PwGtHgXfSIVtB9A/viewform">Abrir formulário de atendimento</a>
+      <p class="aviso-form">O formulário abre no Google Formulários. Se tiver dificuldade, fale com a gente pelo WhatsApp (21) 97718-0459.</p>
+    </div>
   </div>
 </section>
 
@@ -657,12 +655,12 @@ a:focus-visible, button:focus-visible, input:focus-visible { outline: 3px solid 
   var INICIO = "Olá! Vim do site e gostaria de orientação do Atendimento Jurídico da AME.";
 
   /* Campos do formulário: [id do campo, como aparece na mensagem] */
-  var CAMPOS = [["nome","Nome"], ["whatsapp","WhatsApp"], ["duvida","Assunto"]];
+  var CAMPOS = [];
 
   /* Formulário: monta a mensagem e abre o WhatsApp */
   var form = document.getElementById("form-inscricao");
   var erro = document.getElementById("erro-form");
-  form.addEventListener("submit", function (ev) {
+  if (form) form.addEventListener("submit", function (ev) {
     ev.preventDefault();
     var linhas = [INICIO, ""];
     var faltando = false;

@@ -18,7 +18,7 @@ import wixLocation from 'wix-location';
 import wixWindow from 'wix-window';
 
 // Só abre endereços destes sites (segurança)
-const PERMITIDOS = /^https:\/\/(wa\.me|api\.whatsapp\.com|(www\.)?atados\.com\.br|(www\.)?maiseducacao\.org|(www\.)?instagram\.com)(\/|$)/;
+const PERMITIDOS = /^https:\/\/(wa\.me|api\.whatsapp\.com|(www\.)?atados\.com\.br|(www\.)?maiseducacao\.org|(www\.)?instagram\.com|docs\.google\.com\/forms|forms\.gle)(\/|$)/;
 
 // Página inicial: bloco que só aparece no celular (ID definido no painel
 // "Propriedades e eventos"). Em outras páginas, esta parte não faz nada.
