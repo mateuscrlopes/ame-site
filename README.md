@@ -23,6 +23,7 @@ O menu e o rodapé são os do próprio Wix e ficam fora destes arquivos.
 | `blocos/como-apoiar/` | Seção Como apoiar (Pix, QR Code, voluntariado, parceria) | Página inicial (computador) | 650 / 1550 px |
 | `faixas/topo/` | Faixa animada abaixo do topo | Página inicial (computador) | 48 / 42 px |
 | `faixas/apoio-impacto/` | Faixa entre Como apoiar e Nosso impacto | Página inicial (computador) | 48 / 42 px |
+| `prestacao-de-contas/` | Prestação de contas: 2023, 2024 e 2025 numa página só, com abas por ano | `/prestacao-de-contas` | 1450 / 1900 px |
 | `wix/velo-pagina.js` | Código do Velo (ponte de links) | Código de cada página que tem bloco com links | — |
 | `marca/` | Logos e assinaturas dos projetos | — | — |
 
@@ -45,7 +46,8 @@ O menu e o rodapé são os do próprio Wix e ficam fora destes arquivos.
 ## Pendências
 
 - Criar no Wix as páginas de Pré-Vestibular, AME Qualifica e Atendimento Jurídico (os arquivos já estão aqui).
-- Páginas de Transparência e Política de privacidade.
+- Política de privacidade.
+- Prestação de contas: faltam novembro e dezembro de 2024, fevereiro a dezembro de 2025 e todo 2026. Para publicar um mês novo, veja as instruções no topo de `prestacao-de-contas/index.html`.
 - AJA e Atendimento AME (apoio psicanalítico) estão inativos: as páginas antigas continuam ocultas no Wix.
 - Dados entre colchetes: dias, horários, documentos de matrícula, carga horária, fonte e período dos números de impacto.
 - Depoimentos reais (os atuais são de demonstração).

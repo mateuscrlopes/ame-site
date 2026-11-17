@@ -1,0 +1,458 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex"><!-- esta cópia fica no GitHub só para aparecer dentro do Wix; o Google deve indexar o maiseducacao.org -->
+<title>Prestação de contas · AME</title>
+
+<!--
+==========================================================================
+  PÁGINA: PRESTAÇÃO DE CONTAS
+  Associação Mais Educação (AME) · maiseducacao.org/prestacao-de-contas
+
+  COMO PUBLICAR UM DOCUMENTO NOVO (o mais comum)
+  1. No Wix, envie o PDF pelo Gerenciador de Mídia (Documentos) e copie o
+     link do arquivo (algo como https://www.maiseducacao.org/_files/ugd/...pdf).
+  2. Aqui no código, vá até "DOCUMENTOS" (no script do fim da página).
+  3. No ano certo, acrescente uma linha:  ["Novembro", "LINK-DO-PDF"],
+  4. Para um ano novo, copie um bloco inteiro de ano e troque o número.
+  5. Documentos de eventos (feijoada, festa junina, campanhas) ficam em
+     "EVENTOS", do mesmo jeito.
+  O ano mais recente aparece aberto automaticamente.
+
+  COMO USAR NO WIX
+  Bloco "Incorporar HTML" por endereço do site, largura total.
+  Altura: veja o README do repositório.
+==========================================================================
+-->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,600;9..40,700;9..40,800&display=swap">
+<style>
+:root {
+  --roxo: #614998; --ameixa: #562568; --lilas: #e9ddf8; --amarelo: #e8b950;
+  --creme: #fcf8f0; --grafite: #292530; --suave: rgba(41, 37, 48, .74); --borda: rgba(97, 73, 152, .2);
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; background: #fff; color: var(--grafite); font-family: "DM Sans", system-ui, -apple-system, "Segoe UI", sans-serif; -webkit-font-smoothing: antialiased; }
+.conteudo { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+.chapeu { margin: 0 0 12px; font-size: 12px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--roxo); }
+a:focus-visible, button:focus-visible { outline: 3px solid var(--roxo); outline-offset: 3px; border-radius: 8px; }
+
+/* TOPO */
+.topo { padding: 56px 0 40px; }
+.topo h1 { margin: 0 0 16px; font-size: clamp(40px, 5.4vw, 64px); line-height: 1.02; font-weight: 300; letter-spacing: -.025em; }
+.topo h1 strong { font-weight: 700; color: var(--roxo); }
+.topo p { margin: 0; max-width: 640px; font-size: 18px; line-height: 1.6; color: var(--suave); }
+
+/* FAIXA */
+.faixa { height: 52px; }
+
+.faixa-rail{width:100%;height:100%;overflow:hidden;display:flex;align-items:center;background:var(--f-fundo)}
+.faixa-track{display:flex;flex:0 0 auto;width:max-content;will-change:transform;animation:faixa-run var(--f-speed,22s) linear infinite}
+.faixa-track.direita{animation-direction:reverse}
+.faixa-seq{display:flex;flex:0 0 auto;align-items:center}
+.faixa-item{display:flex;flex:0 0 auto;align-items:center;gap:18px;padding:0 26px;white-space:nowrap;line-height:1;font-family:"DM Sans",Arial,sans-serif;font-size:clamp(15px,1.55vw,20px);font-weight:800;letter-spacing:-.02em;color:var(--f-texto)}
+.faixa-item.alt{color:var(--f-destaque)}
+.faixa-simbolo{width:17px;height:17px;color:var(--f-destaque);display:block;flex:0 0 auto}
+.faixa-item.alt .faixa-simbolo{color:var(--f-texto)}
+.faixa-simbolo.logo{width:auto;height:15px;aspect-ratio:1018/362.5}
+.faixa-simbolo svg{width:100%;height:100%;display:block}
+@keyframes faixa-run{from{transform:translateX(0)}to{transform:translateX(calc(-1 * var(--f-loop, 400px)))}}
+@media(max-width:600px){.faixa-item{gap:12px;padding:0 18px;font-size:15px}.faixa-simbolo{width:14px;height:14px}.faixa-simbolo.logo{height:12px}}
+
+
+/* ANOS E DOCUMENTOS */
+.docs { padding: 48px 0 80px; }
+.anos { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 32px; }
+.ano { min-height: 46px; padding: 0 22px; border-radius: 999px; border: 2px solid var(--roxo); background: #fff; color: var(--roxo); font: 700 16px "DM Sans", sans-serif; cursor: pointer; }
+.ano[aria-selected="true"] { background: var(--roxo); color: #fff; }
+.bloco-titulo { margin: 0 0 16px; font-size: 22px; font-weight: 700; }
+.grade { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 12px; margin-bottom: 36px; }
+.doc { position: relative; display: flex; flex-direction: column; justify-content: space-between; gap: 18px; min-height: 120px; padding: 18px 18px 16px; border-radius: 16px; background: #fff; border: 1px solid var(--borda); text-decoration: none; color: var(--grafite); overflow: hidden; transition: border-color .2s, transform .2s; }
+.doc::after { content: ""; position: absolute; left: 0; bottom: 0; width: 34%; height: 5px; background: var(--amarelo); }
+.doc:hover { border-color: var(--roxo); transform: translateY(-2px); }
+.doc-nome { font-size: 18px; font-weight: 700; line-height: 1.25; }
+.doc-acao { display: flex; align-items: center; justify-content: space-between; font-size: 13px; font-weight: 700; color: var(--roxo); }
+.doc-tipo { padding: 3px 8px; border-radius: 6px; background: var(--lilas); color: var(--ameixa); font-size: 11px; letter-spacing: .08em; }
+.doc.evento { background: var(--creme); }
+.vazio { margin: 0 0 36px; padding: 18px; border-radius: 14px; background: var(--creme); color: var(--suave); font-size: 15px; }
+.nota { margin-top: 8px; padding: 20px 22px; border-radius: 16px; background: var(--lilas); font-size: 15px; line-height: 1.55; }
+.nota strong { color: var(--ameixa); }
+@media (prefers-reduced-motion: reduce) { .doc { transition: none; } }
+@media (max-width: 820px) {
+  .conteudo { padding: 0 16px; }
+  .topo { padding: 32px 0 28px; }
+  .topo p { font-size: 16px; }
+  .faixa { height: 44px; }
+  .docs { padding: 32px 0 56px; }
+  .grade { grid-template-columns: 1fr 1fr; gap: 10px; }
+  .doc { min-height: 104px; padding: 14px; }
+  .doc-nome { font-size: 16px; }
+}
+
+.ame-plano-b{margin-top:16px;padding:16px 18px;border-radius:14px;background:#fcf8f0;color:#292530;border:2px solid #e8b950;font-family:"DM Sans",sans-serif;font-size:15px;line-height:1.5;text-align:left;flex-basis:100%}
+.ame-plano-b p{margin:0 0 8px;color:#292530}
+.ame-plano-b-copiar{min-height:44px;padding:0 18px;border:0;border-radius:999px;background:#614998;color:#fff;font:600 15px "DM Sans",sans-serif;cursor:pointer}
+
+</style>
+</head>
+<body>
+<main>
+
+<!-- ==========================================================================
+     TOPO · EDITAR: título e texto de abertura
+     ========================================================================== -->
+<section class="topo" aria-labelledby="titulo">
+  <div class="conteudo">
+    <p class="chapeu">Transparência</p>
+    <h1 id="titulo">Prestação de <strong>contas</strong></h1>
+    <p>Todo mês publicamos como os recursos recebidos pela AME foram usados. Escolha o ano e abra o documento do mês.</p>
+  </div>
+</section>
+
+<!-- FAIXA ANIMADA · frases e cores em "CONFIGURAÇÃO DA FAIXA", no fim da página -->
+<div class="faixa"><div class="faixa-rail" role="img" aria-label="Faixa animada"><div class="faixa-track"></div></div></div>
+
+<!-- ==========================================================================
+     DOCUMENTOS · montados automaticamente a partir das listas DOCUMENTOS e
+     EVENTOS no script (não precisa mexer aqui)
+     ========================================================================== -->
+<section class="docs" aria-label="Documentos por ano">
+  <div class="conteudo">
+    <div class="anos" role="tablist" aria-label="Ano" id="anos"></div>
+    <div id="painel" role="tabpanel"></div>
+    <!-- EDITAR: aviso sobre a publicação -->
+    <p class="nota"><strong>Quando publicamos:</strong> a prestação de contas de cada mês sai até o 2º dia útil do mês seguinte. Eventos e campanhas, como feijoadas e festas juninas, têm prestação de contas separada.</p>
+  </div>
+</section>
+
+</main>
+
+<script>
+(() => {
+  /* ======================================================================
+     CONFIGURAÇÃO DA FAIXA
+     EDITAR: tudo o que muda a faixa fica neste bloco.
+     ====================================================================== */
+  const CONFIG = {
+    frases: ['Mais educação', 'Mais oportunidades', 'Mais caminhos', 'Mais futuro'],
+    tema: 'ameixa',
+    separador: 'lapis',
+    alternarCores: true,
+    direcao: 'esquerda',
+    velocidade: 70
+  };
+  /*
+     frases:        as palavras que passam na faixa (quantas quiser)
+     tema:          "ameixa" (roxo escuro), "roxo", "amarelo" ou "creme"
+     separador:     "lapis" (ponta do lápis), "logo" (logo da AME) ou "nenhum"
+     alternarCores: true = uma frase sim, outra não fica na cor de destaque
+     direcao:       "esquerda" ou "direita"
+     velocidade:    maior = mais rápido (70 é o padrão)
+  */
+
+  /* Paletas disponíveis (use o nome em CONFIG.tema) */
+  const TEMAS = {
+    ameixa:  { fundo: "#562568", texto: "#FCF8F0", destaque: "#E8B950" },
+    roxo:    { fundo: "#614998", texto: "#FCF8F0", destaque: "#E8B950" },
+    amarelo: { fundo: "#E8B950", texto: "#292530", destaque: "#562568" },
+    creme:   { fundo: "#FCF8F0", texto: "#614998", destaque: "#562568" }
+  };
+
+  /* ---------------- daqui para baixo, normalmente não precisa editar ---------------- */
+  const rail  = document.querySelector('.faixa-rail');
+  const track = document.querySelector('.faixa-track');
+  const tema  = TEMAS[CONFIG.tema] || TEMAS.ameixa;
+  rail.style.setProperty('--f-fundo', tema.fundo);
+  rail.style.setProperty('--f-texto', tema.texto);
+  rail.style.setProperty('--f-destaque', tema.destaque);
+  if (CONFIG.direcao === 'direita') track.classList.add('direita');
+  rail.setAttribute('aria-label', 'Faixa com as frases: ' + CONFIG.frases.join(', '));
+
+  const SIMBOLOS = {
+    lapis: '<span class="faixa-simbolo"><svg viewBox="0 0 100 100" aria-hidden="true"><path fill="currentColor" d="M0 100 47.24 29.43C56.14 15.77 72.33 0 88.84 0H100V100Z"/></svg></span>',
+    logo:  '<span class="faixa-simbolo logo"><svg aria-hidden="true"><use href="#logo-ame"/></svg></span>',
+    nenhum: ''
+  };
+
+  function makeItem(text, alt) {
+    const span = document.createElement('span');
+    span.className = 'faixa-item' + (CONFIG.alternarCores && alt ? ' alt' : '');
+    span.innerHTML = (SIMBOLOS[CONFIG.separador] || SIMBOLOS.lapis) + '<span class="faixa-palavra"></span>';
+    span.querySelector('.faixa-palavra').textContent = text;
+    return span;
+  }
+
+  function build() {
+    track.style.animation = 'none';
+    track.innerHTML = '';
+    const seq = document.createElement('div');
+    seq.className = 'faixa-seq';
+    track.appendChild(seq);      /* precisa estar na página para medir a largura */
+    let i = 0;
+    /* Repete as frases até a sequência ficar maior que a largura visível */
+    while (seq.getBoundingClientRect().width < rail.clientWidth * 1.35 || i < 4) {
+      CONFIG.frases.forEach((text, idx) => seq.appendChild(makeItem(text, ((i * CONFIG.frases.length) + idx) % 2 === 1)));
+      i++;
+      if (i > 20) break;
+    }
+    track.appendChild(seq.cloneNode(true));
+    const distance = Math.ceil(seq.getBoundingClientRect().width);
+    if (!distance || !rail.clientWidth) { setTimeout(build, 200); return; }  /* bloco ainda sem tamanho: tenta de novo */
+    track.style.setProperty('--f-loop', distance + 'px');
+    track.style.setProperty('--f-speed', Math.max(18, distance / CONFIG.velocidade) + 's');
+    track.offsetHeight;          /* reinicia a animação */
+    track.style.animation = '';
+  }
+
+  /* Monta já na abertura (a faixa começa andando) e refaz se a tela mudar de tamanho */
+  build();
+  let raf;
+  function rebuild() { cancelAnimationFrame(raf); raf = requestAnimationFrame(build); }
+  window.addEventListener('resize', rebuild);
+  window.addEventListener('load', rebuild);
+  /* Refaz quando o Wix der (ou mudar) o tamanho do bloco */
+  if ('ResizeObserver' in window) {
+    let ultimaLargura = 0;
+    new ResizeObserver(() => {
+      if (rail.clientWidth && rail.clientWidth !== ultimaLargura) { ultimaLargura = rail.clientWidth; rebuild(); }
+    }).observe(rail);
+  }
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(rebuild);
+})();
+</script>
+<script>
+(function () {
+  /* ======================================================================
+     PONTE DE LINKS (não precisa editar)
+     O Wix não deixa um bloco de código abrir links sozinho. Então o bloco
+     pede para a página abrir, pelo código do Velo (arquivo velo-pagina.js).
+     Se o Velo não responder, aparece uma caixa com o contato e a mensagem.
+     ====================================================================== */
+  var TELEFONE_VISIVEL = "(21) 97718-0459";   /* EDITAR se o WhatsApp mudar */
+  var esperando = null;
+
+  window.addEventListener("message", function (ev) {
+    if (ev.data && ev.data.tipo === "ame-link-ok" && esperando) {
+      clearTimeout(esperando.timer); esperando = null;
+    }
+  });
+
+  function ehWhatsApp(url) { return /^https:\/\/(wa\.me|api\.whatsapp\.com)\//.test(url); }
+
+  function textoDaMensagem(url) {
+    try { return new URL(url).searchParams.get("text") || ""; } catch (e) { return ""; }
+  }
+
+  function copiar(texto, botao) {
+    function ok(sucesso) {
+      botao.textContent = sucesso ? "Mensagem copiada" : "Não foi possível copiar";
+      setTimeout(function () { botao.textContent = "Copiar mensagem"; }, 2500);
+    }
+    if (navigator.clipboard && window.isSecureContext) {
+      navigator.clipboard.writeText(texto).then(function () { ok(true); }, function () { ok(antigo()); });
+    } else { ok(antigo()); }
+    function antigo() {
+      var t = document.createElement("textarea"); t.value = texto; t.setAttribute("readonly", "");
+      t.style.position = "absolute"; t.style.left = "-9999px"; document.body.appendChild(t); t.select();
+      var r = false; try { r = document.execCommand("copy"); } catch (e) {}
+      document.body.removeChild(t); return r;
+    }
+  }
+
+  function planoB(url, perto) {
+    if (!ehWhatsApp(url)) { window.open(url, "_blank"); return; }
+    var antiga = document.querySelector(".ame-plano-b"); if (antiga) antiga.remove();
+    var msg = textoDaMensagem(url);
+    var caixa = document.createElement("div");
+    caixa.className = "ame-plano-b"; caixa.setAttribute("role", "status");
+    caixa.innerHTML =
+      '<p><strong>Fale com a AME pelo WhatsApp</strong></p>' +
+      '<p>Mande uma mensagem para <strong>' + TELEFONE_VISIVEL + '</strong>.' +
+      (msg ? ' Se quiser, copie a mensagem pronta e cole na conversa.' : '') + '</p>' +
+      (msg ? '<button type="button" class="ame-plano-b-copiar">Copiar mensagem</button>' : '');
+    (perto && perto.parentNode ? perto.parentNode : document.body).insertBefore(caixa, perto ? perto.nextSibling : null);
+    var b = caixa.querySelector(".ame-plano-b-copiar");
+    if (b) b.addEventListener("click", function () { copiar(msg, b); });
+  }
+
+  function ehCelular() {
+    return /Android|iPhone|iPad|iPod/i.test(navigator.userAgent) ||
+           (window.matchMedia && window.matchMedia("(pointer: coarse)").matches);
+  }
+
+  /* Converte wa.me/numero?text=... em whatsapp://send?phone=numero&text=... (abre o app) */
+  function linkDoApp(url) {
+    try {
+      var u = new URL(url);
+      var fone = u.hostname === "wa.me" ? u.pathname.replace(/\D/g, "") : (u.searchParams.get("phone") || "");
+      var texto = u.searchParams.get("text") || "";
+      if (!fone) return null;
+      return "whatsapp://send?phone=" + fone + (texto ? "&text=" + encodeURIComponent(texto) : "");
+    } catch (e) { return null; }
+  }
+
+  /* No celular: tenta abrir o app do WhatsApp sem sair do site.
+     Se o app não abrir em 3 segundos, usa o caminho normal (pela página do Wix). */
+  function tentarApp(url, perto) {
+    var app = linkDoApp(url);
+    if (!app) return false;
+    var abriu = false;
+    function saiu() { if (document.hidden) abriu = true; }
+    document.addEventListener("visibilitychange", saiu);
+    window.addEventListener("pagehide", function () { abriu = true; }, { once: true });
+    window.addEventListener("blur", function () { abriu = true; }, { once: true });
+    setTimeout(function () {
+      document.removeEventListener("visibilitychange", saiu);
+      if (!abriu) pedirParaPagina(url, perto);
+    }, 3000);
+    try { window.location.href = app; } catch (e) { return false; }
+    return true;
+  }
+
+  /* Função usada pelos links e pelo formulário */
+  window.AME_abrirLink = function (url, perto) {
+    if (ehWhatsApp(url) && ehCelular() && tentarApp(url, perto)) return;
+    pedirParaPagina(url, perto);
+  };
+
+  function pedirParaPagina(url, perto) {
+    if (esperando) clearTimeout(esperando.timer);
+    esperando = { timer: setTimeout(function () { esperando = null; planoB(url, perto); }, 700) };
+    try { window.parent.postMessage({ tipo: "ame-abrir-link", url: url }, "*"); }
+    catch (e) { clearTimeout(esperando.timer); esperando = null; planoB(url, perto); }
+  };
+
+  /* Rola a página do site até um ponto deste bloco (ex.: botão "Doe agora").
+     O Velo rola a página; sem Velo, tenta rolar direto. */
+  window.AME_rolar = function (alvo) {
+    var y = Math.max(0, Math.round(alvo.getBoundingClientRect().top + (window.scrollY || 0)) - 16);
+    var feito = false;
+    function ok(ev) { if (ev.data && ev.data.tipo === "ame-rolar-ok") { feito = true; window.removeEventListener("message", ok); } }
+    window.addEventListener("message", ok);
+    try { window.parent.postMessage({ tipo: "ame-rolar", y: y }, "*"); } catch (e) {}
+    setTimeout(function () {
+      window.removeEventListener("message", ok);
+      if (!feito) { try { alvo.scrollIntoView({ behavior: "smooth", block: "start" }); } catch (e) {} }
+    }, 500);
+  };
+
+  /* Links internos do bloco (href="#secao") rolam a página até a seção */
+  document.addEventListener("click", function (ev) {
+    var a = ev.target.closest && ev.target.closest('a[href^="#"]');
+    if (!a || a.getAttribute("href").length < 2) return;
+    var alvo = document.getElementById(a.getAttribute("href").slice(1));
+    if (!alvo) return;
+    ev.preventDefault();
+    window.AME_rolar(alvo);
+  });
+
+  /* Todo link para fora do bloco passa pela ponte */
+  document.addEventListener("click", function (ev) {
+    var a = ev.target.closest && ev.target.closest('a[href^="http"]');
+    if (!a) return;
+    ev.preventDefault();
+    window.AME_abrirLink(a.href, a.closest(".acoes") || a);
+  });
+})();
+</script>
+<script>
+(function () {
+  /* ======================================================================
+     DOCUMENTOS · EDITAR: um item por mês, no formato ["Mês", "link do PDF"]
+     ====================================================================== */
+  var DOCUMENTOS = {
+    "2025": [
+        ["Janeiro", "https://www.maiseducacao.org/_files/ugd/d2b534_0de25f7194bb427aa565a31f44b5110a.pdf"]
+    ],
+    "2024": [
+        ["Janeiro", "https://www.maiseducacao.org/_files/ugd/d2b534_b029acf1e14941eeab1c43cda151ddbc.pdf"],
+        ["Fevereiro", "https://www.maiseducacao.org/_files/ugd/d2b534_fbdb19c4bd5944e4a4d8abc528503a78.pdf"],
+        ["Março", "https://www.maiseducacao.org/_files/ugd/d2b534_49303ddd650845868590ff5c11cb5c90.pdf"],
+        ["Abril", "https://www.maiseducacao.org/_files/ugd/d2b534_0be683232e5b4fbc9878e672c2b75fc7.pdf"],
+        ["Maio", "https://www.maiseducacao.org/_files/ugd/d2b534_422c6b6c6a7147b9a66ca5bf35888891.pdf"],
+        ["Junho", "https://www.maiseducacao.org/_files/ugd/d2b534_56cab9afa98c467e89e4962f480395f1.pdf"],
+        ["Julho", "https://www.maiseducacao.org/_files/ugd/d2b534_f9187cd4db4d4974a4c451a7096ae695.pdf"],
+        ["Agosto", "https://www.maiseducacao.org/_files/ugd/d2b534_f067c9da94864e63a913db24709e0624.pdf"],
+        ["Setembro", "https://www.maiseducacao.org/_files/ugd/d2b534_d4b69b058a7b45f88fc22f9f4e669184.pdf"],
+        ["Outubro", "https://www.maiseducacao.org/_files/ugd/d2b534_a2712a42b5724fe9b57e42db1b58574c.pdf"]
+    ],
+    "2023": [
+        ["Março", "https://www.maiseducacao.org/_files/ugd/d2b534_47780588ad864155b7babf380b839032.pdf"],
+        ["Abril", "https://www.maiseducacao.org/_files/ugd/d2b534_47a22350709143099a61db14a2890a2c.pdf"],
+        ["Maio", "https://www.maiseducacao.org/_files/ugd/d2b534_acde4acca3aa45d8a4c599a7e109dac4.pdf"],
+        ["Junho", "https://www.maiseducacao.org/_files/ugd/d2b534_23145280e1fd4d689381941fe8e0b5e7.pdf"],
+        ["Julho", "https://www.maiseducacao.org/_files/ugd/d2b534_1a8a073b986b460ba068cd3c547988e7.pdf"],
+        ["Agosto", "https://www.maiseducacao.org/_files/ugd/d2b534_ce167360c1c64605b2be686ae9df535c.pdf"],
+        ["Setembro", "https://www.maiseducacao.org/_files/ugd/d2b534_61d5bfdc80df453c86d9102a7af6c2dd.pdf"],
+        ["Outubro", "https://www.maiseducacao.org/_files/ugd/d2b534_a436980d58c04f1a989394db10723288.pdf"],
+        ["Novembro e dezembro", "https://www.maiseducacao.org/_files/ugd/d2b534_6415ab60b1104acd961db40eb78b348a.pdf"]
+    ]
+  };
+
+  /* ======================================================================
+     EVENTOS · EDITAR: prestações de contas de eventos e campanhas
+     ====================================================================== */
+  var EVENTOS = {
+    "2025": [],
+    "2024": [
+        ["Feijoada (abril)", "https://www.maiseducacao.org/_files/ugd/d2b534_5cff6a027d35450788e9da0b59f018c1.pdf"],
+        ["Festa Junina", "https://www.maiseducacao.org/_files/ugd/d2b534_850d1c84fab84746bf78067d54cffac5.pdf"]
+    ],
+    "2023": [
+        ["Feijoada (fevereiro)", "https://www.maiseducacao.org/_files/ugd/d2b534_2e1d4acbff454d3ca9d6c12f011f18e8.pdf"],
+        ["Almoço (abril)", "https://www.maiseducacao.org/_files/ugd/d2b534_be16bd6991604d4d963965abcbac77b2.pdf"],
+        ["Almoço (maio)", "https://www.maiseducacao.org/_files/ugd/d2b534_aa1cc6e415d74712a71956312ad3235f.pdf"],
+        ["Festa Junina (16 de junho)", "https://www.maiseducacao.org/_files/ugd/d2b534_89a8400a297549e3a75538459c406e59.pdf"],
+        ["Festa Junina (24 de junho)", "https://www.maiseducacao.org/_files/ugd/d2b534_4fc2fe091dc04d13893e7ddb38df2922.pdf"]
+    ]
+  };
+
+  /* ---------------- daqui para baixo, normalmente não precisa editar ---------------- */
+  var anos = Object.keys(DOCUMENTOS).concat(Object.keys(EVENTOS))
+    .filter(function (a, i, l) { return l.indexOf(a) === i; })
+    .filter(function (a) { return (DOCUMENTOS[a] || []).length || (EVENTOS[a] || []).length; })
+    .sort().reverse();
+  var abas = document.getElementById("anos"), painel = document.getElementById("painel");
+
+  function cartao(item, evento) {
+    var a = document.createElement("a");
+    a.className = "doc" + (evento ? " evento" : "");
+    a.href = item[1];
+    a.innerHTML = '<span class="doc-nome"></span><span class="doc-acao">Abrir documento <span class="doc-tipo">PDF</span></span>';
+    a.querySelector(".doc-nome").textContent = item[0];
+    a.setAttribute("aria-label", item[0] + " (PDF)");
+    return a;
+  }
+  function grupo(titulo, itens, evento) {
+    var f = document.createDocumentFragment();
+    var h = document.createElement("h2"); h.className = "bloco-titulo"; h.textContent = titulo; f.appendChild(h);
+    if (!itens.length) { var p = document.createElement("p"); p.className = "vazio"; p.textContent = "Nenhum documento publicado."; f.appendChild(p); return f; }
+    var g = document.createElement("div"); g.className = "grade";
+    itens.forEach(function (it) { g.appendChild(cartao(it, evento)); });
+    f.appendChild(g); return f;
+  }
+  function mostrar(ano) {
+    [].forEach.call(abas.children, function (b) { b.setAttribute("aria-selected", b.textContent === ano ? "true" : "false"); b.tabIndex = b.textContent === ano ? 0 : -1; });
+    painel.innerHTML = "";
+    painel.appendChild(grupo("Prestação de contas mensal · " + ano, DOCUMENTOS[ano] || [], false));
+    if ((EVENTOS[ano] || []).length) painel.appendChild(grupo("Eventos e campanhas · " + ano, EVENTOS[ano], true));
+  }
+  anos.forEach(function (ano) {
+    var b = document.createElement("button");
+    b.type = "button"; b.className = "ano"; b.setAttribute("role", "tab"); b.textContent = ano;
+    b.addEventListener("click", function () { mostrar(ano); });
+    b.addEventListener("keydown", function (e) {
+      var i = anos.indexOf(ano);
+      if (e.key === "ArrowRight" && i < anos.length - 1) { abas.children[i + 1].focus(); mostrar(anos[i + 1]); }
+      if (e.key === "ArrowLeft" && i > 0) { abas.children[i - 1].focus(); mostrar(anos[i - 1]); }
+    });
+    abas.appendChild(b);
+  });
+  if (anos.length) mostrar(anos[0]);
+})();
+</script>
+</body>
+</html>
