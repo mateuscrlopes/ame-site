@@ -210,8 +210,16 @@ a:focus-visible, button:focus-visible, input:focus-visible { outline: 3px solid 
   .apoio-texto { padding: 28px 20px 32px; }
   .apoio-texto .botao { width: 100%; }
   .apoio-foto { order: -1; min-height: 0; aspect-ratio: 1 / 0.9; }
-  .outros { padding: 32px 0 64px; }
-  .outros-lista { grid-template-columns: 1fr; gap: 12px; }
+  .outros { padding: 32px 0 48px; }
+  /* No celular, os outros projetos viram uma lista compacta (uma linha por projeto) */
+  .outros-lista { grid-template-columns: 1fr; gap: 8px; }
+  .outro { display: grid; grid-template-columns: 1fr auto; grid-template-areas: "nome seta" "area seta"; align-items: center; gap: 2px 12px; padding: 14px 16px 14px 20px; border-radius: 14px; }
+  .outro-faixa { right: auto; bottom: 0; width: 5px; height: auto; }
+  .outro:hover .outro-faixa { height: auto; }
+  .outro-nome { grid-area: nome; font-size: 17px; }
+  .outro-area { grid-area: area; margin: 0; font-size: 11px; }
+  .outro-ver { grid-area: seta; margin: 0; font-size: 0; }
+  .outro-ver::after { content: "›"; font-size: 26px; line-height: 1; color: var(--roxo); }
 }
 @media (max-width: 360px) { .infos { grid-template-columns: 1fr; } }
 /* Caixa que aparece se o link não puder ser aberto */

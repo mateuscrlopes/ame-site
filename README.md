@@ -17,10 +17,10 @@ O menu e o rodapé são os do próprio Wix e ficam fora destes arquivos.
 |---|---|---|---|
 | `inicio/` | Página inicial (computador). Em celulares, abre sozinha a versão de celular (`inicio-celular/`) | Página Início | 3100 (limite do Wix) / ver celular |
 | `inicio-celular/` | Página inicial, versão de celular: topo, projetos, como ajudar, impacto e contato | Aberta pela página inicial em celulares | — / 2650 px |
-| `reforca-jacare/` | Página do projeto Reforça Jacaré | `/reforca-jacare` | 2800 / 4200 px |
-| `pre-vestibular/` | Página do Pré-Vestibular AME | `/pre-vestibular` | 2600 / 3950 px |
-| `ame-qualifica/` | Página do AME Qualifica | `/ame-qualifica` | 2650 / 4080 px |
-| `atendimento-juridico/` | Página do Atendimento Jurídico AME (solicitação pelo Google Forms) | `/atendimento-juridico` | 2700 / 4300 px |
+| `reforca-jacare/` | Página do projeto Reforça Jacaré | `/reforca-jacare` | 2800 / 3850 px |
+| `pre-vestibular/` | Página do Pré-Vestibular AME | `/pre-vestibular` | 2600 / 3620 px |
+| `ame-qualifica/` | Página do AME Qualifica | `/ame-qualifica` | 2650 / 3750 px |
+| `atendimento-juridico/` | Página do Atendimento Jurídico AME (solicitação pelo Google Forms) | `/atendimento-juridico` | 2700 / 4000 px |
 | `blocos/como-apoiar/` | Seção Como apoiar (Pix, QR Code, voluntariado, parceria) | Página inicial (computador) | 650 / 1550 px |
 | `faixas/topo/` | Faixa animada abaixo do topo | Página inicial (computador) | 48 / 42 px |
 | `faixas/apoio-impacto/` | Faixa entre Como apoiar e Nosso impacto | Página inicial (computador) | 48 / 42 px |
