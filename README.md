@@ -15,8 +15,8 @@ O menu e o rodapé são os do próprio Wix e ficam fora destes arquivos.
 
 | Pasta | O que é | Onde fica no Wix | Altura no Wix (computador / celular) |
 |---|---|---|---|
-| `inicio/` | Página inicial completa. No computador vai em dois blocos: `inicio/?parte=1` (topo até inscrições) e `inicio/?parte=2` (como apoiar até contato), porque o Wix limita cada bloco a 3100 px. No celular, o bloco 1 mostra a página inteira e o bloco 2 fica oculto | Página Início | parte 1: 2420 / 8733 px · parte 2: 2630 / oculto |
-| `inicio-celular/` | Página inicial inteira, só para o celular | Página inicial, bloco com ID `inicioCelular`, recolhido ao carregar | — / 7700 px |
+| `inicio/` | Página inicial (computador). Em celulares, abre sozinha a versão de celular (`inicio-celular/`) | Página Início | 3100 (limite do Wix) / ver celular |
+| `inicio-celular/` | Página inicial, versão de celular: topo, projetos, como ajudar, impacto e contato | Aberta pela página inicial em celulares | — / 2650 px |
 | `reforca-jacare/` | Página do projeto Reforça Jacaré | `/reforca-jacare` | 2800 / 4200 px |
 | `pre-vestibular/` | Página do Pré-Vestibular AME | `/pre-vestibular` | 2600 / 3950 px |
 | `ame-qualifica/` | Página do AME Qualifica | `/ame-qualifica` | 2650 / 4080 px |
@@ -24,11 +24,14 @@ O menu e o rodapé são os do próprio Wix e ficam fora destes arquivos.
 | `blocos/como-apoiar/` | Seção Como apoiar (Pix, QR Code, voluntariado, parceria) | Página inicial (computador) | 650 / 1550 px |
 | `faixas/topo/` | Faixa animada abaixo do topo | Página inicial (computador) | 48 / 42 px |
 | `faixas/apoio-impacto/` | Faixa entre Como apoiar e Nosso impacto | Página inicial (computador) | 48 / 42 px |
+| `doe/` | Página de doação: Pix (chave, QR Code e copia e cola), transparência e outras formas de ajudar | `/doe` | 1450 / 2650 px |
 | `prestacao-de-contas/` | Prestação de contas: 2023, 2024 e 2025 numa página só, com abas por ano | `/prestacao-de-contas` | 1450 / 1900 px |
 | `wix/velo-pagina.js` | Código do Velo (ponte de links) | Código de cada página que tem bloco com links | — |
 | `marca/` | Logos e assinaturas dos projetos | — | — |
 
 ## Regras importantes
+
+- **Links que só rolam a página:** use o endereço do site no href e o id da seção em data-rolar, por exemplo `<a href="https://www.maiseducacao.org/#apoiar" data-rolar="apoiar">`. Assim, ao passar o mouse, aparece o endereço da AME, e não o do GitHub.
 
 - **Limite do Wix:** no computador, um bloco incorporado não passa de 3100 px de altura. Páginas maiores que isso precisam ser divididas em partes (veja a página inicial).
 

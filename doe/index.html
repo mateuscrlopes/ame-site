@@ -1,0 +1,472 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex"><!-- esta cópia fica no GitHub só para aparecer dentro do Wix; o Google deve indexar o maiseducacao.org -->
+<title>Doe · AME</title>
+
+<!--
+==========================================================================
+  PÁGINA: DOE
+  Associação Mais Educação (AME) · maiseducacao.org/doe
+
+  Endereço curto para usar na bio do Instagram, em campanhas, no WhatsApp
+  e em QR Codes impressos.
+
+  COMO EDITAR
+  - Procure os comentários "EDITAR".
+  - Chave Pix e QR Code: são os oficiais (Pix estático, chave CNPJ).
+    Se mudarem, troque a imagem do QR e o CODIGO_PIX no script.
+
+  COMO USAR NO WIX
+  Bloco "Incorporar HTML" por endereço do site, largura total.
+  Altura: veja o README do repositório.
+==========================================================================
+-->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,600;9..40,700;9..40,800&display=swap">
+<style>
+:root {
+  --roxo: #614998; --ameixa: #562568; --lilas: #e9ddf8; --amarelo: #e8b950;
+  --creme: #fcf8f0; --grafite: #292530; --suave: rgba(41, 37, 48, .74); --borda: rgba(97, 73, 152, .2);
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; background: #fff; color: var(--grafite); font-family: "DM Sans", system-ui, -apple-system, "Segoe UI", sans-serif; -webkit-font-smoothing: antialiased; }
+img { display: block; max-width: 100%; }
+.conteudo { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+.chapeu { margin: 0 0 12px; font-size: 12px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--roxo); }
+a:focus-visible, button:focus-visible { outline: 3px solid var(--amarelo); outline-offset: 3px; border-radius: 8px; }
+.botao { display: inline-flex; align-items: center; justify-content: center; min-height: 50px; padding: 0 26px; border: 0; border-radius: 999px; font: 700 16px "DM Sans", sans-serif; text-decoration: none; cursor: pointer; }
+.botao-amarelo { background: var(--amarelo); color: var(--grafite); }
+.botao-roxo { background: var(--roxo); color: #fff; }
+.botao-contorno { background: #fff; color: var(--roxo); border: 2px solid var(--roxo); }
+
+/* TOPO + PIX */
+.topo { padding: 56px 0 64px; }
+.topo .conteudo { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
+.topo h1 { margin: 0 0 18px; font-size: clamp(38px, 5vw, 60px); line-height: 1.04; font-weight: 300; letter-spacing: -.03em; }
+.topo h1 strong { font-weight: 700; color: var(--roxo); }
+.topo .texto { margin: 0 0 14px; font-size: 18px; line-height: 1.6; color: var(--suave); max-width: 520px; }
+.selos { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; }
+.selo { padding: 6px 12px; border-radius: 999px; background: var(--lilas); color: var(--ameixa); font-size: 13px; font-weight: 600; }
+
+.pix { position: relative; padding: 32px 28px 28px; border-radius: 28px; background: var(--roxo); color: #fff; overflow: hidden; }
+.pix::after { content: ""; position: absolute; left: 0; bottom: 0; width: 34%; height: 7px; background: var(--amarelo); }
+.pix h2 { margin: 0 0 4px; font-size: 26px; font-weight: 700; color: var(--amarelo); }
+.pix > p { margin: 0 0 20px; color: var(--lilas); font-size: 15px; }
+.pix-corpo { display: grid; grid-template-columns: 170px 1fr; gap: 22px; align-items: center; }
+.qr { width: 170px; height: 170px; padding: 10px; background: #fff; border-radius: 12px; }
+.qr img { width: 100%; height: 100%; image-rendering: pixelated; }
+.pix-dados { display: grid; gap: 10px; }
+.campo { padding: 10px 12px; border-radius: 12px; background: rgba(255, 255, 255, .1); }
+.campo span { display: block; font-size: 12px; color: var(--lilas); }
+.campo strong { font-size: 17px; }
+.copiar { min-height: 46px; width: 100%; border: 0; border-radius: 999px; background: var(--amarelo); color: var(--grafite); font: 700 15px "DM Sans", sans-serif; cursor: pointer; }
+.copiar.secundario { background: transparent; color: #fff; border: 2px solid var(--lilas); }
+.pix-nota { margin: 16px 0 0; font-size: 13px; color: var(--lilas); }
+
+/* FAIXA */
+.faixa { height: 52px; }
+
+.faixa-rail{width:100%;height:100%;overflow:hidden;display:flex;align-items:center;background:var(--f-fundo)}
+.faixa-track{display:flex;flex:0 0 auto;width:max-content;will-change:transform;animation:faixa-run var(--f-speed,22s) linear infinite}
+.faixa-track.direita{animation-direction:reverse}
+.faixa-seq{display:flex;flex:0 0 auto;align-items:center}
+.faixa-item{display:flex;flex:0 0 auto;align-items:center;gap:18px;padding:0 26px;white-space:nowrap;line-height:1;font-family:"DM Sans",Arial,sans-serif;font-size:clamp(15px,1.55vw,20px);font-weight:800;letter-spacing:-.02em;color:var(--f-texto)}
+.faixa-item.alt{color:var(--f-destaque)}
+.faixa-simbolo{width:17px;height:17px;color:var(--f-destaque);display:block;flex:0 0 auto}
+.faixa-item.alt .faixa-simbolo{color:var(--f-texto)}
+.faixa-simbolo.logo{width:auto;height:15px;aspect-ratio:1018/362.5}
+.faixa-simbolo svg{width:100%;height:100%;display:block}
+@keyframes faixa-run{from{transform:translateX(0)}to{transform:translateX(calc(-1 * var(--f-loop, 400px)))}}
+@media(max-width:600px){.faixa-item{gap:12px;padding:0 18px;font-size:15px}.faixa-simbolo{width:14px;height:14px}.faixa-simbolo.logo{height:12px}}
+
+
+/* CONFIANÇA */
+.confianca { padding: 64px 0; background: var(--creme); }
+.confianca .conteudo { display: grid; grid-template-columns: 1.2fr 1fr; gap: 40px; align-items: center; }
+.confianca h2, .outras h2 { margin: 0 0 14px; font-size: clamp(28px, 3.4vw, 40px); line-height: 1.1; font-weight: 300; letter-spacing: -.02em; }
+.confianca h2 strong, .outras h2 strong { font-weight: 700; color: var(--roxo); }
+.confianca p { margin: 0 0 20px; font-size: 17px; line-height: 1.6; color: var(--suave); }
+.dados-ame { padding: 22px 24px; border-radius: 20px; background: #fff; border: 1px solid var(--borda); font-size: 15px; line-height: 1.7; }
+.dados-ame strong { color: var(--roxo); }
+
+/* OUTRAS FORMAS */
+.outras { padding: 64px 0 80px; }
+.cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin-top: 24px; }
+.card { display: flex; flex-direction: column; gap: 10px; padding: 24px 22px; border-radius: 20px; border: 1px solid var(--borda); }
+.card h3 { margin: 0; font-size: 20px; }
+.card p { margin: 0; font-size: 15px; line-height: 1.5; color: var(--suave); }
+.card a { margin-top: auto; font-weight: 700; color: var(--roxo); text-decoration: none; }
+
+@media (max-width: 820px) {
+  .conteudo { padding: 0 16px; }
+  .topo { padding: 28px 0 40px; }
+  .topo .conteudo, .confianca .conteudo { grid-template-columns: 1fr; gap: 28px; }
+  .topo .texto { font-size: 16px; }
+  .pix { padding: 26px 20px 24px; }
+  .pix-corpo { grid-template-columns: 1fr; justify-items: center; }
+  .pix-dados { width: 100%; }
+  .faixa { height: 44px; }
+  .confianca, .outras { padding: 44px 0; }
+  .cards { grid-template-columns: 1fr; }
+}
+
+.ame-plano-b{margin-top:16px;padding:16px 18px;border-radius:14px;background:#fcf8f0;color:#292530;border:2px solid #e8b950;font-family:"DM Sans",sans-serif;font-size:15px;line-height:1.5;text-align:left;flex-basis:100%}
+.ame-plano-b p{margin:0 0 8px;color:#292530}
+.ame-plano-b-copiar{min-height:44px;padding:0 18px;border:0;border-radius:999px;background:#614998;color:#fff;font:600 15px "DM Sans",sans-serif;cursor:pointer}
+
+</style>
+</head>
+<body>
+<main>
+
+<!-- ==========================================================================
+     TOPO + PIX · EDITAR: título e texto
+     ========================================================================== -->
+<section class="topo" aria-labelledby="titulo">
+  <div class="conteudo">
+    <div>
+      <p class="chapeu">Doe</p>
+      <h1 id="titulo">Sua doação mantém a AME <strong>funcionando.</strong></h1>
+      <p class="texto">Cada contribuição ajuda a manter os projetos da Associação Mais Educação no Jacaré, no Rio de Janeiro, para crianças, jovens e adultos.</p>
+      <p class="texto">Qualquer valor faz diferença. A doação é feita por Pix, direto para a conta da associação.</p>
+      <div class="selos"><span class="selo">CNPJ 57.125.059/0001-23</span><span class="selo">Prestação de contas pública</span></div>
+    </div>
+
+    <!-- PIX: chave CNPJ, QR Code oficial e código copia e cola -->
+    <div class="pix" aria-labelledby="titulo-pix">
+      <h2 id="titulo-pix">Doe via Pix</h2>
+      <p>Aponte a câmera do celular para o QR Code ou copie a chave.</p>
+      <div class="pix-corpo">
+        <div class="qr"><img src="data:image/png;base64,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" alt="QR Code Pix da Associação Mais Educação"></div>
+        <div class="pix-dados">
+          <div class="campo"><span>Chave Pix (CNPJ)</span><strong>57.125.059/0001-23</strong></div>
+          <div class="campo"><span>Recebedor</span><strong>Associação Mais Educação</strong></div>
+          <button type="button" class="copiar" id="copiar-chave">Copiar chave Pix</button>
+          <button type="button" class="copiar secundario" id="copiar-codigo">Copiar código Pix (copia e cola)</button>
+        </div>
+      </div>
+      <p class="pix-nota">Antes de confirmar, confira no seu banco se o CNPJ do recebedor é 57.125.059/0001-23.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FAIXA ANIMADA · frases e cores em "CONFIGURAÇÃO DA FAIXA", no fim da página -->
+<div class="faixa"><div class="faixa-rail" role="img" aria-label="Faixa animada"><div class="faixa-track"></div></div></div>
+
+<!-- ==========================================================================
+     CONFIANÇA · prestação de contas e dados da associação
+     ========================================================================== -->
+<section class="confianca" aria-labelledby="titulo-confianca">
+  <div class="conteudo">
+    <div>
+      <p class="chapeu">Transparência</p>
+      <h2 id="titulo-confianca">Você acompanha <strong>como o recurso é usado.</strong></h2>
+      <p>Publicamos a prestação de contas da AME, com os gastos de cada período e dos eventos, para qualquer pessoa consultar.</p>
+      <a class="botao botao-roxo" href="https://www.maiseducacao.org/prestacao-de-contas">Ver prestação de contas</a>
+    </div>
+    <!-- EDITAR: dados da associação -->
+    <div class="dados-ame">
+      <strong>Associação Mais Educação (AME)</strong><br>
+      CNPJ 57.125.059/0001-23<br>
+      R. Conselheiro Mayrink, 339 · Jacaré<br>
+      Rio de Janeiro – RJ · 20960-140
+    </div>
+  </div>
+</section>
+
+<!-- ==========================================================================
+     OUTRAS FORMAS DE AJUDAR
+     ========================================================================== -->
+<section class="outras" aria-labelledby="titulo-outras">
+  <div class="conteudo">
+    <p class="chapeu">Outras formas de ajudar</p>
+    <h2 id="titulo-outras">Nem toda ajuda é <strong>em dinheiro.</strong></h2>
+    <div class="cards">
+      <article class="card">
+        <h3>Seja voluntário</h3>
+        <p>Dê aula de reforço, apoie eventos ou ajude na comunicação.</p>
+        <a href="https://www.atados.com.br/ong/ame-associacao-educacional-mais-educacao-373731/vagas">Ver vagas no Atados</a>
+      </article>
+      <article class="card">
+        <h3>Seja parceiro</h3>
+        <p>Empresas e instituições podem apoiar com recursos, materiais ou voluntariado da equipe.</p>
+        <a href="https://wa.me/5521977180459?text=Ol%C3%A1%2C%20vim%20do%20site%20e%20gostaria%20de%20saber%20como%20me%20torno%20um%20parceiro%20da%20ONG">Falar com a AME</a>
+      </article>
+      <article class="card">
+        <h3>Tem alguma dúvida?</h3>
+        <p>Fale com a gente antes de doar, se precisar de qualquer informação.</p>
+        <a href="https://wa.me/5521977180459?text=Ol%C3%A1%21%20Vim%20do%20site%20e%20tenho%20uma%20d%C3%BAvida%20sobre%20doa%C3%A7%C3%B5es%20para%20a%20AME.">Falar pelo WhatsApp</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<script>
+(() => {
+  /* ======================================================================
+     CONFIGURAÇÃO DA FAIXA
+     EDITAR: tudo o que muda a faixa fica neste bloco.
+     ====================================================================== */
+  const CONFIG = {
+    frases: ['Mais educação', 'Mais oportunidades', 'Mais caminhos', 'Mais futuro'],
+    tema: 'ameixa',
+    separador: 'lapis',
+    alternarCores: true,
+    direcao: 'esquerda',
+    velocidade: 70
+  };
+  /*
+     frases:        as palavras que passam na faixa (quantas quiser)
+     tema:          "ameixa" (roxo escuro), "roxo", "amarelo" ou "creme"
+     separador:     "lapis" (ponta do lápis), "logo" (logo da AME) ou "nenhum"
+     alternarCores: true = uma frase sim, outra não fica na cor de destaque
+     direcao:       "esquerda" ou "direita"
+     velocidade:    maior = mais rápido (70 é o padrão)
+  */
+
+  /* Paletas disponíveis (use o nome em CONFIG.tema) */
+  const TEMAS = {
+    ameixa:  { fundo: "#562568", texto: "#FCF8F0", destaque: "#E8B950" },
+    roxo:    { fundo: "#614998", texto: "#FCF8F0", destaque: "#E8B950" },
+    amarelo: { fundo: "#E8B950", texto: "#292530", destaque: "#562568" },
+    creme:   { fundo: "#FCF8F0", texto: "#614998", destaque: "#562568" }
+  };
+
+  /* ---------------- daqui para baixo, normalmente não precisa editar ---------------- */
+  const rail  = document.querySelector('.faixa-rail');
+  const track = document.querySelector('.faixa-track');
+  const tema  = TEMAS[CONFIG.tema] || TEMAS.ameixa;
+  rail.style.setProperty('--f-fundo', tema.fundo);
+  rail.style.setProperty('--f-texto', tema.texto);
+  rail.style.setProperty('--f-destaque', tema.destaque);
+  if (CONFIG.direcao === 'direita') track.classList.add('direita');
+  rail.setAttribute('aria-label', 'Faixa com as frases: ' + CONFIG.frases.join(', '));
+
+  const SIMBOLOS = {
+    lapis: '<span class="faixa-simbolo"><svg viewBox="0 0 100 100" aria-hidden="true"><path fill="currentColor" d="M0 100 47.24 29.43C56.14 15.77 72.33 0 88.84 0H100V100Z"/></svg></span>',
+    logo:  '<span class="faixa-simbolo logo"><svg aria-hidden="true"><use href="#logo-ame"/></svg></span>',
+    nenhum: ''
+  };
+
+  function makeItem(text, alt) {
+    const span = document.createElement('span');
+    span.className = 'faixa-item' + (CONFIG.alternarCores && alt ? ' alt' : '');
+    span.innerHTML = (SIMBOLOS[CONFIG.separador] || SIMBOLOS.lapis) + '<span class="faixa-palavra"></span>';
+    span.querySelector('.faixa-palavra').textContent = text;
+    return span;
+  }
+
+  function build() {
+    track.style.animation = 'none';
+    track.innerHTML = '';
+    const seq = document.createElement('div');
+    seq.className = 'faixa-seq';
+    track.appendChild(seq);      /* precisa estar na página para medir a largura */
+    let i = 0;
+    /* Repete as frases até a sequência ficar maior que a largura visível */
+    while (seq.getBoundingClientRect().width < rail.clientWidth * 1.35 || i < 4) {
+      CONFIG.frases.forEach((text, idx) => seq.appendChild(makeItem(text, ((i * CONFIG.frases.length) + idx) % 2 === 1)));
+      i++;
+      if (i > 20) break;
+    }
+    track.appendChild(seq.cloneNode(true));
+    const distance = Math.ceil(seq.getBoundingClientRect().width);
+    if (!distance || !rail.clientWidth) { setTimeout(build, 200); return; }  /* bloco ainda sem tamanho: tenta de novo */
+    track.style.setProperty('--f-loop', distance + 'px');
+    track.style.setProperty('--f-speed', Math.max(18, distance / CONFIG.velocidade) + 's');
+    track.offsetHeight;          /* reinicia a animação */
+    track.style.animation = '';
+  }
+
+  /* Monta já na abertura (a faixa começa andando) e refaz se a tela mudar de tamanho */
+  build();
+  let raf;
+  function rebuild() { cancelAnimationFrame(raf); raf = requestAnimationFrame(build); }
+  window.addEventListener('resize', rebuild);
+  window.addEventListener('load', rebuild);
+  /* Refaz quando o Wix der (ou mudar) o tamanho do bloco */
+  if ('ResizeObserver' in window) {
+    let ultimaLargura = 0;
+    new ResizeObserver(() => {
+      if (rail.clientWidth && rail.clientWidth !== ultimaLargura) { ultimaLargura = rail.clientWidth; rebuild(); }
+    }).observe(rail);
+  }
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(rebuild);
+})();
+</script>
+<script>
+(function () {
+  /* ======================================================================
+     PONTE DE LINKS (não precisa editar)
+     O Wix não deixa um bloco de código abrir links sozinho. Então o bloco
+     pede para a página abrir, pelo código do Velo (arquivo velo-pagina.js).
+     Se o Velo não responder, aparece uma caixa com o contato e a mensagem.
+     ====================================================================== */
+  var TELEFONE_VISIVEL = "(21) 97718-0459";   /* EDITAR se o WhatsApp mudar */
+  var esperando = null;
+
+  window.addEventListener("message", function (ev) {
+    if (ev.data && ev.data.tipo === "ame-link-ok" && esperando) {
+      clearTimeout(esperando.timer); esperando = null;
+    }
+  });
+
+  function ehWhatsApp(url) { return /^https:\/\/(wa\.me|api\.whatsapp\.com)\//.test(url); }
+
+  function textoDaMensagem(url) {
+    try { return new URL(url).searchParams.get("text") || ""; } catch (e) { return ""; }
+  }
+
+  function copiar(texto, botao) {
+    function ok(sucesso) {
+      botao.textContent = sucesso ? "Mensagem copiada" : "Não foi possível copiar";
+      setTimeout(function () { botao.textContent = "Copiar mensagem"; }, 2500);
+    }
+    if (navigator.clipboard && window.isSecureContext) {
+      navigator.clipboard.writeText(texto).then(function () { ok(true); }, function () { ok(antigo()); });
+    } else { ok(antigo()); }
+    function antigo() {
+      var t = document.createElement("textarea"); t.value = texto; t.setAttribute("readonly", "");
+      t.style.position = "absolute"; t.style.left = "-9999px"; document.body.appendChild(t); t.select();
+      var r = false; try { r = document.execCommand("copy"); } catch (e) {}
+      document.body.removeChild(t); return r;
+    }
+  }
+
+  function planoB(url, perto) {
+    if (!ehWhatsApp(url)) { window.open(url, "_blank"); return; }
+    var antiga = document.querySelector(".ame-plano-b"); if (antiga) antiga.remove();
+    var msg = textoDaMensagem(url);
+    var caixa = document.createElement("div");
+    caixa.className = "ame-plano-b"; caixa.setAttribute("role", "status");
+    caixa.innerHTML =
+      '<p><strong>Fale com a AME pelo WhatsApp</strong></p>' +
+      '<p>Mande uma mensagem para <strong>' + TELEFONE_VISIVEL + '</strong>.' +
+      (msg ? ' Se quiser, copie a mensagem pronta e cole na conversa.' : '') + '</p>' +
+      (msg ? '<button type="button" class="ame-plano-b-copiar">Copiar mensagem</button>' : '');
+    (perto && perto.parentNode ? perto.parentNode : document.body).insertBefore(caixa, perto ? perto.nextSibling : null);
+    var b = caixa.querySelector(".ame-plano-b-copiar");
+    if (b) b.addEventListener("click", function () { copiar(msg, b); });
+  }
+
+  function ehCelular() {
+    return /Android|iPhone|iPad|iPod/i.test(navigator.userAgent) ||
+           (window.matchMedia && window.matchMedia("(pointer: coarse)").matches);
+  }
+
+  /* Converte wa.me/numero?text=... em whatsapp://send?phone=numero&text=... (abre o app) */
+  function linkDoApp(url) {
+    try {
+      var u = new URL(url);
+      var fone = u.hostname === "wa.me" ? u.pathname.replace(/\D/g, "") : (u.searchParams.get("phone") || "");
+      var texto = u.searchParams.get("text") || "";
+      if (!fone) return null;
+      return "whatsapp://send?phone=" + fone + (texto ? "&text=" + encodeURIComponent(texto) : "");
+    } catch (e) { return null; }
+  }
+
+  /* No celular: tenta abrir o app do WhatsApp sem sair do site.
+     Se o app não abrir em 3 segundos, usa o caminho normal (pela página do Wix). */
+  function tentarApp(url, perto) {
+    var app = linkDoApp(url);
+    if (!app) return false;
+    var abriu = false;
+    function saiu() { if (document.hidden) abriu = true; }
+    document.addEventListener("visibilitychange", saiu);
+    window.addEventListener("pagehide", function () { abriu = true; }, { once: true });
+    window.addEventListener("blur", function () { abriu = true; }, { once: true });
+    setTimeout(function () {
+      document.removeEventListener("visibilitychange", saiu);
+      if (!abriu) pedirParaPagina(url, perto);
+    }, 3000);
+    try { window.location.href = app; } catch (e) { return false; }
+    return true;
+  }
+
+  /* Função usada pelos links e pelo formulário */
+  var dentroDoWix = window.parent !== window;
+
+  window.AME_abrirLink = function (url, perto) {
+    /* Página aberta direto (fora do Wix): o próprio navegador abre o link */
+    if (!dentroDoWix) {
+      if (ehWhatsApp(url)) window.open(url, "_blank", "noopener"); else window.location.href = url;
+      return;
+    }
+    if (ehWhatsApp(url) && ehCelular() && tentarApp(url, perto)) return;
+    pedirParaPagina(url, perto);
+  };
+
+  function pedirParaPagina(url, perto) {
+    if (esperando) clearTimeout(esperando.timer);
+    esperando = { timer: setTimeout(function () { esperando = null; planoB(url, perto); }, 700) };
+    try { window.parent.postMessage({ tipo: "ame-abrir-link", url: url }, "*"); }
+    catch (e) { clearTimeout(esperando.timer); esperando = null; planoB(url, perto); }
+  };
+
+  /* Rola a página do site até um ponto deste bloco (ex.: botão "Doe agora").
+     O Velo rola a página; sem Velo, tenta rolar direto. */
+  window.AME_rolar = function (alvo) {
+    if (window.parent === window) { alvo.scrollIntoView({ behavior: "smooth", block: "start" }); return; }
+    var y = Math.max(0, Math.round(alvo.getBoundingClientRect().top + (window.scrollY || 0)) - 16);
+    /* Seção que está no outro bloco (página dividida em partes): rola até logo abaixo deste bloco */
+    if (alvo.offsetParent === null && document.documentElement.getAttribute("data-parte")) {
+      y = document.documentElement.scrollHeight;
+    }
+    var feito = false;
+    function ok(ev) { if (ev.data && ev.data.tipo === "ame-rolar-ok") { feito = true; window.removeEventListener("message", ok); } }
+    window.addEventListener("message", ok);
+    try { window.parent.postMessage({ tipo: "ame-rolar", y: y }, "*"); } catch (e) {}
+    setTimeout(function () {
+      window.removeEventListener("message", ok);
+      if (!feito) { try { alvo.scrollIntoView({ behavior: "smooth", block: "start" }); } catch (e) {} }
+    }, 500);
+  };
+
+  /* Links que só rolam a página até uma seção.
+     Use href com o endereço do site (é o que aparece ao passar o mouse) e
+     data-rolar com o id da seção: <a href="https://www.maiseducacao.org/#apoiar" data-rolar="apoiar">
+     Também funciona o formato curto href="#secao". */
+  document.addEventListener("click", function (ev) {
+    var a = ev.target.closest && ev.target.closest('a[data-rolar], a[href^="#"]');
+    if (!a) return;
+    var id = a.getAttribute("data-rolar") || a.getAttribute("href").slice(1);
+    var alvo = id && document.getElementById(id);
+    if (!alvo) return;
+    ev.preventDefault();
+    ev.stopImmediatePropagation();
+    window.AME_rolar(alvo);
+  }, true);
+
+  /* Todo link para fora do bloco passa pela ponte */
+  document.addEventListener("click", function (ev) {
+    var a = ev.target.closest && ev.target.closest('a[href^="http"]');
+    if (!a) return;
+    ev.preventDefault();
+    window.AME_abrirLink(a.href, a.closest(".acoes") || a);
+  });
+})();
+</script>
+<script>
+(function () {
+  var CHAVE = "57.125.059/0001-23";
+  var CODIGO_PIX = "00020126500014br.gov.bcb.pix0114571250590001230210Doacao AME5204000053039865802BR5924ASSOCIACAO MAIS EDUCACAO6014RIO DE JANEIRO622905259cWvdvFmqF5XChO6AWD1uL8sX63040599";   /* EDITAR se o QR Code mudar */
+  function copiar(texto, botao) {
+    var rotulo = botao.textContent;
+    function fim(ok) { botao.textContent = ok ? "Copiado" : "Copie manualmente"; setTimeout(function () { botao.textContent = rotulo; }, 2500); }
+    function antigo() { var t = document.createElement("textarea"); t.value = texto; t.style.position = "absolute"; t.style.left = "-9999px"; document.body.appendChild(t); t.select(); var r = false; try { r = document.execCommand("copy"); } catch (e) {} document.body.removeChild(t); return r; }
+    if (navigator.clipboard && window.isSecureContext) navigator.clipboard.writeText(texto).then(function () { fim(true); }, function () { fim(antigo()); });
+    else fim(antigo());
+  }
+  var b1 = document.getElementById("copiar-chave"), b2 = document.getElementById("copiar-codigo");
+  b1.addEventListener("click", function () { copiar(CHAVE, b1); });
+  b2.addEventListener("click", function () { copiar(CODIGO_PIX, b2); });
+})();
+</script>
+</body>
+</html>

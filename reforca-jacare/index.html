@@ -247,7 +247,7 @@ a:focus-visible, button:focus-visible, input:focus-visible { outline: 3px solid 
       <p class="status"><span class="ponto" aria-hidden="true"></span>[Inscrições abertas]</p>
 
       <div class="acoes">
-        <a class="botao botao-projeto" href="#inscricao">Quero inscrever meu filho</a>
+        <a class="botao botao-projeto" href="https://www.maiseducacao.org/reforca-jacare#inscricao" data-rolar="inscricao">Quero inscrever meu filho</a>
       </div>
     </div>
 
@@ -641,15 +641,20 @@ a:focus-visible, button:focus-visible, input:focus-visible { outline: 3px solid 
     }, 500);
   };
 
-  /* Links internos do bloco (href="#secao") rolam a página até a seção */
+  /* Links que só rolam a página até uma seção.
+     Use href com o endereço do site (é o que aparece ao passar o mouse) e
+     data-rolar com o id da seção: <a href="https://www.maiseducacao.org/#apoiar" data-rolar="apoiar">
+     Também funciona o formato curto href="#secao". */
   document.addEventListener("click", function (ev) {
-    var a = ev.target.closest && ev.target.closest('a[href^="#"]');
-    if (!a || a.getAttribute("href").length < 2) return;
-    var alvo = document.getElementById(a.getAttribute("href").slice(1));
+    var a = ev.target.closest && ev.target.closest('a[data-rolar], a[href^="#"]');
+    if (!a) return;
+    var id = a.getAttribute("data-rolar") || a.getAttribute("href").slice(1);
+    var alvo = id && document.getElementById(id);
     if (!alvo) return;
     ev.preventDefault();
+    ev.stopImmediatePropagation();
     window.AME_rolar(alvo);
-  });
+  }, true);
 
   /* Todo link para fora do bloco passa pela ponte */
   document.addEventListener("click", function (ev) {
