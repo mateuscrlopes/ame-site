@@ -26,6 +26,16 @@
 ==========================================================================
 -->
 
+<!-- PARTES (só no computador): o Wix limita cada bloco a 3100 px de altura.
+     Por isso, no computador a página é mostrada em dois blocos:
+     ...?parte=1 (topo até inscrições) e ...?parte=2 (como apoiar até contato).
+     No celular (até 760 px de largura) o parâmetro é ignorado e a página aparece inteira. -->
+<script>
+  (function () {
+    var p = new URLSearchParams(location.search).get("parte");
+    if (p && window.innerWidth > 760) document.documentElement.setAttribute("data-parte", p);
+  })();
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700;9..40,800&display=swap">
 <style>
@@ -246,6 +256,8 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 .ame-plano-b p{margin:0 0 8px;color:#292530}
 .ame-plano-b-copiar{min-height:44px;padding:0 18px;border:0;border-radius:999px;background:#614998;color:#fff;font:600 15px "DM Sans",sans-serif;cursor:pointer}
 
+html[data-parte="1"] [data-parte]:not([data-parte="1"]),
+html[data-parte="2"] [data-parte]:not([data-parte="2"]) { display: none !important; }
 </style>
 </head>
 
@@ -257,7 +269,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 <!-- ==========================================================================
      1 · TOPO
      ========================================================================== -->
-<section class="topo" aria-labelledby="titulo-topo">
+<section data-parte="1" class="topo" aria-labelledby="titulo-topo">
   <div class="conteudo">
     <div>
       <p class="chapeu">Associação Mais Educação · Jacaré, Rio de Janeiro</p>
@@ -275,12 +287,12 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 </section>
 
 <!-- FAIXA 1 · EDITAR: frases e cores em "FAIXAS", no script do fim da página -->
-<div class="faixa"><div class="faixa-rail" id="faixa-1" role="img" aria-label="Faixa animada"><div class="faixa-track"></div></div></div>
+<div data-parte="1" class="faixa"><div class="faixa-rail" id="faixa-1" role="img" aria-label="Faixa animada"><div class="faixa-track"></div></div></div>
 
 <!-- ==========================================================================
      2 · QUEM SOMOS
      ========================================================================== -->
-<section class="quem" id="quem-somos" aria-labelledby="titulo-quem">
+<section data-parte="1" class="quem" id="quem-somos" aria-labelledby="titulo-quem">
   <div class="conteudo">
     <div class="quem-foto">
       <img class="foto" src="https://static.wixstatic.com/media/d2b534_b9546021684c4c79873754f3c03b7360~mv2.png" alt="Crianças e voluntários da AME reunidos" loading="lazy">
@@ -304,7 +316,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
      frase e o botão já aparecem. Cada card leva à página do projeto.
      EDITAR: selo "Em breve" (apague a linha <span class="selo"> para tirar).
      ========================================================================== -->
-<section class="projetos" id="projetos" aria-labelledby="titulo-projetos">
+<section data-parte="1" class="projetos" id="projetos" aria-labelledby="titulo-projetos">
   <div class="conteudo">
     <p class="chapeu">Projetos</p>
     <h2 class="titulo" id="titulo-projetos">Projetos que <strong>transformam</strong></h2>
@@ -368,7 +380,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 <!-- ==========================================================================
      4 · INSCRIÇÕES (AME Qualifica)
      ========================================================================== -->
-<section class="inscricoes" id="inscricoes" aria-labelledby="titulo-inscricoes">
+<section data-parte="1" class="inscricoes" id="inscricoes" aria-labelledby="titulo-inscricoes">
   <img class="inscricoes-trilha" src="https://static.wixstatic.com/media/d2b534_934455c0983c43e0b40de8e720009a90~mv2.png" alt="" aria-hidden="true" loading="lazy">
   <div class="conteudo">
     <div class="inscricoes-topo">
@@ -406,7 +418,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 <!-- ==========================================================================
      5 · COMO APOIAR
      ========================================================================== -->
-<section class="apoiar" id="apoiar" aria-labelledby="titulo-apoiar">
+<section data-parte="2" class="apoiar" id="apoiar" aria-labelledby="titulo-apoiar">
   <div class="conteudo">
     <p class="chapeu">Como apoiar</p>
     <h2 class="titulo" id="titulo-apoiar">Faça parte dessa história</h2>
@@ -453,7 +465,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 <!-- ==========================================================================
      6 · PARCEIROS · EDITAR: cada logo é um <li> (endereço da imagem em src)
      ========================================================================== -->
-<section class="parceiros" aria-labelledby="titulo-parceiros">
+<section data-parte="2" class="parceiros" aria-labelledby="titulo-parceiros">
   <div class="conteudo">
     <p class="chapeu" id="titulo-parceiros">Parceiros</p>
     <ul>
@@ -465,13 +477,13 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 </section>
 
 <!-- FAIXA 2 · EDITAR: frases e cores em "FAIXAS", no script do fim da página -->
-<div class="faixa"><div class="faixa-rail" id="faixa-2" role="img" aria-label="Faixa animada"><div class="faixa-track"></div></div></div>
+<div data-parte="2" class="faixa"><div class="faixa-rail" id="faixa-2" role="img" aria-label="Faixa animada"><div class="faixa-track"></div></div></div>
 
 <!-- ==========================================================================
      7 · NOSSO IMPACTO + PRESTAÇÃO DE CONTAS
      EDITAR: o número final fica em data-valor (a contagem anima até ele)
      ========================================================================== -->
-<section class="impacto" id="impacto" aria-labelledby="titulo-impacto">
+<section data-parte="2" class="impacto" id="impacto" aria-labelledby="titulo-impacto">
   <div class="conteudo">
     <p class="chapeu">Nosso impacto</p>
     <h2 class="titulo" id="titulo-impacto">Resultados que a comunidade constrói</h2>
@@ -496,7 +508,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
      EDITAR: cada depoimento é um <figure class="voz">. Os atuais são de
      demonstração: troque por relatos reais, com autorização, e apague o aviso.
      ========================================================================== -->
-<section class="vozes" aria-labelledby="titulo-vozes">
+<section data-parte="2" class="vozes" aria-labelledby="titulo-vozes">
   <div class="conteudo">
     <div class="vozes-topo">
       <div>
@@ -558,7 +570,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
      9 · FALE COM A GENTE
      O formulário abre o WhatsApp da AME com a mensagem pronta (nada fica salvo no site).
      ========================================================================== -->
-<section class="contato" id="contato" aria-labelledby="titulo-contato">
+<section data-parte="2" class="contato" id="contato" aria-labelledby="titulo-contato">
   <div class="contato-decor" aria-hidden="true"><img src="https://static.wixstatic.com/media/d2b534_6f4540ed77b44392ad2bb230159d3f49~mv2.png" alt="" loading="lazy"></div>
   <div class="conteudo">
     <div>
@@ -700,6 +712,10 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   window.AME_rolar = function (alvo) {
     if (window.parent === window) { alvo.scrollIntoView({ behavior: "smooth", block: "start" }); return; }
     var y = Math.max(0, Math.round(alvo.getBoundingClientRect().top + (window.scrollY || 0)) - 16);
+    /* Seção que está no outro bloco (página dividida em partes): rola até logo abaixo deste bloco */
+    if (alvo.offsetParent === null && document.documentElement.getAttribute("data-parte")) {
+      y = document.documentElement.scrollHeight;
+    }
     var feito = false;
     function ok(ev) { if (ev.data && ev.data.tipo === "ame-rolar-ok") { feito = true; window.removeEventListener("message", ok); } }
     window.addEventListener("message", ok);

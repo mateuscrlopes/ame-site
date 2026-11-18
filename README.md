@@ -15,7 +15,7 @@ O menu e o rodapé são os do próprio Wix e ficam fora destes arquivos.
 
 | Pasta | O que é | Onde fica no Wix | Altura no Wix (computador / celular) |
 |---|---|---|---|
-| `inicio/` | Página inicial completa (computador e celular no mesmo código) | Página Início | 5050 / 8800 px |
+| `inicio/` | Página inicial completa. No computador vai em dois blocos: `inicio/?parte=1` (topo até inscrições) e `inicio/?parte=2` (como apoiar até contato), porque o Wix limita cada bloco a 3100 px. No celular, o bloco 1 mostra a página inteira e o bloco 2 fica oculto | Página Início | parte 1: 2420 / 8733 px · parte 2: 2630 / oculto |
 | `inicio-celular/` | Página inicial inteira, só para o celular | Página inicial, bloco com ID `inicioCelular`, recolhido ao carregar | — / 7700 px |
 | `reforca-jacare/` | Página do projeto Reforça Jacaré | `/reforca-jacare` | 2800 / 4200 px |
 | `pre-vestibular/` | Página do Pré-Vestibular AME | `/pre-vestibular` | 2600 / 3950 px |
@@ -29,6 +29,8 @@ O menu e o rodapé são os do próprio Wix e ficam fora destes arquivos.
 | `marca/` | Logos e assinaturas dos projetos | — | — |
 
 ## Regras importantes
+
+- **Limite do Wix:** no computador, um bloco incorporado não passa de 3100 px de altura. Páginas maiores que isso precisam ser divididas em partes (veja a página inicial).
 
 - **Links e WhatsApp passam pela ponte do Velo.** O Wix não deixa um bloco incorporado abrir links sozinho. O bloco avisa a página, e o código `wix/velo-pagina.js` abre o link. Ele precisa estar colado no código de cada página que tem bloco com links (Modo Dev). No celular, o WhatsApp abre direto no aplicativo.
 - **Comentários `EDITAR`.** Cada arquivo tem comentários indicando o que pode ser trocado. Textos entre colchetes `[ ]` são informações a confirmar.

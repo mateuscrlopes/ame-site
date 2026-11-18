@@ -337,6 +337,10 @@ a:focus-visible, button:focus-visible { outline: 3px solid var(--roxo); outline-
   window.AME_rolar = function (alvo) {
     if (window.parent === window) { alvo.scrollIntoView({ behavior: "smooth", block: "start" }); return; }
     var y = Math.max(0, Math.round(alvo.getBoundingClientRect().top + (window.scrollY || 0)) - 16);
+    /* Seção que está no outro bloco (página dividida em partes): rola até logo abaixo deste bloco */
+    if (alvo.offsetParent === null && document.documentElement.getAttribute("data-parte")) {
+      y = document.documentElement.scrollHeight;
+    }
     var feito = false;
     function ok(ev) { if (ev.data && ev.data.tipo === "ame-rolar-ok") { feito = true; window.removeEventListener("message", ok); } }
     window.addEventListener("message", ok);
