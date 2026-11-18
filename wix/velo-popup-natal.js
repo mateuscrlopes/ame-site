@@ -1,6 +1,6 @@
 // ============================================================================
-//  CÓDIGO DO VELO · POP-UP "CAMPANHA DE NATAL"
-//  Onde colar: abra o pop-up "Campanha de Natal" no editor e cole este código
+//  CÓDIGO DO VELO · POP-UP "NATAL 2026"
+//  Onde colar: abra o pop-up "Natal 2026" no editor e cole este código
 //  no painel de código do pop-up (apague o exemplo que vier).
 //  O que faz: o botão "Quero apadrinhar" leva à página /natal; o X e o
 //  "Agora não" fecham o pop-up.
