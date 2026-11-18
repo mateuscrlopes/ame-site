@@ -90,7 +90,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 .projeto-painel { position: absolute; left: 0; right: 0; bottom: 0; min-height: 34%; padding: 16px 16px 18px; background: var(--roxo); transition: padding .3s ease; }
 .assinatura-barra { position: relative; width: 88%; }
 .assinatura-barra img { width: 100%; height: auto; aspect-ratio: 1169 / 168; }
-.assinatura-barra span { position: absolute; left: 52%; right: 3%; top: 50%; transform: translateY(-50%); font-size: 12px; font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.assinatura-barra span { position: absolute; left: 50%; right: 2%; top: 50%; transform: translateY(-50%); font-size: clamp(10px, .85vw, 12px); font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .projeto-sub { margin: 10px 0 0; font-size: 11px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--lilas); transition: opacity .2s; }
 .projeto-extra { max-height: 0; overflow: hidden; opacity: 0; transition: max-height .35s ease, opacity .25s ease; }
 .projeto-frase { margin: 10px 0 14px; font-size: 14px; line-height: 1.45; color: #fff; }
@@ -101,7 +101,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 
 /* 4 · INSCRIÇÕES */
 .inscricoes { position: relative; background: var(--roxo); color: #fff; overflow: hidden; }
-.inscricoes::after { content: ""; position: absolute; right: -120px; top: -60px; width: 520px; height: 520px; border-radius: 50%; border: 6px solid var(--amarelo); clip-path: inset(0 0 50% 50%); pointer-events: none; }
+.inscricoes-trilha { position: absolute; right: -40px; top: -40px; width: 600px; pointer-events: none; }
 .inscricoes .chapeu { color: var(--amarelo); }
 .inscricoes-topo { display: flex; justify-content: space-between; align-items: flex-end; gap: 24px; margin-bottom: 28px; }
 .inscricoes .titulo { color: #fff; font-weight: 700; margin: 0; }
@@ -222,7 +222,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   .cursos { grid-template-columns: 1fr; }
   .inscricoes-topo { flex-direction: column; align-items: flex-start; }
   .inscricoes-topo img { width: 200px; }
-  .inscricoes::after { width: 300px; height: 300px; right: -100px; top: -40px; }
+  .inscricoes-trilha { width: 300px; right: -90px; top: -30px; }
   .curso { grid-template-columns: 1fr; }
   .curso img { min-height: 0; aspect-ratio: 16 / 10; height: auto; }
   .parceiros li img { height: 84px; }
@@ -341,12 +341,12 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
             </div>
           </div>
         </a>
-        <!-- Projeto: Atend. Jurídico -->
+        <!-- Projeto: Jurídico -->
         <a class="projeto" href="https://www.maiseducacao.org/atendimento-juridico">
           <img class="projeto-foto" src="https://static.wixstatic.com/media/nsplsh_d36a47fd47a743fdbcaa691cfb05d6f4~mv2.jpg/v1/fill/w_600,h_750,al_c,q_80/nsplsh_d36a47fd47a743fdbcaa691cfb05d6f4~mv2.jpg" alt="" loading="lazy">
           
           <div class="projeto-painel">
-            <div class="assinatura-barra"><img src="https://static.wixstatic.com/media/d2b534_92a44337d486427f8c5d5c10c0f520e2~mv2.png" alt=""><span style="color:#ffffff">Atend. Jurídico</span></div>
+            <div class="assinatura-barra"><img src="https://static.wixstatic.com/media/d2b534_92a44337d486427f8c5d5c10c0f520e2~mv2.png" alt=""><span style="color:#ffffff">Jurídico</span></div>
             <p class="projeto-sub">Assistência jurídica</p>
             <div class="projeto-extra">
               <p class="projeto-frase">Orientação para garantir e facilitar o acesso a direitos.</p>
@@ -362,6 +362,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
      4 · INSCRIÇÕES (AME Qualifica)
      ========================================================================== -->
 <section class="inscricoes" id="inscricoes" aria-labelledby="titulo-inscricoes">
+  <img class="inscricoes-trilha" src="https://static.wixstatic.com/media/d2b534_934455c0983c43e0b40de8e720009a90~mv2.png" alt="" aria-hidden="true" loading="lazy">
   <div class="conteudo">
     <div class="inscricoes-topo">
       <div>
@@ -372,7 +373,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
     </div>
     <div class="cursos">
         <article class="curso">
-          <img src="https://static.wixstatic.com/media/d2b534_43401a14352c4bf6b9b9daea3f031095~mv2.png/v1/fill/w_640,h_640,al_c,q_80/d2b534_43401a14352c4bf6b9b9daea3f031095~mv2.png" alt="" loading="lazy">
+          <img src="https://static.wixstatic.com/media/11062b_9bfddeca3e7e4ba3a0886902c2ac1fa9~mv2.jpg/v1/fill/w_640,h_640,al_c,q_80/11062b_9bfddeca3e7e4ba3a0886902c2ac1fa9~mv2.jpg" alt="" loading="lazy">
           <div>
             <p class="curso-chapeu">Inscrições · [em breve]</p>
             <h3>Curso de<br><strong>Cozinheiro</strong></h3>
