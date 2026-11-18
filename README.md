@@ -29,6 +29,7 @@ O menu e o rodapé são os do próprio Wix e ficam fora destes arquivos.
 | `natal/popup/` | Pop-up da campanha de Natal (dentro do pop-up do Wix) | Pop-up "Natal 2026" | 800 × 440 / 300 × 540 px |
 | `natal/card/` | Card flutuante da campanha de Natal, no canto da tela | Todas as páginas, ID `cardNatal` | 320 × 104 / 300 × 92 px |
 | `wix/velo-popup-natal.js` | Código do Velo do pop-up de Natal (fechar e ir para /natal) | Código do pop-up | — |
+| `wix/velo-site-card-natal.js` | Código do Velo do site (masterPage.js) que está em uso: só controla o card de Natal (o pop-up abre pelas configurações do Wix) | masterPage.js | — |
 | `wix/velo-site-natal.js` | Código do Velo do site (masterPage.js): abre o pop-up uma vez por visita e controla o card | masterPage.js | — |
 | `wix/velo-pagina.js` | Código do Velo (ponte de links) | Código de cada página que tem bloco com links | — |
 | `marca/` | Logos e assinaturas dos projetos | — | — |
