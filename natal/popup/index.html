@@ -24,9 +24,9 @@
 :root { --fundo: #26114a; --fundo-2: #4a2a80; --lilas: #c9a8ff; --lilas-claro: #f2dff8; --amarelo: #e8b950; }
 * { box-sizing: border-box; }
 html, body { margin: 0; height: 100%; background: transparent; font-family: "DM Sans", system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
-.cartao { position: relative; height: 100%; display: grid; grid-template-columns: 1.05fr .95fr; overflow: hidden; border-radius: 24px; color: #fff;
+.cartao { position: relative; height: 100%; display: grid; grid-template-columns: 1fr 1fr; overflow: hidden; border-radius: 24px; color: #fff;
   background: radial-gradient(120% 90% at 0% 0%, var(--fundo-2) 0%, var(--fundo) 62%); }
-.texto { position: relative; z-index: 1; display: flex; flex-direction: column; justify-content: center; padding: 40px 12px 40px 44px; }
+.texto { position: relative; z-index: 2; display: flex; flex-direction: column; justify-content: center; padding: 40px 12px 40px 44px; }
 .chapeu { display: inline-flex; align-items: center; gap: 8px; margin: 0 0 14px; font-size: 12px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--lilas-claro); }
 .chapeu svg { width: 14px; height: 14px; color: var(--amarelo); }
 h2 { margin: 0 0 14px; font-size: 40px; line-height: 1.04; font-weight: 800; letter-spacing: -.035em; }
@@ -37,8 +37,8 @@ p { margin: 0 0 24px; font-size: 16px; line-height: 1.55; color: var(--lilas-cla
 .botao:hover { transform: translateY(-2px); }
 .depois { border: 0; background: none; color: var(--lilas-claro); font: 600 15px "DM Sans", sans-serif; text-decoration: underline; text-underline-offset: 3px; cursor: pointer; padding: 8px 2px; }
 .foto { position: relative; }
-.foto img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 30%; }
-.foto::before { content: ""; position: absolute; inset: 0; z-index: 1; background: linear-gradient(90deg, var(--fundo) 0%, rgba(38, 17, 74, 0) 28%); }
+.foto img { position: absolute; top: 0; bottom: 0; left: -90px; width: calc(100% + 90px); height: 100%; object-fit: cover; object-position: 50% 40%; }
+.foto::before { content: ""; position: absolute; top: 0; bottom: 0; left: -90px; right: 0; z-index: 1; background: linear-gradient(90deg, var(--fundo) 0%, rgba(38, 17, 74, .85) 18%, rgba(38, 17, 74, 0) 45%); }
 .brilho { position: absolute; z-index: 2; color: var(--amarelo); animation: brilhar 3s ease-in-out infinite; }
 .brilho svg { width: 100%; height: 100%; }
 .b1 { width: 22px; height: 22px; top: 32px; right: 40px; }
@@ -54,7 +54,8 @@ a:focus-visible, button:focus-visible { outline: 3px solid var(--amarelo); outli
 @media (max-width: 560px) {
   .cartao { grid-template-columns: 1fr; grid-template-rows: 210px 1fr; border-radius: 20px; }
   .foto { order: -1; }
-  .foto::before { background: linear-gradient(0deg, var(--fundo) 0%, rgba(38, 17, 74, 0) 45%); }
+  .foto img { left: 0; width: 100%; object-position: 50% 30%; }
+  .foto::before { left: 0; background: linear-gradient(0deg, var(--fundo) 0%, rgba(38, 17, 74, 0) 45%); }
   .texto { padding: 6px 22px 24px; justify-content: flex-start; }
   h2 { font-size: 31px; }
   p { font-size: 15px; margin-bottom: 18px; }
