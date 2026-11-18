@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Campanha de Natal · card</title>
+<!--
+==========================================================================
+  CARD FLUTUANTE DA CAMPANHA DE NATAL
+  Bloco Incorporar HTML no canto da tela, em todas as páginas
+  (fixado na tela, "Mostrar em todas as páginas"). Tamanho do bloco:
+  320 x 104 no computador e 300 x 92 no celular. ID do bloco: cardNatal.
+
+  - Clique no card: leva à página /natal.
+  - X: esconde o card até a pessoa fechar o navegador.
+  Funciona com o código do Velo do site (wix/velo-site-natal.js).
+==========================================================================
+-->
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,600;9..40,700;9..40,800&family=Fraunces:ital,opsz,wght@1,9..144,600&display=swap">
+<style>
+:root { --fundo: #26114a; --fundo-2: #4a2a80; --lilas: #c9a8ff; --lilas-claro: #f2dff8; --amarelo: #e8b950; }
+* { box-sizing: border-box; }
+html, body { margin: 0; height: 100%; background: transparent; font-family: "DM Sans", system-ui, sans-serif; -webkit-font-smoothing: antialiased; overflow: hidden; }
+.card { position: absolute; inset: 6px; display: flex; align-items: center; gap: 12px; padding: 10px 40px 10px 10px; border-radius: 18px; color: #fff; text-decoration: none;
+  background: linear-gradient(120deg, var(--fundo-2), var(--fundo) 70%); box-shadow: 0 8px 22px rgba(38, 17, 74, .35); animation: entrar .6s cubic-bezier(.2, .8, .2, 1) both .4s; }
+.card:hover .seta { transform: translate(2px, -2px); }
+.foto { position: relative; flex: none; width: 66px; height: 66px; border-radius: 14px; overflow: hidden; background: var(--fundo); }
+.foto img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 35%; }
+.brilho { position: absolute; right: 3px; top: 3px; width: 13px; height: 13px; color: var(--amarelo); animation: brilhar 2.6s ease-in-out infinite; }
+.brilho svg { width: 100%; height: 100%; }
+.texto { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.chapeu { font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--lilas-claro); }
+.titulo { font-size: 17px; font-weight: 800; line-height: 1.15; letter-spacing: -.02em; }
+.titulo em { font-family: "Fraunces", Georgia, serif; font-style: italic; font-weight: 600; color: var(--lilas); }
+.seta { position: absolute; right: 14px; bottom: 14px; color: var(--lilas); transition: transform .2s; }
+.fechar { position: absolute; top: 10px; right: 10px; z-index: 2; width: 26px; height: 26px; border: 0; border-radius: 999px; background: rgba(255, 255, 255, .16); color: #fff; cursor: pointer; display: flex; align-items: center; justify-content: center; }
+.fechar:hover { background: rgba(255, 255, 255, .3); }
+a:focus-visible, button:focus-visible { outline: 3px solid var(--amarelo); outline-offset: 2px; }
+@keyframes entrar { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
+@keyframes brilhar { 0%, 100% { opacity: .4; transform: scale(.8); } 50% { opacity: 1; transform: scale(1.15) rotate(20deg); } }
+@media (prefers-reduced-motion: reduce) { .card, .brilho { animation: none; } }
+@media (max-width: 320px) { .foto { width: 56px; height: 56px; } .titulo { font-size: 15px; } }
+</style>
+</head>
+<body>
+<!-- EDITAR: textos do card -->
+<a class="card" href="https://www.maiseducacao.org/natal" id="card">
+  <span class="foto"><img src="https://static.wixstatic.com/media/d2b534_0c39e5b99318437ab48a45ba647709ef~mv2.png" alt=""><span class="brilho"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 0c.6 5.6 2.4 7.4 12 12-9.6 4.6-11.4 6.4-12 12-.6-5.6-2.4-7.4-12-12C9.6 7.4 11.4 5.6 12 0z"/></svg></span></span>
+  <span class="texto"><span class="chapeu">Campanha de Natal</span><span class="titulo">Apadrinhe uma <em>criança</em></span></span>
+  <svg class="seta" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg>
+</a>
+<button type="button" class="fechar" id="fechar" aria-label="Fechar aviso da campanha de Natal"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+<script>
+(function () {
+  var noWix = window.parent !== window;
+  function avisar(tipo) { if (noWix) window.parent.postMessage({ tipo: tipo }, "*"); }
+  document.getElementById("fechar").addEventListener("click", function () { avisar("natal-fechar-card"); if (!noWix) document.getElementById("card").style.display = "none"; });
+  document.getElementById("card").addEventListener("click", function (ev) { if (!noWix) return; ev.preventDefault(); avisar("natal-abrir"); });
+})();
+</script>
+</body>
+</html>
