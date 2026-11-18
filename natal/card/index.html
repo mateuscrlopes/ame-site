@@ -34,8 +34,10 @@ html, body { margin: 0; height: 100%; background: transparent; font-family: "DM 
 .titulo { font-size: 17px; font-weight: 800; line-height: 1.15; letter-spacing: -.02em; }
 .titulo em { font-family: "Fraunces", Georgia, serif; font-style: italic; font-weight: 600; color: var(--lilas); }
 .seta { position: absolute; right: 14px; bottom: 14px; color: var(--lilas); transition: transform .2s; }
-.fechar { position: absolute; top: 10px; right: 10px; z-index: 2; width: 26px; height: 26px; border: 0; border-radius: 999px; background: rgba(255, 255, 255, .16); color: #fff; cursor: pointer; display: flex; align-items: center; justify-content: center; }
-.fechar:hover { background: rgba(255, 255, 255, .3); }
+.fechar { position: absolute; top: 0; right: 0; z-index: 2; width: 44px; height: 44px; border: 0; padding: 0; background: none; color: #fff; cursor: pointer; display: flex; align-items: center; justify-content: center; }
+.fechar::before { content: ""; position: absolute; inset: 9px; border-radius: 999px; background: rgba(255, 255, 255, .16); }
+.fechar:hover::before { background: rgba(255, 255, 255, .3); }
+.fechar svg { position: relative; }
 a:focus-visible, button:focus-visible { outline: 3px solid var(--amarelo); outline-offset: 2px; }
 @keyframes entrar { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
 @keyframes brilhar { 0%, 100% { opacity: .4; transform: scale(.8); } 50% { opacity: 1; transform: scale(1.15) rotate(20deg); } }

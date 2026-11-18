@@ -1,0 +1,64 @@
+{
+  "_comentario": "Alturas configuradas nos blocos do Wix (px). Ao mudar uma altura no Wix, atualize aqui também. 'computador' é medido de 980 a 1920 px de largura; 'celular' com 320 px (o Wix monta o celular nessa largura). null = não se aplica. altura_variavel = conteúdo muda de tamanho (ex.: abas), não avisa sobre espaço em branco.",
+  "paginas": {
+    "inicio": {
+      "arquivo": "inicio/index.html",
+      "computador": 5049,
+      "celular": null
+    },
+    "inicio-celular": {
+      "arquivo": "inicio-celular/index.html",
+      "computador": null,
+      "celular": 3350
+    },
+    "reforca-jacare": {
+      "arquivo": "reforca-jacare/index.html",
+      "computador": 2776,
+      "celular": 3850
+    },
+    "pre-vestibular": {
+      "arquivo": "pre-vestibular/index.html",
+      "computador": 2600,
+      "celular": 3620
+    },
+    "ame-qualifica": {
+      "arquivo": "ame-qualifica/index.html",
+      "computador": 2650,
+      "celular": 3750
+    },
+    "atendimento-juridico": {
+      "arquivo": "atendimento-juridico/index.html",
+      "computador": 2700,
+      "celular": 4000
+    },
+    "prestacao-de-contas": {
+      "arquivo": "prestacao-de-contas/index.html",
+      "computador": 1450,
+      "celular": 1900,
+      "altura_variavel": true
+    },
+    "doe": {
+      "arquivo": "doe/index.html",
+      "computador": 1450,
+      "celular": 2650
+    },
+    "natal-popup": {
+      "arquivo": "natal/popup/index.html",
+      "computador": 440,
+      "celular": 540,
+      "largura_fixa": {
+        "computador": 800,
+        "celular": 300
+      }
+    },
+    "natal-card": {
+      "arquivo": "natal/card/index.html",
+      "computador": 104,
+      "celular": 92,
+      "largura_fixa": {
+        "computador": 320,
+        "celular": 300
+      }
+    }
+  }
+}

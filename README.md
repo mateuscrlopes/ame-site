@@ -11,6 +11,26 @@ Páginas e blocos do site da **Associação Mais Educação** ([maiseducacao.org
 
 O menu e o rodapé são os do próprio Wix e ficam fora destes arquivos.
 
+
+## Trabalhando com o Claude Code (revisão e correção automáticas)
+
+Abra esta pasta no Claude Code (Claude Desktop → Code, ou terminal) e use:
+
+- **`/revisar-e-corrigir`** — o agente **revisor** confere o site, você aprova o que corrigir,
+  o agente **corretor** corrige numa branch e abre um pull request, e o revisor confere de novo.
+  Ex.: `/revisar-e-corrigir doe reforca-jacare` (vazio = site inteiro).
+- **`python ferramentas/verificar.py`** — a verificação objetiva usada pelos dois agentes
+  (alturas x blocos do Wix, nada vazando para os lados, erros, links que mostram o GitHub,
+  alvos de toque no celular, imagens sem alt, pendências entre colchetes).
+- **`ferramentas/alturas.json`** — alturas dos blocos no Wix. Mudou no Wix? Atualize aqui.
+- **`CLAUDE.md`** — regras do repositório que o Claude Code lê sozinho.
+
+Nada vai ao ar sem o pull request ser aprovado.
+
+**Verificação automática no GitHub (a ativar):** `ferramentas/verificacao.yml` roda a verificação a cada
+mudança e toda segunda-feira e, se algo crítico quebrar, abre um issue com o relatório. Para ativar,
+mova o arquivo para `.github/workflows/` (peça ao Claude Code: "ative a verificação automática do GitHub").
+
 ## Mapa das páginas
 
 | Pasta | O que é | Onde fica no Wix | Altura no Wix (computador / celular) |

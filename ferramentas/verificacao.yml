@@ -1,0 +1,52 @@
+# PARA ATIVAR: mova este arquivo para .github/workflows/verificacao.yml (no Claude Code: "ative a verificação automática do GitHub").
+# Verificação automática do site da AME
+# Roda a cada push na main, em todo pull request e toda segunda-feira às 9h (Brasília).
+# Se houver problema CRÍTICO, a verificação falha e (na main/agendada) abre ou atualiza um issue.
+name: Verificação do site
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  schedule:
+    - cron: "0 12 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  verificar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Instalar o Playwright
+        run: |
+          pip install -r ferramentas/requirements.txt
+          python -m playwright install --with-deps chromium
+      - name: Verificar as páginas
+        id: verificar
+        run: python ferramentas/verificar.py
+        continue-on-error: true
+      - name: Publicar o relatório no resumo
+        if: always()
+        run: cat ferramentas/relatorio-verificacao.md >> "$GITHUB_STEP_SUMMARY"
+      - name: Abrir ou atualizar issue (só na main ou na verificação semanal)
+        if: steps.verificar.outcome == 'failure' && github.event_name != 'pull_request'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          numero=$(gh issue list --label verificacao --state open --json number --jq '.[0].number')
+          if [ -n "$numero" ]; then
+            gh issue comment "$numero" --body-file ferramentas/relatorio-verificacao.md
+          else
+            gh label create verificacao --color B60205 --description "Problemas da verificação automática" 2>/dev/null || true
+            gh issue create --title "Verificação do site: problemas críticos" --label verificacao --body-file ferramentas/relatorio-verificacao.md
+          fi
+      - name: Falhar se houver problema crítico
+        if: steps.verificar.outcome == 'failure'
+        run: exit 1
