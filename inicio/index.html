@@ -1,0 +1,830 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex"><!-- esta cópia fica no GitHub só para aparecer dentro do Wix; o Google deve indexar o maiseducacao.org -->
+<title>Associação Mais Educação · Página inicial</title>
+
+<!--
+==========================================================================
+  PÁGINA INICIAL · computador e celular no mesmo código
+  Associação Mais Educação (AME) · maiseducacao.org
+
+  SEÇÕES (procure pelo número no código)
+  1 Topo · Faixa 1 · 2 Quem somos · 3 Projetos · 4 Inscrições
+  5 Como apoiar · 6 Parceiros · Faixa 2 · 7 Nosso impacto
+  8 Vozes da comunidade · 9 Fale com a gente
+  O menu e o rodapé são os do Wix (ficam fora deste código).
+
+  COMO EDITAR
+  - Procure os comentários "EDITAR".
+  - Textos entre colchetes [ ] são informações a confirmar.
+  - Links para outras páginas usam o endereço completo do site e abrem
+    pela ponte do Velo (wix/velo-pagina.js), que precisa estar no
+    código da página Início.
+==========================================================================
+-->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700;9..40,800&display=swap">
+<style>
+
+:root {
+  --roxo: #614998; --ameixa: #562568; --lilas: #e9ddf8; --amarelo: #e8b950;
+  --creme: #fcf8f0; --grafite: #292530; --suave: rgba(41, 37, 48, .74); --borda: rgba(97, 73, 152, .2);
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; background: #fff; color: var(--grafite); font-family: "DM Sans", system-ui, -apple-system, "Segoe UI", sans-serif; -webkit-font-smoothing: antialiased; }
+img { max-width: 100%; display: block; }
+.conteudo { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+.chapeu { margin: 0 0 12px; font-size: 12px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--roxo); }
+.titulo { margin: 0 0 20px; font-size: clamp(32px, 4.2vw, 50px); line-height: 1.05; font-weight: 300; letter-spacing: -.03em; }
+.titulo strong { font-weight: 700; }
+.texto { margin: 0 0 16px; font-size: 17px; line-height: 1.6; color: var(--suave); }
+section { padding: 88px 0; }
+a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible { outline: 3px solid var(--amarelo); outline-offset: 3px; border-radius: 8px; }
+.botao { display: inline-flex; align-items: center; justify-content: center; min-height: 50px; padding: 0 28px; border: 0; border-radius: 999px; font: 700 16px "DM Sans", sans-serif; text-decoration: none; cursor: pointer; }
+.botao-amarelo { background: var(--amarelo); color: var(--grafite); }
+.botao-amarelo:hover { background: #f0c766; }
+.botao-contorno { background: #fff; color: var(--roxo); border: 2px solid var(--roxo); }
+.botao-roxo { background: var(--roxo); color: #fff; }
+
+/* 1 · TOPO */
+.topo { padding: 48px 0 64px; }
+.topo .conteudo { display: grid; grid-template-columns: .9fr 1.1fr; gap: 48px; align-items: center; }
+.topo h1 { margin: 0 0 22px; font-size: clamp(44px, 5.8vw, 76px); line-height: 1; font-weight: 300; letter-spacing: -.035em; }
+.topo h1 strong { display: block; font-weight: 700; color: var(--roxo); }
+.topo .acoes { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 8px; }
+.topo-foto img { width: 100%; height: auto; aspect-ratio: 1350 / 1000; }
+
+/* FAIXAS */
+.faixa { height: 52px; }
+.faixa-rail { width: 100%; height: 100%; overflow: hidden; display: flex; align-items: center; background: var(--f-fundo); }
+.faixa-track { display: flex; flex: 0 0 auto; width: max-content; will-change: transform; animation: faixa-run var(--f-speed, 22s) linear infinite; }
+.faixa-track.direita { animation-direction: reverse; }
+.faixa-seq { display: flex; flex: 0 0 auto; align-items: center; }
+.faixa-item { display: flex; flex: 0 0 auto; align-items: center; gap: 18px; padding: 0 26px; white-space: nowrap; line-height: 1; font-size: clamp(15px, 1.55vw, 20px); font-weight: 800; letter-spacing: -.02em; color: var(--f-texto); }
+.faixa-item.alt { color: var(--f-destaque); }
+.faixa-simbolo { width: 17px; height: 17px; color: var(--f-destaque); display: block; flex: 0 0 auto; }
+.faixa-item.alt .faixa-simbolo { color: var(--f-texto); }
+.faixa-simbolo.logo { width: auto; height: 15px; aspect-ratio: 1018 / 362.5; }
+.faixa-simbolo svg { width: 100%; height: 100%; display: block; }
+@keyframes faixa-run { from { transform: translateX(0); } to { transform: translateX(calc(-1 * var(--f-loop, 400px))); } }
+
+/* 2 · QUEM SOMOS */
+.quem .conteudo { display: grid; grid-template-columns: .85fr 1.15fr; gap: 56px; align-items: center; }
+.quem-foto { position: relative; }
+.quem-foto .foto { position: relative; width: 100%; height: auto; aspect-ratio: 1 / 1; }
+.quem-foto .trilha { position: absolute; left: 2%; top: -4%; width: 92%; pointer-events: none; }
+.quem .titulo strong { color: var(--roxo); }
+.quem-linha { margin: 0 0 10px; font-size: 16px; line-height: 1.55; }
+.quem-linha strong { color: var(--roxo); }
+
+/* 3 · PROJETOS */
+.projetos { padding-top: 40px; }
+.projetos-lista { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
+.projeto { position: relative; display: block; aspect-ratio: 299 / 374; overflow: hidden; color: #fff; text-decoration: none; background: var(--roxo); }
+.projeto-foto { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.selo { position: absolute; left: 50%; top: 32%; transform: translate(-50%, -50%); padding: 8px 22px; border-radius: 8px; background: var(--roxo); color: #fff; font-size: 15px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; white-space: nowrap; }
+.projeto-painel { position: absolute; left: 0; right: 0; bottom: 0; min-height: 34%; padding: 16px 16px 18px; background: var(--roxo); transition: padding .3s ease; }
+.assinatura-barra { position: relative; width: 88%; }
+.assinatura-barra img { width: 100%; height: auto; aspect-ratio: 1169 / 168; }
+.assinatura-barra span { position: absolute; left: 52%; right: 3%; top: 50%; transform: translateY(-50%); font-size: 12px; font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.projeto-sub { margin: 10px 0 0; font-size: 11px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--lilas); transition: opacity .2s; }
+.projeto-extra { max-height: 0; overflow: hidden; opacity: 0; transition: max-height .35s ease, opacity .25s ease; }
+.projeto-frase { margin: 10px 0 14px; font-size: 14px; line-height: 1.45; color: #fff; }
+.pilula { display: inline-flex; align-items: center; gap: 10px; padding: 7px 16px; border-radius: 999px; background: #fff; color: var(--roxo); font-size: 13px; font-weight: 600; }
+.projeto:hover .projeto-extra, .projeto:focus-visible .projeto-extra { max-height: 160px; opacity: 1; }
+.projeto:hover .projeto-sub, .projeto:focus-visible .projeto-sub { display: none; }
+@media (hover: none) { .projeto-extra { max-height: none; opacity: 1; } .projeto-sub { display: none; } }
+
+/* 4 · INSCRIÇÕES */
+.inscricoes { position: relative; background: var(--roxo); color: #fff; overflow: hidden; }
+.inscricoes::after { content: ""; position: absolute; right: -120px; top: -60px; width: 520px; height: 520px; border-radius: 50%; border: 6px solid var(--amarelo); clip-path: inset(0 0 50% 50%); pointer-events: none; }
+.inscricoes .chapeu { color: var(--amarelo); }
+.inscricoes-topo { display: flex; justify-content: space-between; align-items: flex-end; gap: 24px; margin-bottom: 28px; }
+.inscricoes .titulo { color: #fff; font-weight: 700; margin: 0; }
+.inscricoes-topo img { width: 240px; height: auto; aspect-ratio: 253 / 36; }
+.cursos { position: relative; z-index: 1; display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.curso { display: grid; grid-template-columns: 1fr 1.1fr; background: #fff; color: var(--grafite); overflow: hidden; }
+.curso img { width: 100%; height: 100%; min-height: 240px; object-fit: cover; }
+.curso > div { padding: 22px 20px; display: flex; flex-direction: column; align-items: flex-start; }
+.curso-chapeu { margin: 0 0 6px; font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: #b8862a; }
+.curso h3 { margin: 0 0 12px; font-size: 24px; line-height: 1.12; font-weight: 300; color: var(--roxo); }
+.curso h3 strong { font-weight: 700; }
+.curso-info { margin: 0 0 16px; font-size: 14px; line-height: 1.6; color: var(--suave); }
+.curso .botao { min-height: 42px; padding: 0 22px; margin-top: auto; }
+
+/* 5 · COMO APOIAR */
+.apoio-lista { display: grid; grid-template-columns: 1.25fr 1fr 1fr; gap: 20px; }
+.apoio-card { display: flex; flex-direction: column; gap: 12px; padding: 28px 24px; border-radius: 24px; border: 1px solid var(--borda); background: #fff; }
+.apoio-card h3 { margin: 0; font-size: 22px; font-weight: 700; }
+.apoio-card p { margin: 0; font-size: 16px; line-height: 1.5; color: var(--suave); }
+.icone { width: 48px; height: 48px; border-radius: 999px; background: var(--lilas); display: flex; align-items: center; justify-content: center; }
+.link { display: inline-flex; align-items: center; min-height: 44px; margin-top: auto; font-weight: 700; font-size: 16px; color: var(--roxo); text-decoration: none; }
+.doe { background: var(--roxo); border-color: var(--roxo); color: #fff; }
+.doe p { color: var(--lilas); }
+.doe .icone { background: var(--ameixa); }
+.pix { display: flex; align-items: center; justify-content: space-between; gap: 8px; padding: 8px 8px 8px 14px; border-radius: 12px; background: var(--creme); color: var(--grafite); }
+.pix-rotulo { display: block; font-size: 12px; font-weight: 600; color: var(--suave); }
+.pix-chave { font-size: 16px; font-weight: 700; }
+.copiar { min-height: 44px; padding: 0 16px; border: 0; border-radius: 999px; background: var(--amarelo); color: var(--grafite); font: 700 14px "DM Sans", sans-serif; cursor: pointer; }
+.doe .botao { width: 100%; margin-top: auto; }
+.qr { display: none; flex-direction: column; align-items: center; gap: 14px; text-align: center; }
+.qr.aberto { display: flex; }
+.qr h4 { margin: 0; font-size: 26px; color: var(--amarelo); }
+.qr p { color: #fff !important; }
+.qr-img { width: 200px; height: 200px; padding: 12px; background: #fff; }
+.qr-img img { width: 100%; height: 100%; image-rendering: pixelated; }
+.qr-acoes { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; }
+.botao-claro { background: transparent; color: #fff; border: 2px solid var(--lilas); min-height: 44px; font-size: 14px; padding: 0 16px; width: auto !important; }
+.doe.qr-on > :not(.qr) { display: none; }
+
+/* 6 · PARCEIROS */
+.parceiros { padding: 0 0 72px; }
+.parceiros ul { margin: 0; padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: 28px; align-items: center; }
+.parceiros li img { height: 110px; width: auto; object-fit: contain; }
+
+/* 7 · NOSSO IMPACTO */
+.impacto { background: var(--creme); }
+.impacto .chapeu { color: #b8862a; }
+.impacto .titulo { font-weight: 700; color: var(--roxo); }
+.numeros { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px; }
+.numero { position: relative; overflow: hidden; isolation: isolate; min-height: 250px; padding: 42px 40px 32px 46px; display: flex; flex-direction: column; justify-content: flex-end; background: var(--lilas); clip-path: url(#ame-janela); }
+.numero:nth-child(2) { background: #eee5f7; }
+.numero::before { content: ""; position: absolute; right: -70px; top: -95px; width: 240px; height: 240px; border-radius: 50%; border: 42px solid rgba(97, 73, 152, .07); }
+.numero-valor { margin: 0; display: flex; align-items: baseline; font-size: clamp(72px, 9vw, 112px); line-height: .9; font-weight: 800; color: var(--roxo); letter-spacing: -.08em; font-variant-numeric: tabular-nums; }
+.numero-valor sup { font-size: .47em; font-weight: 700; position: relative; top: -.45em; margin-left: 3px; letter-spacing: 0; }
+.numero-rotulo { margin: 16px 0 0; font-size: clamp(17px, 1.7vw, 21px); font-weight: 600; line-height: 1.26; letter-spacing: -.02em; max-width: 420px; }
+.numero-rotulo strong { color: var(--ameixa); font-weight: 800; }
+.numero-faixa { position: absolute; left: 0; bottom: 0; width: 34%; height: 7px; background: var(--amarelo); }
+.contas { margin-top: 40px; }
+.contas .chapeu { color: #b8862a; }
+.contas-lista { display: flex; flex-wrap: wrap; gap: 10px; }
+.conta { display: inline-flex; align-items: center; min-height: 44px; padding: 0 20px; border-radius: 999px; border: 1.5px solid var(--roxo); color: var(--roxo); font-size: 15px; font-weight: 600; text-decoration: none; background: #fff; }
+.conta:hover { background: var(--roxo); color: #fff; }
+
+/* 8 · VOZES DA COMUNIDADE */
+.vozes { background: var(--creme); padding-top: 0; }
+.vozes-topo { display: flex; justify-content: space-between; align-items: flex-end; gap: 16px; margin-bottom: 24px; }
+.vozes .chapeu { color: #b8862a; }
+.vozes .titulo { font-weight: 700; color: var(--roxo); margin-bottom: 6px; }
+.vozes-setas { display: flex; gap: 8px; }
+.seta { width: 44px; height: 44px; border-radius: 999px; border: 1.5px solid var(--grafite); background: #fff; display: flex; align-items: center; justify-content: center; cursor: pointer; }
+.vozes-trilho { display: grid; grid-auto-flow: column; grid-auto-columns: calc(50% - 10px); gap: 20px; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; }
+.vozes-trilho::-webkit-scrollbar { display: none; }
+.voz { position: relative; margin: 0; scroll-snap-align: start; min-height: 250px; padding: 30px 28px 26px; background: var(--lilas); overflow: hidden; display: flex; flex-direction: column; clip-path: url(#ame-janela); }
+.voz::after { content: ""; position: absolute; left: 0; bottom: 0; width: 34%; height: 6px; background: var(--amarelo); }
+.voz::before { content: ""; position: absolute; right: -70px; top: -95px; width: 220px; height: 220px; border-radius: 50%; border: 38px solid rgba(97, 73, 152, .07); }
+.voz-tag { position: absolute; right: 22px; top: 22px; padding: 4px 10px; border-radius: 999px; border: 1px solid var(--roxo); color: var(--roxo); font-size: 10px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+.voz-aspas { font-size: 56px; line-height: .6; font-weight: 800; color: var(--roxo); }
+.voz blockquote { margin: 18px 0 18px; font-size: 17px; line-height: 1.5; font-weight: 500; }
+.voz figcaption { margin-top: auto; padding-top: 14px; border-top: 1px solid var(--borda); display: flex; gap: 10px; align-items: center; font-size: 12px; line-height: 1.35; color: var(--suave); }
+.voz figcaption strong { color: var(--grafite); font-size: 13px; }
+.voz-inicial { flex: none; width: 30px; height: 30px; border-radius: 999px; background: var(--roxo); color: #fff; font-weight: 700; display: flex; align-items: center; justify-content: center; font-size: 13px; }
+.vozes-rodape { display: flex; justify-content: space-between; gap: 12px; margin-top: 14px; font-size: 12px; color: var(--suave); }
+.contador { font-weight: 700; color: var(--roxo); }
+
+/* 9 · FALE COM A GENTE */
+.contato { position: relative; background: var(--roxo); color: #fff; overflow: hidden; }
+.contato .conteudo { position: relative; z-index: 1; display: grid; grid-template-columns: 1fr 1fr; gap: 56px; }
+.contato .chapeu { color: var(--amarelo); }
+.contato .titulo { color: #fff; font-weight: 700; }
+.contato-dados { font-size: 16px; line-height: 1.75; }
+.contato-dados a { color: #fff; font-weight: 700; text-decoration: none; }
+.form { display: grid; gap: 12px; align-content: start; }
+.form label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+.form input, .form textarea { width: 100%; min-height: 46px; padding: 12px 14px; border: 0; border-radius: 4px; font: 400 16px "DM Sans", sans-serif; color: var(--grafite); background: #fff; }
+.form textarea { min-height: 110px; resize: vertical; }
+.form .botao { width: 100%; }
+.form-aviso { margin: 0; font-size: 12px; color: var(--lilas); }
+.erro { margin: 0; font-size: 14px; font-weight: 700; color: var(--amarelo); }
+.contato-decor { position: absolute; right: -40px; bottom: -60px; width: 330px; pointer-events: none; }
+
+/* ==========================================================================
+   TELAS MÉDIAS E CELULAR
+   ========================================================================== */
+@media (max-width: 760px) {
+  .conteudo { padding: 0 18px; }
+  section { padding: 56px 0; }
+  .topo { padding: 28px 0 40px; }
+  .topo .conteudo, .quem .conteudo, .contato .conteudo { grid-template-columns: 1fr; gap: 32px; }
+  .topo .acoes .botao { flex: 1; padding: 0 14px; }
+  .topo-foto { margin-right: -18px; }
+  .faixa { height: 44px; }
+  .faixa-item { gap: 12px; padding: 0 18px; font-size: 15px; }
+  .faixa-simbolo { width: 14px; height: 14px; }
+  .quem-foto { margin-right: 18px; }
+  .projetos { padding-top: 24px; }
+  .projetos-lista { grid-template-columns: 1fr; }
+  .apoio-lista { grid-template-columns: 1fr; }
+  .cursos { grid-template-columns: 1fr; }
+  .inscricoes-topo { flex-direction: column; align-items: flex-start; }
+  .inscricoes-topo img { width: 200px; }
+  .inscricoes::after { width: 300px; height: 300px; right: -100px; top: -40px; }
+  .curso { grid-template-columns: 1fr; }
+  .curso img { min-height: 0; aspect-ratio: 16 / 10; height: auto; }
+  .parceiros li img { height: 84px; }
+  .numeros { grid-template-columns: 1fr; gap: 14px; }
+  .numero { min-height: 200px; padding: 38px 26px 26px 32px; }
+  .vozes-topo { flex-direction: column; align-items: flex-start; }
+  .vozes-trilho { grid-auto-columns: 88%; gap: 12px; }
+  .vozes-rodape { flex-direction: column; }
+  .contato-decor { width: 220px; right: -60px; bottom: -40px; opacity: .5; }
+}
+
+
+.ame-plano-b{margin-top:16px;padding:16px 18px;border-radius:14px;background:#fcf8f0;color:#292530;border:2px solid #e8b950;font-family:"DM Sans",sans-serif;font-size:15px;line-height:1.5;text-align:left;flex-basis:100%}
+.ame-plano-b p{margin:0 0 8px;color:#292530}
+.ame-plano-b-copiar{min-height:44px;padding:0 18px;border:0;border-radius:999px;background:#614998;color:#fff;font:600 15px "DM Sans",sans-serif;cursor:pointer}
+
+</style>
+</head>
+
+<body>
+<!-- Logo da AME (faixa 2) e recorte em "janela" dos cards. Não editar. -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="logo-ame" viewBox="91 426.5 1018 362.5"><g fill="currentColor"><path d="M 579.425781 578.753906 L 567.589844 738.773438 C 565.550781 754.085938 558.738281 766.390625 543.296875 767.984375 C 528.710938 769.492188 520.355469 768.761719 514.484375 767.863281 C 497.382812 765.234375 494.371094 749.894531 495.304688 732.765625 L 508.367188 492.40625 C 508.984375 481.003906 513.332031 470.601562 520.144531 462.25 C 533.1875 446.265625 557.714844 446.035156 578.273438 448 C 594.515625 449.554688 608.003906 458.878906 615.988281 472.734375 L 627.316406 495.714844 L 663.175781 577.101562 C 664.03125 579.050781 665.761719 580.128906 667.269531 580.296875 C 669.238281 580.515625 670.953125 579.28125 672.257812 577.214844 L 728.996094 487.296875 C 744.472656 462.769531 764.851562 445.707031 794.734375 446.933594 C 803.8125 447.304688 812.417969 448.234375 820.636719 451.992188 C 837.585938 459.746094 845.164062 475.78125 843.1875 494.261719 L 825.980469 655.140625 L 818.851562 719.917969 C 817.808594 729.398438 817.824219 738.449219 814.984375 747.546875 C 811.644531 758.257812 803.40625 765.09375 792.121094 767.375 C 782.6875 769.285156 771.621094 769.285156 761.976562 767.648438 C 750.875 765.761719 742.773438 758.542969 741.234375 747.59375 C 739.832031 740.46875 740.203125 733.765625 740.789062 726.160156 L 753.21875 580.199219 L 696.808594 685.175781 L 688.519531 699.769531 C 681.75 710.960938 670.257812 716.984375 657.261719 717.140625 C 643.171875 717.308594 631.496094 710.101562 625.640625 697.121094 L 600.304688 631.585938 Z M 579.425781 578.753906"/><path d="M 938.015625 638.609375 C 934.164062 638.621094 932.804688 641.4375 932.546875 644.273438 L 929.160156 681.078125 C 928.429688 689.03125 933.945312 695.335938 942.414062 695.359375 L 1065.160156 695.652344 C 1070.074219 695.664062 1074.320312 697.941406 1076.917969 700.710938 C 1079.972656 703.964844 1081.140625 708.84375 1080.429688 713.570312 C 1078.566406 725.9375 1075.820312 738.023438 1071.101562 749.386719 C 1066.402344 760.699219 1056.964844 767.703125 1044.414062 767.699219 L 889.210938 767.644531 C 879.617188 767.640625 870.882812 764.894531 862.996094 760.375 C 844.742188 749.910156 842.496094 727.40625 844.695312 706.636719 L 865.957031 505.636719 C 869.386719 473.222656 893.933594 447.601562 925.304688 447.53125 L 1074.640625 447.191406 C 1083.347656 447.171875 1089.601562 454.875 1088.589844 463.046875 C 1086.980469 476.050781 1083.835938 488.53125 1079.3125 500.738281 C 1075.5 511.027344 1067.105469 518.011719 1055.820312 518.058594 L 961.5 518.425781 C 952.003906 518.464844 945.351562 524.664062 944.335938 533.734375 L 941.09375 562.726562 C 940.90625 564.394531 942.335938 565.90625 944.128906 565.910156 L 1041.195312 566.144531 C 1049.570312 566.164062 1056.132812 573.378906 1055.273438 581.800781 C 1053.882812 595.421875 1050.925781 608.632812 1046.460938 621.460938 C 1042.96875 631.496094 1034.355469 638.277344 1023.472656 638.316406 Z M 938.015625 638.609375"/><path d="M 402.566406 524.035156 L 406.601562 557.617188 L 379.09375 548.625 Z M 402.566406 524.035156"/><path d="M 466.617188 449.6875 C 459.195312 447.761719 451.234375 447.488281 446.648438 447.488281 L 400.003906 447.488281 C 370.953125 447.488281 342.453125 475.253906 326.789062 499.300781 L 294.398438 547.667969 L 256.761719 605.132812 C 221.957031 604.8125 187.847656 608.75 154.800781 619.242188 C 141.382812 623.496094 129.109375 628.515625 117.449219 635.910156 C 112.101562 638.546875 110.265625 643.769531 111.851562 649.417969 L 126.03125 699.546875 C 126.566406 701.445312 128.585938 702.695312 129.800781 703.050781 C 131.113281 703.421875 132.941406 703.085938 134.375 702.082031 C 157.839844 685.730469 185.039062 675.570312 213.726562 674.335938 L 159.550781 764.058594 C 158.914062 765.152344 157.816406 766.96875 157.273438 767.902344 C 157.238281 767.960938 157.238281 768.042969 157.273438 768.105469 C 157.300781 768.175781 157.378906 768.226562 157.46875 768.226562 L 194.492188 768.226562 C 203.828125 768.226562 209.480469 768.226562 216.121094 767.902344 C 219.492188 767.730469 223.125 767.484375 227.613281 767.101562 C 238.820312 766.152344 245.597656 756.425781 251.34375 746.964844 L 294.441406 675.949219 L 322.507812 620.332031 L 347.726562 570.371094 L 402.34375 511.488281 C 403.417969 510.335938 405.121094 510.070312 406.46875 510.210938 C 406.523438 510.210938 406.582031 510.21875 406.636719 510.226562 C 406.707031 510.238281 406.769531 510.246094 406.832031 510.261719 C 406.9375 510.28125 407.042969 510.300781 407.144531 510.324219 C 407.320312 510.363281 407.480469 510.414062 407.628906 510.46875 C 407.941406 510.582031 408.222656 510.734375 408.480469 510.902344 C 408.648438 511.027344 408.808594 511.152344 408.960938 511.300781 C 409.046875 511.378906 409.128906 511.46875 409.207031 511.558594 C 409.367188 511.746094 409.507812 511.941406 409.644531 512.152344 C 409.742188 512.3125 409.828125 512.488281 409.910156 512.667969 C 409.925781 512.683594 409.9375 512.710938 409.9375 512.738281 C 410.015625 512.886719 410.078125 513.054688 410.140625 513.226562 C 410.226562 513.484375 410.308594 513.757812 410.371094 514.050781 C 410.421875 514.308594 410.46875 514.574219 410.503906 514.859375 L 415.476562 554.628906 L 420.433594 594.390625 L 411.460938 643.722656 L 408.046875 662.488281 L 394.71875 735.789062 C 399.578125 744.097656 403.558594 752.71875 407 761.871094 C 408.25 765.195312 411.070312 767.394531 414.582031 767.902344 C 415.105469 767.972656 415.648438 768.007812 416.195312 768.007812 L 434.535156 767.902344 L 451.222656 767.800781 C 465.394531 767.722656 470.511719 755.546875 470.296875 741.074219 L 483.652344 473.214844 C 484.195312 462.332031 477.152344 452.410156 466.617188 449.6875"/><path d="M 411.007812 595.085938 C 401.660156 598.019531 396.632812 595.324219 392.910156 586.96875 C 388.332031 590.039062 384.519531 590.214844 379.890625 588.796875 C 376.832031 587.867188 374.953125 583.652344 372.839844 580.871094 L 372.839844 580.859375 C 372.113281 581.179688 371.414062 581.453125 370.738281 581.695312 C 370.054688 581.933594 369.402344 582.136719 368.773438 582.296875 C 368.105469 582.464844 367.457031 582.589844 366.847656 582.667969 C 366.289062 582.75 365.738281 582.785156 365.214844 582.785156 C 364.203125 582.785156 363.246094 582.652344 362.324219 582.367188 C 359.585938 581.535156 357.207031 579.441406 354.804688 575.957031 L 332.421875 623.769531 L 306.855469 678.371094 C 335.878906 684.863281 364.1875 697.417969 383.144531 719.289062 C 383.164062 719.3125 383.191406 719.339844 383.214844 719.367188 L 397.503906 655.492188 Z M 411.007812 595.085938"/><path d="M 402.34375 511.488281 L 402.34375 511.476562 C 403.605469 510.121094 405.757812 509.988281 407.144531 510.324219 C 405.75 509.996094 403.605469 510.128906 402.34375 511.488281"/><path d="M 406.601562 557.617188 L 379.09375 548.625 L 402.566406 524.035156 Z M 406.601562 557.617188"/><path d="M 411.007812 595.085938 L 397.503906 655.492188 C 376.789062 642.546875 355.476562 631.761719 332.421875 623.769531 L 354.804688 575.957031 C 357.207031 579.441406 359.585938 581.535156 362.324219 582.367188 C 365.25 583.253906 368.59375 582.695312 372.839844 580.859375 L 372.839844 580.871094 C 374.953125 583.652344 376.832031 587.867188 379.890625 588.796875 C 384.519531 590.214844 388.332031 590.039062 392.910156 586.96875 C 396.632812 595.324219 401.660156 598.019531 411.007812 595.085938"/><path d="M 411.460938 643.722656 L 420.433594 594.390625 L 415.476562 554.628906 L 420.445312 594.390625 Z M 411.460938 643.722656"/><path d="M 372.839844 580.859375 L 372.839844 580.871094 C 368.59375 582.703125 365.25 583.253906 362.324219 582.367188 C 365.25 583.253906 368.59375 582.695312 372.839844 580.859375"/><path d="M 406.601562 557.617188 L 379.09375 548.625 L 402.566406 524.035156 Z M 406.601562 557.617188"/><path d="M 408.960938 511.300781 C 409.652344 511.957031 410.121094 512.886719 410.371094 514.050781 C 410.113281 512.886719 409.644531 511.957031 408.960938 511.300781"/><path d="M 406.601562 557.617188 L 379.09375 548.625 L 402.566406 524.035156 Z M 406.601562 557.617188"/><path d="M 406.601562 557.617188 L 379.09375 548.625 L 402.566406 524.035156 Z M 406.601562 557.617188"/></g></symbol><defs><clipPath id="ame-janela" clipPathUnits="objectBoundingBox"><path d="M 0 .97 L 0 .40 C .07 .31 .13 .09 .25 0 L .97 0 Q 1 0 1 .03 L 1 .97 Q 1 1 .97 1 L .03 1 Q 0 1 0 .97 Z"/></clipPath></defs></svg>
+<main>
+
+<!-- ==========================================================================
+     1 · TOPO
+     ========================================================================== -->
+<section class="topo" aria-labelledby="titulo-topo">
+  <div class="conteudo">
+    <div>
+      <p class="chapeu">Associação Mais Educação · Jacaré, Rio de Janeiro</p>
+      <!-- EDITAR: título (a última palavra fica em negrito roxo) -->
+      <h1 id="titulo-topo">Inspirando mudanças <strong>impactantes.</strong></h1>
+      <p class="texto">Educação, cuidado e oportunidades para crianças, jovens e adultos do Jacaré e entornos.</p>
+      <div class="acoes">
+        <a class="botao botao-amarelo" href="#apoiar">Doe agora</a>
+        <a class="botao botao-contorno" href="#apoiar">Seja parceiro</a>
+      </div>
+    </div>
+    <!-- EDITAR: foto do topo (PNG já recortado em diagonal) -->
+    <div class="topo-foto"><img src="https://static.wixstatic.com/media/d2b534_4a6837a185a84e06bb03f830112f9005~mv2.png" alt="Crianças em sala de aula da AME"></div>
+  </div>
+</section>
+
+<!-- FAIXA 1 · EDITAR: frases e cores em "FAIXAS", no script do fim da página -->
+<div class="faixa"><div class="faixa-rail" id="faixa-1" role="img" aria-label="Faixa animada"><div class="faixa-track"></div></div></div>
+
+<!-- ==========================================================================
+     2 · QUEM SOMOS
+     ========================================================================== -->
+<section class="quem" id="quem-somos" aria-labelledby="titulo-quem">
+  <div class="conteudo">
+    <div class="quem-foto">
+      <img class="foto" src="https://static.wixstatic.com/media/d2b534_b9546021684c4c79873754f3c03b7360~mv2.png" alt="Crianças e voluntários da AME reunidos" loading="lazy">
+      <img class="trilha" src="https://static.wixstatic.com/media/d2b534_934455c0983c43e0b40de8e720009a90~mv2.png" alt="" aria-hidden="true">
+    </div>
+    <div>
+      <p class="chapeu">Quem somos · desde 2022</p>
+      <h2 class="titulo" id="titulo-quem">Um espaço onde podemos <strong>sonhar.</strong></h2>
+      <!-- EDITAR: textos de Quem somos -->
+      <p class="texto">A Associação Mais Educação nasceu em 2022 no Jacaré. Nossa missão é apoiar a comunidade, com atenção especial às crianças em situação de vulnerabilidade.</p>
+      <p class="texto">Acreditamos na educação como força de transformação: desenvolver habilidades acadêmicas hoje é abrir caminhos para o futuro.</p>
+      <p class="quem-linha"><strong>Alcance</strong> · levar educação de qualidade a crianças, jovens e adultos.</p>
+      <p class="quem-linha"><strong>Visão</strong> · ser referência em transformação social e educacional na região.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ==========================================================================
+     3 · PROJETOS
+     No computador, o painel roxo sobe ao passar o mouse. No celular, a
+     frase e o botão já aparecem. Cada card leva à página do projeto.
+     EDITAR: selo "Em breve" (apague a linha <span class="selo"> para tirar).
+     ========================================================================== -->
+<section class="projetos" id="projetos" aria-labelledby="titulo-projetos">
+  <div class="conteudo">
+    <p class="chapeu">Projetos</p>
+    <h2 class="titulo" id="titulo-projetos">Projetos que <strong>transformam</strong></h2>
+    <div class="projetos-lista">
+        <!-- Projeto: Qualifica -->
+        <a class="projeto" href="https://www.maiseducacao.org/ame-qualifica">
+          <img class="projeto-foto" src="https://static.wixstatic.com/media/d2b534_037a2583f3b64e5e8bcf1d29b8975532~mv2.png/v1/fill/w_600,h_750,al_c,q_80/d2b534_037a2583f3b64e5e8bcf1d29b8975532~mv2.png" alt="" loading="lazy">
+          <span class="selo">Em breve</span>
+          <div class="projeto-painel">
+            <div class="assinatura-barra"><img src="https://static.wixstatic.com/media/d2b534_fac3f0f2e27a422bbe1fc09362a90c78~mv2.png" alt=""><span style="color:#ffffff">Qualifica</span></div>
+            <p class="projeto-sub">Qualificação profissional</p>
+            <div class="projeto-extra">
+              <p class="projeto-frase">Cursos profissionalizantes em diversas áreas de atuação.</p>
+              <span class="pilula">Quero participar <svg width="22" height="10" viewBox="0 0 22 10" aria-hidden="true"><path d="M0 5h20M16 1l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            </div>
+          </div>
+        </a>
+        <!-- Projeto: Pré-Vestibular -->
+        <a class="projeto" href="https://www.maiseducacao.org/pre-vestibular">
+          <img class="projeto-foto" src="https://static.wixstatic.com/media/d2b534_73c20b0af2c44f038e58b08292266978~mv2.png/v1/fill/w_600,h_750,al_c,q_80/d2b534_73c20b0af2c44f038e58b08292266978~mv2.png" alt="" loading="lazy">
+          <span class="selo">Em breve</span>
+          <div class="projeto-painel">
+            <div class="assinatura-barra"><img src="https://static.wixstatic.com/media/d2b534_5ba5e8fc823244a7ad425a2b0c4f2829~mv2.png" alt=""><span style="color:#ffffff">Pré-Vestibular</span></div>
+            <p class="projeto-sub">Preparação para o ensino superior</p>
+            <div class="projeto-extra">
+              <p class="projeto-frase">Curso preparatório para as provas de vestibular e do Enem.</p>
+              <span class="pilula">Quero participar <svg width="22" height="10" viewBox="0 0 22 10" aria-hidden="true"><path d="M0 5h20M16 1l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            </div>
+          </div>
+        </a>
+        <!-- Projeto: Reforça Jacaré -->
+        <a class="projeto" href="https://www.maiseducacao.org/reforca-jacare">
+          <img class="projeto-foto" src="https://static.wixstatic.com/media/d2b534_7f70adacfddd447286d0c23471ebee90~mv2.jpeg/v1/fill/w_600,h_750,al_c,q_80/d2b534_7f70adacfddd447286d0c23471ebee90~mv2.jpeg" alt="" loading="lazy">
+          
+          <div class="projeto-painel">
+            <div class="assinatura-barra"><img src="https://static.wixstatic.com/media/d2b534_2160f10e6fdf410aa7859b78e38d3cbd~mv2.png" alt=""><span style="color:#292530">Reforça Jacaré</span></div>
+            <p class="projeto-sub">Aprendizado e desenvolvimento básico · 6 a 10 anos</p>
+            <div class="projeto-extra">
+              <p class="projeto-frase">Reforço escolar para crianças, garantindo que tenham uma educação mais sólida.</p>
+              <span class="pilula">Quero participar <svg width="22" height="10" viewBox="0 0 22 10" aria-hidden="true"><path d="M0 5h20M16 1l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            </div>
+          </div>
+        </a>
+        <!-- Projeto: Atend. Jurídico -->
+        <a class="projeto" href="https://www.maiseducacao.org/atendimento-juridico">
+          <img class="projeto-foto" src="https://static.wixstatic.com/media/nsplsh_d36a47fd47a743fdbcaa691cfb05d6f4~mv2.jpg/v1/fill/w_600,h_750,al_c,q_80/nsplsh_d36a47fd47a743fdbcaa691cfb05d6f4~mv2.jpg" alt="" loading="lazy">
+          
+          <div class="projeto-painel">
+            <div class="assinatura-barra"><img src="https://static.wixstatic.com/media/d2b534_92a44337d486427f8c5d5c10c0f520e2~mv2.png" alt=""><span style="color:#ffffff">Atend. Jurídico</span></div>
+            <p class="projeto-sub">Assistência jurídica</p>
+            <div class="projeto-extra">
+              <p class="projeto-frase">Orientação para garantir e facilitar o acesso a direitos.</p>
+              <span class="pilula">Quero participar <svg width="22" height="10" viewBox="0 0 22 10" aria-hidden="true"><path d="M0 5h20M16 1l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            </div>
+          </div>
+        </a>
+    </div>
+  </div>
+</section>
+
+<!-- ==========================================================================
+     4 · INSCRIÇÕES (AME Qualifica)
+     ========================================================================== -->
+<section class="inscricoes" id="inscricoes" aria-labelledby="titulo-inscricoes">
+  <div class="conteudo">
+    <div class="inscricoes-topo">
+      <div>
+        <p class="chapeu">Inscrições · [em breve]</p>
+        <h2 class="titulo" id="titulo-inscricoes">Qualificação para o trabalho</h2>
+      </div>
+      <img src="https://static.wixstatic.com/media/d2b534_e308a5351d7046ebab9d1832c3340e9f~mv2.png" alt="AME Qualifica">
+    </div>
+    <div class="cursos">
+        <article class="curso">
+          <img src="https://static.wixstatic.com/media/d2b534_43401a14352c4bf6b9b9daea3f031095~mv2.png/v1/fill/w_640,h_640,al_c,q_80/d2b534_43401a14352c4bf6b9b9daea3f031095~mv2.png" alt="" loading="lazy">
+          <div>
+            <p class="curso-chapeu">Inscrições · [em breve]</p>
+            <h3>Curso de<br><strong>Cozinheiro</strong></h3>
+            <!-- EDITAR: carga horária e período -->
+            <p class="curso-info">Carga horária: [a definir]<br>Período: [a definir]</p>
+            <a class="botao botao-amarelo" href="https://www.maiseducacao.org/ame-qualifica">Inscreva-se</a>
+          </div>
+        </article>
+        <article class="curso">
+          <img src="https://static.wixstatic.com/media/d2b534_f9e93da37cbf49efb62089c959b78df9~mv2.png/v1/fill/w_640,h_640,al_c,q_80/d2b534_f9e93da37cbf49efb62089c959b78df9~mv2.png" alt="" loading="lazy">
+          <div>
+            <p class="curso-chapeu">Inscrições · [em breve]</p>
+            <h3>Curso de<br><strong>Montador de Móveis</strong></h3>
+            <!-- EDITAR: carga horária e período -->
+            <p class="curso-info">Carga horária: [a definir]<br>Período: [a definir]</p>
+            <a class="botao botao-amarelo" href="https://www.maiseducacao.org/ame-qualifica">Inscreva-se</a>
+          </div>
+        </article>
+    </div>
+  </div>
+</section>
+
+<!-- ==========================================================================
+     5 · COMO APOIAR
+     ========================================================================== -->
+<section class="apoiar" id="apoiar" aria-labelledby="titulo-apoiar">
+  <div class="conteudo">
+    <p class="chapeu">Como apoiar</p>
+    <h2 class="titulo" id="titulo-apoiar">Faça parte dessa história</h2>
+    <p class="texto" style="max-width:560px">Doando, dando seu tempo ou trazendo sua empresa: cada forma de apoio mantém as aulas e os projetos acontecendo.</p>
+    <div class="apoio-lista">
+      <article class="apoio-card doe" id="card-doe">
+        <div class="icone" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#e8b950" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/></svg></div>
+        <h3>Doe</h3>
+        <p>Doações via PIX mantêm os projetos funcionando. A chave é o CNPJ da AME.</p>
+        <div class="pix">
+          <span><span class="pix-rotulo">Chave PIX (CNPJ)</span><span class="pix-chave">57.125.059/0001-23</span></span>
+          <button type="button" class="copiar" data-copiar="57.125.059/0001-23">Copiar</button>
+        </div>
+        <button type="button" class="botao botao-amarelo" id="abrir-qr">Ver QR Code</button>
+        <!-- QR Code oficial (Pix estático, chave CNPJ). Para trocar, substitua a imagem e o CODIGO_PIX no script. -->
+        <div class="qr" id="qr" role="region" aria-label="QR Code Pix">
+          <h4>Doe via Pix</h4>
+          <p>Contribua para a continuidade de nossos projetos.</p>
+          <div class="qr-img"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAWsAAAFrAQAAAAA/PZXVAAAHY0lEQVR42u1bzY4jSRmMrCyparQrZYmVGG7pR+AEt8laxB0eAXiKlRCu9OxeuMELsMxbcECa9DwBI06cSF9BsGkE2rSUXcEhy27/VLvtmemdttV1mml/qk5Hfj8RkdmCOONZFDjreQp/Cn8Kfwp/Cv+g4RRCCNHeNACAEigxL7AQ5VIAC7tq5kIIUR95++TsxTSXAWRFMqBcik5M5li2qwZTKN5oFisjaoBkf305447Hk+wrjyoY0okIw2Bk0IwwgOkr9lAuAdOKpC9OyZQPs3b/eIAsl91NrV0JrPQrC+VIJ5bCynDv2ydb5VGetJjwoF/1A9dqUq8E53alXbmczNRbK5oFABHv3FW7nZFuZJsvufjyDmtiCaGCE9pj0aKKN59gTkBAFQAkwd/e/fb69ufN9Y2yAJETod9kut1EWWCrA6+EEBMUi4mIeEX9+4SFBcxXy1ZEYNVgJkR5uJgJgPbxIePvLe286JDxmVg0Q70cNOzhSTAW6JJiUuwrOgB95buoNiH+zHHwuFOsBYCI7bRp9kYZgCpA0k8rMgEpD/6knIi6r4KRUc8OkfEXUE3h5PBiQCbuItORZDAzkpKU5Ix0kq6j70gH6DtyZvexV9SwQZJRswrIyLiknIzokmZStNCsggHQb9OfPWMkAikMyHAbo4/1VZt7OvDJyNB3XxjaH9a9Ch0+7WTQX8a6q0vz5+p1X/ENoAVJ+jW3sc9hARuDw38dgB7RReAnaJl7u72YnDlLCFmguOV3Ca7d4QQr8/dnfxPE/HVcIH3mbj57+7Xk3AAvl5Nf3ggQiz/UcfvtzegS7IVQ5rE8HB9lflqRUA55gEn6jqSk64GppONowz7Gvx5xW0q7Y9gfLT5aoGNAx4DclgDtSIqgLWAYdb+nytxWhcfNv+oHUgfvI1XieeH1dvhK9FCfC00rjMWyBTQjgJXg8znp36DyY+SKa441WS8hAmh4AnW7GLbkACda9MVEAHjxKVD+Lqee383AXHwAIOkwsCXlBemgyIgpFGU4SLHTt+m7QeZMF8KPs+EDHqlJOhkg1mzJiwjIgGnFvqKTUdvqatlSbqT9qI02t1i0CaYTA/S6l3QrzRL4cim6dPD25gpstONdbLDRplAuKTLCkG5jo6GvyAgAp+XMNVkiGRnOGMCAKTRlMLnPUJKMEFE55ql/GjLNQ+mmj6M9OGgx3yVF0gsGk+lPxwCSs+tT8ifkDDQByIguaiaY3GoG+jNLABQPVVkc2fo6T714Wcg0R1RZIZlHs+9IomIvvQHAqBkVU7WLTF+uB6Ub8Cibd60mPLLi22UcTQFY1O1GaX6LVHcobd79fyPa7XCVsHSoPi8BzIQA/mFvnhf4pGUDAH/F6o+XkzP3s9RMfptbDuzuLD4gq7KOZFKEYl+F/KnvomLCecTw8fSZ5ogqw10tZIv++OmNEDIAWFos27QSBWCg+NXKdPVSlJV/ObqYsIv29N0o80fqYu1JDZsk6TaC3gFr+tNDkdEcoz/1ZH+b/OUN+XG6/4v1J/W3tsZEOI8CLdCK1nmgBybljiUCGCgn6E1SlCEfXtOJqPPxo59eEY9sswxvDz8+VGV9FqrTwSxa6zOXvRAn72RLF4hMOo3p3ZpFWb97JOUY9CxmthT1LLv79zXs++2cR2Uw3m+OlgD4LAIqlP/6WVdHKxcN1NuvAQgVflNorGrDtWt/ZtO7dB7ZVxw0xtp6zWdDSbGHtlBun2Hvp6Lf+z0POJvO7+93ztX7q6mvOI/KAhAML6Ao6UTSzJZIFxUZzQ4ybv/0djgR2ofqcZ4InZbv+SBj8issXxOgAORCEBpYFARKAvWy6LEoqt23u/0iHYAkIi+tmo6FD/ay2Phnw89fAkhDYmy/vVa2XLaI6KKiaBYJMEK0v64Xxc3kBaDtuyTwwzK9ExcTxyxAj9sj/HK0VgdLZMaheDQlCeh8UE1GbSs60ourGfLrzhZOs0SicjKYwSzKDcpAOUZ0DJAXaxaF8zKyObTRIiBzYiQY0nUMYDCSHpkYjtAff0Am+iuz0RghBgkPdPlsx2bmnEEzHEUG9poMRjvucQwlkyTnw1UhSQvlAHQAADN2IaYoNxdAynVu8jEM+ZP6zKnhTQFgUcfhe5aIDsBP8//qcrKjPW49bCO5MYuUmwJTHPqRR7epOc8SCQ9tiYwvprjVq2ndOMSOe7S5TW5y5TEpJuWn0E4Gg9zLh+tp76fKvkODsTkjfDKs3Y4zbNIbBkyrAGSDMUOVKnLUYGxG8SguwWA8cfJtXcaXpKA3gwUghwsx+ZpDNer+2NtBWb6PEPpQ1fRg4jnhe+H7NtUo8QzJsf8LgG9QwgK1bffD/yf++YNn87pixI/szc/fsAXwHyvZYvVj8afj+f4gMuvM0nYnv70+qLXJsfCKIi4slm3FOekNoCVZAIac22tRZfubs97Vl3e1pWDyLQ+X//Aln3YYRtzNIy9ce5xiFg2jTNFWdAkYTGlJ9tAzkqdeiLlkHrn/iKc/kX4Kfwp/Cn8K/0jh/wfmbRFhQLudJAAAAABJRU5ErkJggg==" alt="QR Code Pix da Associação Mais Educação"></div>
+          <div class="qr-acoes">
+            <button type="button" class="copiar" id="copiar-codigo">Copiar código Pix</button>
+            <button type="button" class="botao botao-claro" id="fechar-qr">Fechar</button>
+          </div>
+        </div>
+      </article>
+      <article class="apoio-card">
+        <div class="icone" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#614998" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg></div>
+        <h3>Seja voluntário</h3>
+        <p>Dê aula de reforço, apoie eventos ou ajude na comunicação. As vagas abertas estão na plataforma Atados.</p>
+        <!-- EDITAR: link das vagas no Atados -->
+        <a class="link" href="https://www.atados.com.br/ong/ame-associacao-educacional-mais-educacao-373731/vagas">Ver vagas no Atados</a>
+      </article>
+      <article class="apoio-card">
+        <div class="icone" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#614998" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M3 13h18"/></svg></div>
+        <h3>Seja parceiro</h3>
+        <p>Empresas e instituições podem apoiar com recursos financeiros, materiais ou o voluntariado da equipe.</p>
+        <!-- EDITAR: WhatsApp para parcerias -->
+        <a class="link" href="https://wa.me/5521977180459?text=Ol%C3%A1%2C%20vim%20do%20site%20e%20gostaria%20de%20saber%20como%20me%20torno%20um%20parceiro%20da%20ONG">Falar com a AME</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ==========================================================================
+     6 · PARCEIROS · EDITAR: cada logo é um <li> (endereço da imagem em src)
+     ========================================================================== -->
+<section class="parceiros" aria-labelledby="titulo-parceiros">
+  <div class="conteudo">
+    <p class="chapeu" id="titulo-parceiros">Parceiros</p>
+    <ul>
+        <li><img src="https://static.wixstatic.com/media/d2b534_28da301943b14e85aa512649c1176bbc~mv2.png" alt="Versar Espaço de Dança" loading="lazy"></li>
+        <li><img src="https://static.wixstatic.com/media/d2b534_02ac232f23564a45807fb04e36074628~mv2.png" alt="Petshopping Vet" loading="lazy"></li>
+        <li><img src="https://static.wixstatic.com/media/d2b534_da1dc7aa64014fe0b83f9c66e7575e2e~mv2.png" alt="Sinuca Bar &amp; Restaurante" loading="lazy"></li>
+    </ul>
+  </div>
+</section>
+
+<!-- FAIXA 2 · EDITAR: frases e cores em "FAIXAS", no script do fim da página -->
+<div class="faixa"><div class="faixa-rail" id="faixa-2" role="img" aria-label="Faixa animada"><div class="faixa-track"></div></div></div>
+
+<!-- ==========================================================================
+     7 · NOSSO IMPACTO + PRESTAÇÃO DE CONTAS
+     EDITAR: o número final fica em data-valor (a contagem anima até ele)
+     ========================================================================== -->
+<section class="impacto" id="impacto" aria-labelledby="titulo-impacto">
+  <div class="conteudo">
+    <p class="chapeu">Nosso impacto</p>
+    <h2 class="titulo" id="titulo-impacto">Resultados que a comunidade constrói</h2>
+    <div class="numeros">
+      <div class="numero" aria-label="Mais de 80 crianças atendidas no Reforça Jacaré"><p class="numero-valor"><span data-valor="80">80</span><sup>+</sup></p><p class="numero-rotulo">crianças atendidas no <strong>Reforça Jacaré</strong></p><span class="numero-faixa" aria-hidden="true"></span></div>
+      <div class="numero" aria-label="Mais de 10 jovens e adultos atendidos no AJA"><p class="numero-valor"><span data-valor="10">10</span><sup>+</sup></p><p class="numero-rotulo">jovens e adultos atendidos no <strong>Aprendizado de Jovens e Adultos (AJA)</strong></p><span class="numero-faixa" aria-hidden="true"></span></div>
+    </div>
+    <div class="contas" id="contas">
+      <p class="chapeu">Prestação de contas</p>
+      <!-- EDITAR: anos (todos levam à página de prestação de contas) -->
+      <div class="contas-lista">
+        <a class="conta" href="https://www.maiseducacao.org/prestacao-de-contas">Prestação de contas 2025</a>
+        <a class="conta" href="https://www.maiseducacao.org/prestacao-de-contas">Prestação de contas 2024</a>
+        <a class="conta" href="https://www.maiseducacao.org/prestacao-de-contas">Prestação de contas 2023</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==========================================================================
+     8 · VOZES DA COMUNIDADE
+     EDITAR: cada depoimento é um <figure class="voz">. Os atuais são de
+     demonstração: troque por relatos reais, com autorização, e apague o aviso.
+     ========================================================================== -->
+<section class="vozes" aria-labelledby="titulo-vozes">
+  <div class="conteudo">
+    <div class="vozes-topo">
+      <div>
+        <p class="chapeu">Vozes da comunidade</p>
+        <h2 class="titulo" id="titulo-vozes">O impacto também tem voz.</h2>
+        <p class="texto" style="margin:0">Histórias de quem participa, acompanha e constrói a AME.</p>
+      </div>
+      <div class="vozes-setas">
+        <button type="button" class="seta" id="voz-ant" aria-label="Depoimento anterior"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg></button>
+        <button type="button" class="seta" id="voz-prox" aria-label="Próximo depoimento"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></button>
+      </div>
+    </div>
+    <div class="vozes-trilho" id="vozes-trilho" tabindex="0" aria-label="Depoimentos">
+          <figure class="voz">
+            <span class="voz-tag">Famílias</span>
+            <span class="voz-aspas" aria-hidden="true">“</span>
+            <blockquote>“Meu filho chega em casa animado para contar o que aprendeu. É muito bom ver esse interesse crescendo.”</blockquote>
+            <figcaption><span class="voz-inicial" aria-hidden="true">F</span><span><strong>Familiar de participante</strong><br>Reforça Jacaré · Texto fictício</span></figcaption>
+          </figure>
+          <figure class="voz">
+            <span class="voz-tag">Voluntariado</span>
+            <span class="voz-aspas" aria-hidden="true">“</span>
+            <blockquote>“Vim para contribuir com meu tempo e descobri um espaço de troca. A comunidade também ensina muito para a gente.”</blockquote>
+            <figcaption><span class="voz-inicial" aria-hidden="true">P</span><span><strong>Pessoa voluntária</strong><br>Equipe AME · Texto fictício</span></figcaption>
+          </figure>
+          <figure class="voz">
+            <span class="voz-tag">Crianças</span>
+            <span class="voz-aspas" aria-hidden="true">“</span>
+            <blockquote>“Eu gosto de aprender junto com meus amigos e de poder perguntar quando não entendo alguma coisa.”</blockquote>
+            <figcaption><span class="voz-inicial" aria-hidden="true">C</span><span><strong>Criança participante</strong><br>Reforça Jacaré · Texto fictício</span></figcaption>
+          </figure>
+          <figure class="voz">
+            <span class="voz-tag">AJA</span>
+            <span class="voz-aspas" aria-hidden="true">“</span>
+            <blockquote>“Voltar a estudar foi uma decisão importante. Cada encontro me dá mais confiança para continuar.”</blockquote>
+            <figcaption><span class="voz-inicial" aria-hidden="true">P</span><span><strong>Participante do AJA</strong><br>Aprendizado de Jovens e Adultos · Texto fictício</span></figcaption>
+          </figure>
+          <figure class="voz">
+            <span class="voz-tag">Comunidade</span>
+            <span class="voz-aspas" aria-hidden="true">“</span>
+            <blockquote>“Ter um espaço como a AME por perto faz a gente acreditar mais nas possibilidades que podem nascer aqui.”</blockquote>
+            <figcaption><span class="voz-inicial" aria-hidden="true">P</span><span><strong>Pessoa da comunidade</strong><br>Território · Texto fictício</span></figcaption>
+          </figure>
+          <figure class="voz">
+            <span class="voz-tag">Parcerias</span>
+            <span class="voz-aspas" aria-hidden="true">“</span>
+            <blockquote>“A parceria ganha sentido quando diferentes pessoas se unem para ampliar oportunidades de verdade.”</blockquote>
+            <figcaption><span class="voz-inicial" aria-hidden="true">O</span><span><strong>Organização parceira</strong><br>Rede de apoio · Texto fictício</span></figcaption>
+          </figure>
+    </div>
+    <div class="vozes-rodape">
+      <span><strong>Demonstração:</strong> depoimentos fictícios para testar o layout. Substituir por relatos reais, com autorização, antes da publicação.</span>
+      <span class="contador" id="voz-contador">01 / 06</span>
+    </div>
+  </div>
+</section>
+
+<!-- ==========================================================================
+     9 · FALE COM A GENTE
+     O formulário abre o WhatsApp da AME com a mensagem pronta (nada fica salvo no site).
+     ========================================================================== -->
+<section class="contato" id="contato" aria-labelledby="titulo-contato">
+  <img class="contato-decor" src="https://static.wixstatic.com/media/d2b534_6f4540ed77b44392ad2bb230159d3f49~mv2.png" alt="" aria-hidden="true" loading="lazy">
+  <div class="conteudo">
+    <div>
+      <p class="chapeu">Contato</p>
+      <h2 class="titulo" id="titulo-contato">Fale com a gente</h2>
+      <!-- EDITAR: endereço e contatos -->
+      <p class="contato-dados">R. Conselheiro Mayrink, 339 · Jacaré<br>Rio de Janeiro – RJ · 20960-140<br><br>
+        WhatsApp <a href="https://wa.me/5521977180459">(21) 97718-0459</a><br>
+        Instagram <a href="https://www.instagram.com/amemaiseducacao/">@amemaiseducacao</a></p>
+    </div>
+    <form class="form" id="form-contato" novalidate>
+      <label for="c-nome">Nome</label><input id="c-nome" name="nome" type="text" placeholder="Nome" autocomplete="name" required>
+      <label for="c-zap">WhatsApp</label><input id="c-zap" name="whatsapp" type="tel" placeholder="WhatsApp" autocomplete="tel">
+      <label for="c-email">E-mail</label><input id="c-email" name="email" type="email" placeholder="E-mail" autocomplete="email">
+      <label for="c-msg">Mensagem</label><textarea id="c-msg" name="mensagem" placeholder="Mensagem" required></textarea>
+      <p class="erro" id="erro-contato" role="alert" hidden>Escreva seu nome e a mensagem.</p>
+      <button class="botao botao-amarelo" type="submit">Enviar pelo WhatsApp</button>
+      <p class="form-aviso">A mensagem vai direto para o WhatsApp da AME. Nada fica salvo neste site.</p>
+    </form>
+  </div>
+</section>
+
+</main>
+
+<!-- ==========================================================================
+     SCRIPTS
+     ========================================================================== -->
+<script>
+(function () {
+  /* ======================================================================
+     PONTE DE LINKS (não precisa editar)
+     O Wix não deixa um bloco de código abrir links sozinho. Então o bloco
+     pede para a página abrir, pelo código do Velo (arquivo velo-pagina.js).
+     Se o Velo não responder, aparece uma caixa com o contato e a mensagem.
+     ====================================================================== */
+  var TELEFONE_VISIVEL = "(21) 97718-0459";   /* EDITAR se o WhatsApp mudar */
+  var esperando = null;
+
+  window.addEventListener("message", function (ev) {
+    if (ev.data && ev.data.tipo === "ame-link-ok" && esperando) {
+      clearTimeout(esperando.timer); esperando = null;
+    }
+  });
+
+  function ehWhatsApp(url) { return /^https:\/\/(wa\.me|api\.whatsapp\.com)\//.test(url); }
+
+  function textoDaMensagem(url) {
+    try { return new URL(url).searchParams.get("text") || ""; } catch (e) { return ""; }
+  }
+
+  function copiar(texto, botao) {
+    function ok(sucesso) {
+      botao.textContent = sucesso ? "Mensagem copiada" : "Não foi possível copiar";
+      setTimeout(function () { botao.textContent = "Copiar mensagem"; }, 2500);
+    }
+    if (navigator.clipboard && window.isSecureContext) {
+      navigator.clipboard.writeText(texto).then(function () { ok(true); }, function () { ok(antigo()); });
+    } else { ok(antigo()); }
+    function antigo() {
+      var t = document.createElement("textarea"); t.value = texto; t.setAttribute("readonly", "");
+      t.style.position = "absolute"; t.style.left = "-9999px"; document.body.appendChild(t); t.select();
+      var r = false; try { r = document.execCommand("copy"); } catch (e) {}
+      document.body.removeChild(t); return r;
+    }
+  }
+
+  function planoB(url, perto) {
+    if (!ehWhatsApp(url)) { window.open(url, "_blank"); return; }
+    var antiga = document.querySelector(".ame-plano-b"); if (antiga) antiga.remove();
+    var msg = textoDaMensagem(url);
+    var caixa = document.createElement("div");
+    caixa.className = "ame-plano-b"; caixa.setAttribute("role", "status");
+    caixa.innerHTML =
+      '<p><strong>Fale com a AME pelo WhatsApp</strong></p>' +
+      '<p>Mande uma mensagem para <strong>' + TELEFONE_VISIVEL + '</strong>.' +
+      (msg ? ' Se quiser, copie a mensagem pronta e cole na conversa.' : '') + '</p>' +
+      (msg ? '<button type="button" class="ame-plano-b-copiar">Copiar mensagem</button>' : '');
+    (perto && perto.parentNode ? perto.parentNode : document.body).insertBefore(caixa, perto ? perto.nextSibling : null);
+    var b = caixa.querySelector(".ame-plano-b-copiar");
+    if (b) b.addEventListener("click", function () { copiar(msg, b); });
+  }
+
+  function ehCelular() {
+    return /Android|iPhone|iPad|iPod/i.test(navigator.userAgent) ||
+           (window.matchMedia && window.matchMedia("(pointer: coarse)").matches);
+  }
+
+  /* Converte wa.me/numero?text=... em whatsapp://send?phone=numero&text=... (abre o app) */
+  function linkDoApp(url) {
+    try {
+      var u = new URL(url);
+      var fone = u.hostname === "wa.me" ? u.pathname.replace(/\D/g, "") : (u.searchParams.get("phone") || "");
+      var texto = u.searchParams.get("text") || "";
+      if (!fone) return null;
+      return "whatsapp://send?phone=" + fone + (texto ? "&text=" + encodeURIComponent(texto) : "");
+    } catch (e) { return null; }
+  }
+
+  /* No celular: tenta abrir o app do WhatsApp sem sair do site.
+     Se o app não abrir em 3 segundos, usa o caminho normal (pela página do Wix). */
+  function tentarApp(url, perto) {
+    var app = linkDoApp(url);
+    if (!app) return false;
+    var abriu = false;
+    function saiu() { if (document.hidden) abriu = true; }
+    document.addEventListener("visibilitychange", saiu);
+    window.addEventListener("pagehide", function () { abriu = true; }, { once: true });
+    window.addEventListener("blur", function () { abriu = true; }, { once: true });
+    setTimeout(function () {
+      document.removeEventListener("visibilitychange", saiu);
+      if (!abriu) pedirParaPagina(url, perto);
+    }, 3000);
+    try { window.location.href = app; } catch (e) { return false; }
+    return true;
+  }
+
+  /* Função usada pelos links e pelo formulário */
+  window.AME_abrirLink = function (url, perto) {
+    if (ehWhatsApp(url) && ehCelular() && tentarApp(url, perto)) return;
+    pedirParaPagina(url, perto);
+  };
+
+  function pedirParaPagina(url, perto) {
+    if (esperando) clearTimeout(esperando.timer);
+    esperando = { timer: setTimeout(function () { esperando = null; planoB(url, perto); }, 700) };
+    try { window.parent.postMessage({ tipo: "ame-abrir-link", url: url }, "*"); }
+    catch (e) { clearTimeout(esperando.timer); esperando = null; planoB(url, perto); }
+  };
+
+  /* Rola a página do site até um ponto deste bloco (ex.: botão "Doe agora").
+     O Velo rola a página; sem Velo, tenta rolar direto. */
+  window.AME_rolar = function (alvo) {
+    var y = Math.max(0, Math.round(alvo.getBoundingClientRect().top + (window.scrollY || 0)) - 16);
+    var feito = false;
+    function ok(ev) { if (ev.data && ev.data.tipo === "ame-rolar-ok") { feito = true; window.removeEventListener("message", ok); } }
+    window.addEventListener("message", ok);
+    try { window.parent.postMessage({ tipo: "ame-rolar", y: y }, "*"); } catch (e) {}
+    setTimeout(function () {
+      window.removeEventListener("message", ok);
+      if (!feito) { try { alvo.scrollIntoView({ behavior: "smooth", block: "start" }); } catch (e) {} }
+    }, 500);
+  };
+
+  /* Links internos do bloco (href="#secao") rolam a página até a seção */
+  document.addEventListener("click", function (ev) {
+    var a = ev.target.closest && ev.target.closest('a[href^="#"]');
+    if (!a || a.getAttribute("href").length < 2) return;
+    var alvo = document.getElementById(a.getAttribute("href").slice(1));
+    if (!alvo) return;
+    ev.preventDefault();
+    window.AME_rolar(alvo);
+  });
+
+  /* Todo link para fora do bloco passa pela ponte */
+  document.addEventListener("click", function (ev) {
+    var a = ev.target.closest && ev.target.closest('a[href^="http"]');
+    if (!a) return;
+    ev.preventDefault();
+    window.AME_abrirLink(a.href, a.closest(".acoes") || a);
+  });
+})();
+</script>
+<script>
+(function () {
+  /* ======================================================================
+     FAIXAS · EDITAR: frases, tema ("ameixa", "roxo", "amarelo", "creme"),
+     separador ("lapis", "logo", "nenhum"), direção e velocidade.
+     ====================================================================== */
+  var FAIXAS = {
+    "faixa-1": { frases: ["Mais educação", "Mais oportunidades", "Mais caminhos", "Mais futuro"], tema: "ameixa", separador: "lapis", alternarCores: true, direcao: "esquerda", velocidade: 70 },
+    "faixa-2": { frases: ["+ futuro", "+ sonhos", "+ caminhos", "+ vozes", "+ oportunidades", "+ gente junto"], tema: "amarelo", separador: "logo", alternarCores: false, direcao: "direita", velocidade: 60 }
+  };
+  var TEMAS = {
+    ameixa:  { fundo: "#562568", texto: "#FCF8F0", destaque: "#E8B950" },
+    roxo:    { fundo: "#614998", texto: "#FCF8F0", destaque: "#E8B950" },
+    amarelo: { fundo: "#E8B950", texto: "#292530", destaque: "#562568" },
+    creme:   { fundo: "#FCF8F0", texto: "#614998", destaque: "#562568" }
+  };
+  var SIMBOLOS = {
+    lapis: '<span class="faixa-simbolo"><svg viewBox="0 0 100 100" aria-hidden="true"><path fill="currentColor" d="M0 100 47.24 29.43C56.14 15.77 72.33 0 88.84 0H100V100Z"/></svg></span>',
+    logo: '<span class="faixa-simbolo logo"><svg aria-hidden="true"><use href="#logo-ame"/></svg></span>',
+    nenhum: ''
+  };
+  function iniciarFaixa(rail, cfg) {
+    var track = rail.querySelector(".faixa-track");
+    var tema = TEMAS[cfg.tema] || TEMAS.ameixa;
+    rail.style.setProperty("--f-fundo", tema.fundo);
+    rail.style.setProperty("--f-texto", tema.texto);
+    rail.style.setProperty("--f-destaque", tema.destaque);
+    if (cfg.direcao === "direita") track.classList.add("direita");
+    rail.setAttribute("aria-label", "Faixa com as frases: " + cfg.frases.join(", "));
+    function item(t, alt) {
+      var s = document.createElement("span");
+      s.className = "faixa-item" + (cfg.alternarCores && alt ? " alt" : "");
+      s.innerHTML = (SIMBOLOS[cfg.separador] || SIMBOLOS.lapis) + '<span class="faixa-palavra"></span>';
+      s.querySelector(".faixa-palavra").textContent = t;
+      return s;
+    }
+    function montar() {
+      track.style.animation = "none"; track.innerHTML = "";
+      var seq = document.createElement("div"); seq.className = "faixa-seq"; track.appendChild(seq);
+      var i = 0;
+      while (seq.getBoundingClientRect().width < rail.clientWidth * 1.35 || i < 3) {
+        cfg.frases.forEach(function (t, k) { seq.appendChild(item(t, (i * cfg.frases.length + k) % 2 === 1)); });
+        if (++i > 20) break;
+      }
+      track.appendChild(seq.cloneNode(true));
+      var d = Math.ceil(seq.getBoundingClientRect().width);
+      if (!d || !rail.clientWidth) { setTimeout(montar, 200); return; }
+      track.style.setProperty("--f-loop", d + "px");
+      track.style.setProperty("--f-speed", Math.max(16, d / cfg.velocidade) + "s");
+      track.offsetHeight; track.style.animation = "";
+    }
+    montar();
+    var largura = 0;
+    if ("ResizeObserver" in window) new ResizeObserver(function () { if (rail.clientWidth && rail.clientWidth !== largura) { largura = rail.clientWidth; montar(); } }).observe(rail);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(montar);
+  }
+
+  Object.keys(FAIXAS).forEach(function (id) { var r = document.getElementById(id); if (r) iniciarFaixa(r, FAIXAS[id]); });
+
+  /* NÚMEROS DO IMPACTO: contam de 0 até o valor quando aparecem na tela */
+  var nums = document.querySelectorAll("[data-valor]");
+  function contar(el) {
+    var fim = parseInt(el.getAttribute("data-valor"), 10) || 0, t0 = null;
+    function passo(t) { if (!t0) t0 = t; var p = Math.min(1, (t - t0) / 2000); el.textContent = Math.round(fim * (1 - Math.pow(1 - p, 3))); if (p < 1) requestAnimationFrame(passo); }
+    requestAnimationFrame(passo);
+  }
+  if ("IntersectionObserver" in window) {
+    var io = new IntersectionObserver(function (es) { es.forEach(function (en) { if (en.isIntersecting) { contar(en.target); io.unobserve(en.target); } }); }, { threshold: .5 });
+    nums.forEach(function (n) { io.observe(n); });
+  }
+
+  /* COMO APOIAR: copiar chave, QR Code e código Pix */
+  var CODIGO_PIX = "00020126500014br.gov.bcb.pix0114571250590001230210Doacao AME5204000053039865802BR5924ASSOCIACAO MAIS EDUCACAO6014RIO DE JANEIRO622905259cWvdvFmqF5XChO6AWD1uL8sX63040599";   /* EDITAR se o QR Code mudar */
+  function copiar(texto, botao, rotulo) {
+    function fim(ok) { botao.textContent = ok ? "Copiado" : "Copie manualmente"; setTimeout(function () { botao.textContent = rotulo; }, 2500); }
+    function antigo() { var t = document.createElement("textarea"); t.value = texto; t.style.position = "absolute"; t.style.left = "-9999px"; document.body.appendChild(t); t.select(); var r = false; try { r = document.execCommand("copy"); } catch (e) {} document.body.removeChild(t); return r; }
+    if (navigator.clipboard && window.isSecureContext) navigator.clipboard.writeText(texto).then(function () { fim(true); }, function () { fim(antigo()); });
+    else fim(antigo());
+  }
+  document.querySelectorAll("[data-copiar]").forEach(function (b) { var r = b.textContent; b.addEventListener("click", function () { copiar(b.getAttribute("data-copiar"), b, r); }); });
+  var cardDoe = document.getElementById("card-doe"), qr = document.getElementById("qr");
+  document.getElementById("abrir-qr").addEventListener("click", function () { qr.classList.add("aberto"); cardDoe.classList.add("qr-on"); document.getElementById("fechar-qr").focus(); });
+  document.getElementById("fechar-qr").addEventListener("click", function () { qr.classList.remove("aberto"); cardDoe.classList.remove("qr-on"); document.getElementById("abrir-qr").focus(); });
+  var bCod = document.getElementById("copiar-codigo");
+  bCod.addEventListener("click", function () { copiar(CODIGO_PIX, bCod, "Copiar código Pix"); });
+
+  /* VOZES: setas e contador */
+  var trilho = document.getElementById("vozes-trilho"), cont = document.getElementById("voz-contador");
+  var cards = trilho.querySelectorAll(".voz"), total = cards.length;
+  function passo() { return cards.length > 1 ? cards[1].offsetLeft - cards[0].offsetLeft : trilho.clientWidth; }
+  function atual() { return Math.min(total, Math.round(trilho.scrollLeft / passo()) + 1); }
+  function dois(n) { return (n < 10 ? "0" : "") + n; }
+  function atualizar() { cont.textContent = dois(atual()) + " / " + dois(total); }
+  document.getElementById("voz-prox").addEventListener("click", function () { trilho.scrollBy({ left: passo(), behavior: "smooth" }); });
+  document.getElementById("voz-ant").addEventListener("click", function () { trilho.scrollBy({ left: -passo(), behavior: "smooth" }); });
+  trilho.addEventListener("scroll", function () { window.requestAnimationFrame(atualizar); });
+  atualizar();
+
+  /* FALE COM A GENTE: monta a mensagem e abre o WhatsApp */
+  var form = document.getElementById("form-contato"), erro = document.getElementById("erro-contato");
+  form.addEventListener("submit", function (ev) {
+    ev.preventDefault();
+    var nome = form.nome.value.trim(), msg = form.mensagem.value.trim();
+    erro.hidden = !!(nome && msg);
+    if (!nome || !msg) return;
+    var linhas = ["Olá! Vim do site.", "", "Nome: " + nome];
+    if (form.whatsapp.value.trim()) linhas.push("WhatsApp: " + form.whatsapp.value.trim());
+    if (form.email.value.trim()) linhas.push("E-mail: " + form.email.value.trim());
+    linhas.push("Mensagem: " + msg);
+    window.AME_abrirLink("https://wa.me/5521977180459?text=" + encodeURIComponent(linhas.join("\n")), form.querySelector("button[type=submit]"));
+  });
+})();
+</script>
+</body>
+</html>
