@@ -73,10 +73,11 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 @keyframes faixa-run { from { transform: translateX(0); } to { transform: translateX(calc(-1 * var(--f-loop, 400px))); } }
 
 /* 2 · QUEM SOMOS */
-.quem .conteudo { display: grid; grid-template-columns: .85fr 1.15fr; gap: 56px; align-items: center; }
+.quem .conteudo { display: grid; grid-template-columns: 409px 1fr; gap: 64px; align-items: center; }
 .quem-foto { position: relative; }
-.quem-foto .foto { position: relative; width: 100%; height: auto; aspect-ratio: 1 / 1; }
-.quem-foto .trilha { position: absolute; left: 2%; top: -4%; width: 92%; pointer-events: none; }
+.quem-foto .foto { position: relative; width: 100%; height: auto; aspect-ratio: 409 / 568; object-fit: cover; }
+/* Trilha amarela: mesma posição e tamanho da página original (415 x 611 sobre a foto de 409 x 568) */
+.quem-foto .trilha { position: absolute; left: .5%; top: -4.75%; width: 101.5%; height: auto; pointer-events: none; }
 .quem .titulo strong { color: var(--roxo); }
 .quem-linha { margin: 0 0 10px; font-size: 16px; line-height: 1.55; }
 .quem-linha strong { color: var(--roxo); }
@@ -90,7 +91,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 .projeto-painel { position: absolute; left: 0; right: 0; bottom: 0; min-height: 34%; padding: 16px 16px 18px; background: var(--roxo); transition: padding .3s ease; }
 .assinatura-barra { position: relative; width: 88%; }
 .assinatura-barra img { width: 100%; height: auto; aspect-ratio: 1169 / 168; }
-.assinatura-barra span { position: absolute; left: 50%; right: 2%; top: 50%; transform: translateY(-50%); font-size: clamp(10px, .85vw, 12px); font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.assinatura-barra span { position: absolute; left: 49%; right: 1%; top: 50%; transform: translateY(-50%); padding-left: 4%; text-align: center; font-size: clamp(10px, .85vw, 12px); font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .projeto-sub { margin: 10px 0 0; font-size: 11px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--lilas); transition: opacity .2s; }
 .projeto-extra { max-height: 0; overflow: hidden; opacity: 0; transition: max-height .35s ease, opacity .25s ease; }
 .projeto-frase { margin: 10px 0 14px; font-size: 14px; line-height: 1.45; color: #fff; }
@@ -143,8 +144,9 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 
 /* 6 · PARCEIROS */
 .parceiros { padding: 0 0 72px; }
-.parceiros ul { margin: 0; padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: 28px; align-items: center; }
-.parceiros li img { height: 110px; width: auto; object-fit: contain; }
+.parceiros ul { margin: 0; padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: 32px; align-items: center; }
+.parceiros li { width: 170px; height: 96px; display: flex; align-items: center; justify-content: center; }
+.parceiros li img { max-width: 100%; max-height: 100%; width: auto; height: auto; object-fit: contain; }
 
 /* 7 · NOSSO IMPACTO */
 .impacto { background: var(--creme); }
@@ -200,7 +202,9 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 .form .botao { width: 100%; }
 .form-aviso { margin: 0; font-size: 12px; color: var(--lilas); }
 .erro { margin: 0; font-size: 14px; font-weight: 700; color: var(--amarelo); }
-.contato-decor { position: absolute; right: -40px; bottom: -60px; width: 330px; pointer-events: none; }
+/* Só o "A" do logo, grande e cortado no canto, como na página original */
+.contato-decor { position: absolute; right: 0; bottom: 0; width: 472px; height: 402px; overflow: hidden; pointer-events: none; }
+.contato-decor img { position: absolute; left: 0; top: 30px; height: 560px; width: auto; max-width: none; }
 
 /* ==========================================================================
    TELAS MÉDIAS E CELULAR
@@ -215,7 +219,8 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   .faixa { height: 44px; }
   .faixa-item { gap: 12px; padding: 0 18px; font-size: 15px; }
   .faixa-simbolo { width: 14px; height: 14px; }
-  .quem-foto { margin-right: 18px; }
+  .quem .conteudo { grid-template-columns: 1fr; }
+  .quem-foto { margin-right: 18px; max-width: 409px; }
   .projetos { padding-top: 24px; }
   .projetos-lista { grid-template-columns: 1fr; }
   .apoio-lista { grid-template-columns: 1fr; }
@@ -225,13 +230,15 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   .inscricoes-trilha { width: 300px; right: -90px; top: -30px; }
   .curso { grid-template-columns: 1fr; }
   .curso img { min-height: 0; aspect-ratio: 16 / 10; height: auto; }
-  .parceiros li img { height: 84px; }
+  .parceiros ul { gap: 18px; }
+  .parceiros li { width: calc(50% - 9px); height: 80px; }
   .numeros { grid-template-columns: 1fr; gap: 14px; }
   .numero { min-height: 200px; padding: 38px 26px 26px 32px; }
   .vozes-topo { flex-direction: column; align-items: flex-start; }
   .vozes-trilho { grid-auto-columns: 88%; gap: 12px; }
   .vozes-rodape { flex-direction: column; }
-  .contato-decor { width: 220px; right: -60px; bottom: -40px; opacity: .5; }
+  .contato-decor { width: 260px; height: 220px; opacity: .35; }
+  .contato-decor img { height: 320px; top: 20px; }
 }
 
 
@@ -552,7 +559,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
      O formulário abre o WhatsApp da AME com a mensagem pronta (nada fica salvo no site).
      ========================================================================== -->
 <section class="contato" id="contato" aria-labelledby="titulo-contato">
-  <img class="contato-decor" src="https://static.wixstatic.com/media/d2b534_6f4540ed77b44392ad2bb230159d3f49~mv2.png" alt="" aria-hidden="true" loading="lazy">
+  <div class="contato-decor" aria-hidden="true"><img src="https://static.wixstatic.com/media/d2b534_6f4540ed77b44392ad2bb230159d3f49~mv2.png" alt="" loading="lazy"></div>
   <div class="conteudo">
     <div>
       <p class="chapeu">Contato</p>
@@ -669,7 +676,14 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   }
 
   /* Função usada pelos links e pelo formulário */
+  var dentroDoWix = window.parent !== window;
+
   window.AME_abrirLink = function (url, perto) {
+    /* Página aberta direto (fora do Wix): o próprio navegador abre o link */
+    if (!dentroDoWix) {
+      if (ehWhatsApp(url)) window.open(url, "_blank", "noopener"); else window.location.href = url;
+      return;
+    }
     if (ehWhatsApp(url) && ehCelular() && tentarApp(url, perto)) return;
     pedirParaPagina(url, perto);
   };
@@ -684,6 +698,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   /* Rola a página do site até um ponto deste bloco (ex.: botão "Doe agora").
      O Velo rola a página; sem Velo, tenta rolar direto. */
   window.AME_rolar = function (alvo) {
+    if (window.parent === window) { alvo.scrollIntoView({ behavior: "smooth", block: "start" }); return; }
     var y = Math.max(0, Math.round(alvo.getBoundingClientRect().top + (window.scrollY || 0)) - 16);
     var feito = false;
     function ok(ev) { if (ev.data && ev.data.tipo === "ame-rolar-ok") { feito = true; window.removeEventListener("message", ok); } }

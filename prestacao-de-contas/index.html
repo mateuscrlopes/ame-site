@@ -313,7 +313,14 @@ a:focus-visible, button:focus-visible { outline: 3px solid var(--roxo); outline-
   }
 
   /* Função usada pelos links e pelo formulário */
+  var dentroDoWix = window.parent !== window;
+
   window.AME_abrirLink = function (url, perto) {
+    /* Página aberta direto (fora do Wix): o próprio navegador abre o link */
+    if (!dentroDoWix) {
+      if (ehWhatsApp(url)) window.open(url, "_blank", "noopener"); else window.location.href = url;
+      return;
+    }
     if (ehWhatsApp(url) && ehCelular() && tentarApp(url, perto)) return;
     pedirParaPagina(url, perto);
   };
@@ -328,6 +335,7 @@ a:focus-visible, button:focus-visible { outline: 3px solid var(--roxo); outline-
   /* Rola a página do site até um ponto deste bloco (ex.: botão "Doe agora").
      O Velo rola a página; sem Velo, tenta rolar direto. */
   window.AME_rolar = function (alvo) {
+    if (window.parent === window) { alvo.scrollIntoView({ behavior: "smooth", block: "start" }); return; }
     var y = Math.max(0, Math.round(alvo.getBoundingClientRect().top + (window.scrollY || 0)) - 16);
     var feito = false;
     function ok(ev) { if (ev.data && ev.data.tipo === "ame-rolar-ok") { feito = true; window.removeEventListener("message", ok); } }
