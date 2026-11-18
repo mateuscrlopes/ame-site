@@ -16,7 +16,7 @@ O menu e o rodapé são os do próprio Wix e ficam fora destes arquivos.
 | Pasta | O que é | Onde fica no Wix | Altura no Wix (computador / celular) |
 |---|---|---|---|
 | `inicio/` | Página inicial (computador). Em celulares, abre sozinha a versão de celular (`inicio-celular/`) | Página Início | 3100 (limite do Wix) / ver celular |
-| `inicio-celular/` | Página inicial, versão de celular: topo, projetos, como ajudar, impacto e contato | Aberta pela página inicial em celulares | — / 2650 px |
+| `inicio-celular/` | Página inicial, versão de celular: topo, faixa, quem somos, projetos, como ajudar, impacto e contato | Aberta pela página inicial em celulares | — / 3350 px |
 | `reforca-jacare/` | Página do projeto Reforça Jacaré | `/reforca-jacare` | 2800 / 3850 px |
 | `pre-vestibular/` | Página do Pré-Vestibular AME | `/pre-vestibular` | 2600 / 3620 px |
 | `ame-qualifica/` | Página do AME Qualifica | `/ame-qualifica` | 2650 / 3750 px |

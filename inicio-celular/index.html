@@ -9,10 +9,13 @@
 <!--
 ==========================================================================
   PÁGINA INICIAL · VERSÃO DE CELULAR
-  Mais curta e direta que a do computador. A página inicial (inicio/)
-  abre esta versão sozinha quando a tela do aparelho tem até 760 px.
+  A página inicial (inicio/) abre esta versão sozinha em celulares.
+  Feita para o polegar: botões de largura total, alvos de toque de 48 px,
+  textos curtos e as mesmas marcas visuais do computador (faixa, trilha,
+  cartões em "janela").
 
-  SEÇÕES: Topo · Projetos · Como ajudar · Impacto · Contato
+  SEÇÕES: 1 Topo · Faixa · 2 Quem somos · 3 Projetos · 4 Como ajudar
+          5 Impacto · 6 Contato
   Procure os comentários "EDITAR".
 ==========================================================================
 -->
@@ -20,73 +23,103 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,600;9..40,700;9..40,800&display=swap">
 <style>
-:root { --roxo: #614998; --ameixa: #562568; --lilas: #e9ddf8; --amarelo: #e8b950; --creme: #fcf8f0; --grafite: #292530; --suave: rgba(41, 37, 48, .74); --borda: rgba(97, 73, 152, .2); }
+:root { --roxo: #614998; --ameixa: #562568; --lilas: #e9ddf8; --amarelo: #e8b950; --creme: #fcf8f0; --grafite: #292530; --suave: rgba(41, 37, 48, .74); --borda: rgba(97, 73, 152, .18); }
 * { box-sizing: border-box; }
-html, body { margin: 0; background: #fff; color: var(--grafite); font-family: "DM Sans", system-ui, -apple-system, "Segoe UI", sans-serif; -webkit-font-smoothing: antialiased; }
+html, body { margin: 0; background: #fff; color: var(--grafite); font-family: "DM Sans", system-ui, -apple-system, "Segoe UI", sans-serif; -webkit-font-smoothing: antialiased; -webkit-tap-highlight-color: transparent; }
 img { display: block; max-width: 100%; }
-section { padding: 36px 18px; }
-.chapeu { margin: 0 0 8px; font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--roxo); }
-h2 { margin: 0 0 16px; font-size: 28px; line-height: 1.1; font-weight: 300; letter-spacing: -.02em; }
+section { padding: 36px 20px; }
+.chapeu { margin: 0 0 8px; font-size: 12px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--roxo); }
+h2 { margin: 0 0 18px; font-size: 28px; line-height: 1.1; font-weight: 300; letter-spacing: -.025em; }
 h2 strong { font-weight: 700; color: var(--roxo); }
-a:focus-visible, button:focus-visible { outline: 3px solid var(--amarelo); outline-offset: 3px; border-radius: 8px; }
-.botao { display: flex; align-items: center; justify-content: center; min-height: 52px; border: 0; border-radius: 999px; font: 700 16px "DM Sans", sans-serif; text-decoration: none; cursor: pointer; }
+.texto { margin: 0 0 14px; font-size: 16px; line-height: 1.6; color: var(--suave); }
+a:focus-visible, button:focus-visible { outline: 3px solid var(--amarelo); outline-offset: 3px; border-radius: 10px; }
+.botao { display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%; min-height: 52px; padding: 0 20px; border: 0; border-radius: 999px; font: 700 16px "DM Sans", sans-serif; text-decoration: none; cursor: pointer; }
 .botao-amarelo { background: var(--amarelo); color: var(--grafite); }
 .botao-roxo { background: var(--roxo); color: #fff; }
+.botao-contorno { background: #fff; color: var(--roxo); border: 2px solid var(--roxo); }
+.botao:active, .linha:active, .projeto:active { transform: scale(.98); }
 
-/* TOPO */
-.topo { padding-top: 24px; }
-.topo h1 { margin: 0 0 14px; font-size: 40px; line-height: 1; font-weight: 300; letter-spacing: -.035em; }
+/* 1 · TOPO */
+.topo { padding: 0 0 28px; }
+.topo-foto { position: relative; }
+.topo-foto img { width: 100%; height: 230px; object-fit: cover; object-position: 60% 40%; }
+.topo-foto::after { content: ""; position: absolute; inset: auto 0 0 0; height: 60px; background: linear-gradient(0deg, #fff, rgba(255, 255, 255, 0)); }
+.topo-texto { padding: 0 20px; margin-top: -18px; position: relative; }
+.topo h1 { margin: 0 0 12px; font-size: 38px; line-height: 1.02; font-weight: 300; letter-spacing: -.035em; }
 .topo h1 strong { display: block; font-weight: 700; color: var(--roxo); }
-.topo p { margin: 0 0 20px; font-size: 16px; line-height: 1.55; color: var(--suave); }
-.acoes { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-.topo-foto { margin: 24px -18px 0 0; }
-.topo-foto img { width: 100%; height: auto; aspect-ratio: 1350 / 1000; }
+.acoes { display: grid; gap: 10px; margin-top: 18px; }
 
-/* PROJETOS */
+/* FAIXA */
+.faixa { height: 44px; }
+.faixa-rail { width: 100%; height: 100%; overflow: hidden; display: flex; align-items: center; background: var(--f-fundo); }
+.faixa-track { display: flex; flex: 0 0 auto; width: max-content; will-change: transform; animation: faixa-run var(--f-speed, 22s) linear infinite; }
+.faixa-seq { display: flex; flex: 0 0 auto; align-items: center; }
+.faixa-item { display: flex; flex: 0 0 auto; align-items: center; gap: 12px; padding: 0 18px; white-space: nowrap; line-height: 1; font-size: 15px; font-weight: 800; letter-spacing: -.02em; color: var(--f-texto); }
+.faixa-item.alt { color: var(--f-destaque); }
+.faixa-simbolo { width: 14px; height: 14px; color: var(--f-destaque); display: block; flex: 0 0 auto; }
+.faixa-item.alt .faixa-simbolo { color: var(--f-texto); }
+.faixa-simbolo svg { width: 100%; height: 100%; display: block; }
+@keyframes faixa-run { from { transform: translateX(0); } to { transform: translateX(calc(-1 * var(--f-loop, 400px))); } }
+
+/* 2 · QUEM SOMOS */
+.quem { position: relative; overflow: hidden; }
+.quem-trilha { position: absolute; right: -70px; top: -20px; width: 170px; opacity: .9; pointer-events: none; }
+.quem .conteudo { position: relative; }
+.destaques { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 18px; }
+.destaque { padding: 14px; border-radius: 16px; background: var(--creme); font-size: 14px; line-height: 1.4; }
+.destaque strong { display: block; margin-bottom: 2px; color: var(--roxo); font-size: 15px; }
+
+/* 3 · PROJETOS */
 .projetos { background: var(--creme); }
 .lista { margin: 0; padding: 0; list-style: none; display: grid; gap: 10px; }
-.projeto { display: flex; align-items: center; gap: 12px; padding: 10px 12px 10px 10px; border-radius: 16px; background: #fff; border: 1px solid var(--borda); border-left: 5px solid var(--cor); color: var(--grafite); text-decoration: none; }
-.projeto img { width: 64px; height: 64px; border-radius: 12px; object-fit: cover; flex: none; }
-.projeto-texto { flex: 1; display: flex; flex-direction: column; gap: 3px; font-size: 13px; line-height: 1.4; color: var(--suave); }
-.projeto-texto strong { font-size: 16px; color: var(--grafite); }
-.selo { align-self: flex-start; padding: 2px 8px; border-radius: 999px; background: var(--lilas); color: var(--ameixa); font-size: 11px; font-weight: 700; }
+.projeto { display: flex; align-items: center; gap: 14px; min-height: 96px; padding: 12px 14px 12px 12px; border-radius: 18px; background: #fff; border: 1px solid var(--borda); border-left: 6px solid var(--cor); color: var(--grafite); text-decoration: none; transition: transform .15s; }
+.projeto img { width: 72px; height: 72px; border-radius: 14px; object-fit: cover; flex: none; background: var(--lilas); }
+.projeto-texto { flex: 1; min-width: 0; display: flex; flex-direction: column; align-items: flex-start; gap: 4px; font-size: 14px; line-height: 1.4; color: var(--suave); }
+.projeto-texto strong { font-size: 17px; line-height: 1.2; color: var(--grafite); }
+.selo { padding: 2px 9px; border-radius: 999px; background: var(--lilas); color: var(--ameixa); font-size: 12px; font-weight: 700; }
 .seta { color: var(--roxo); flex: none; }
 
-/* COMO AJUDAR */
-.pix { position: relative; padding: 22px 18px 20px; border-radius: 22px; background: var(--roxo); color: #fff; overflow: hidden; }
+/* 4 · COMO AJUDAR */
+.pix { position: relative; padding: 24px 20px 22px; border-radius: 24px; background: var(--roxo); color: #fff; overflow: hidden; }
 .pix::after { content: ""; position: absolute; left: 0; bottom: 0; width: 34%; height: 6px; background: var(--amarelo); }
-.pix h3 { margin: 0 0 4px; font-size: 22px; color: var(--amarelo); }
-.pix p { margin: 0 0 14px; font-size: 14px; color: var(--lilas); }
-.chave { display: flex; align-items: center; justify-content: space-between; gap: 8px; padding: 8px 8px 8px 12px; margin-bottom: 10px; border-radius: 12px; background: var(--creme); color: var(--grafite); }
-.chave small { display: block; font-size: 11px; color: var(--suave); }
-.chave strong { font-size: 15px; }
-.copiar { min-height: 44px; padding: 0 14px; border: 0; border-radius: 999px; background: var(--amarelo); color: var(--grafite); font: 700 14px "DM Sans", sans-serif; cursor: pointer; }
-.pix .botao { width: 100%; min-height: 46px; background: transparent; color: #fff; border: 2px solid var(--lilas); font-size: 15px; }
+.pix h3 { margin: 6px 0 4px; font-size: 24px; color: var(--amarelo); }
+.pix p { margin: 0 0 16px; font-size: 15px; line-height: 1.5; color: var(--lilas); }
+.chave { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 10px 10px 10px 14px; margin-bottom: 10px; border-radius: 14px; background: var(--creme); color: var(--grafite); }
+.chave small { display: block; font-size: 12px; color: var(--suave); }
+.chave strong { font-size: 16px; letter-spacing: -.01em; }
+.copiar { flex: none; min-height: 48px; min-width: 88px; padding: 0 16px; border: 0; border-radius: 999px; background: var(--amarelo); color: var(--grafite); font: 700 15px "DM Sans", sans-serif; cursor: pointer; }
+.pix .botao-claro { background: transparent; color: #fff; border: 2px solid var(--lilas); }
 .qr { display: none; margin-top: 14px; text-align: center; }
 .qr.aberto { display: block; }
-.qr .qr-img { width: 190px; height: 190px; margin: 0 auto 12px; padding: 10px; background: #fff; border-radius: 12px; }
+.qr .qr-img { width: 200px; height: 200px; margin: 0 auto 12px; padding: 10px; background: #fff; border-radius: 14px; }
 .qr .qr-img img { width: 100%; height: 100%; image-rendering: pixelated; }
 .qr .copiar { width: 100%; }
-.atalhos { margin: 14px 0 0; padding: 0; list-style: none; display: grid; gap: 8px; }
-.atalhos a { display: flex; justify-content: space-between; align-items: center; min-height: 52px; padding: 0 16px; border-radius: 14px; border: 1px solid var(--borda); color: var(--grafite); font-weight: 700; font-size: 15px; text-decoration: none; }
-.atalhos a span { color: var(--roxo); }
+.linhas { margin: 12px 0 0; padding: 0; list-style: none; display: grid; gap: 8px; }
+.linha { display: flex; align-items: center; justify-content: space-between; gap: 12px; min-height: 64px; padding: 10px 16px; border-radius: 16px; border: 1px solid var(--borda); color: var(--grafite); text-decoration: none; transition: transform .15s; }
+.linha strong { display: block; font-size: 16px; }
+.linha span span { display: block; font-size: 13px; color: var(--suave); }
+.linha svg { color: var(--roxo); flex: none; }
 
-/* IMPACTO */
-.impacto { background: var(--lilas); }
-.numeros { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 16px; }
-.numero { position: relative; padding: 16px 14px 18px; border-radius: 16px; background: #fff; overflow: hidden; }
-.numero::after { content: ""; position: absolute; left: 0; bottom: 0; width: 40%; height: 5px; background: var(--amarelo); }
-.numero b { display: block; font-size: 44px; line-height: 1; font-weight: 800; letter-spacing: -.06em; color: var(--roxo); }
-.numero b sup { font-size: 22px; letter-spacing: 0; }
-.numero span { display: block; margin-top: 8px; font-size: 13px; line-height: 1.35; }
-.contas { display: flex; justify-content: space-between; align-items: center; min-height: 52px; padding: 0 16px; border-radius: 14px; background: #fff; color: var(--roxo); font-weight: 700; text-decoration: none; }
+/* 5 · IMPACTO */
+.impacto { background: var(--creme); }
+.numeros { display: grid; gap: 10px; margin-bottom: 14px; }
+.numero { position: relative; display: flex; align-items: center; gap: 16px; padding: 18px 18px 22px 22px; background: var(--lilas); overflow: hidden; clip-path: url(#ame-janela); }
+.numero:nth-child(2) { background: #eee5f7; }
+.numero::after { content: ""; position: absolute; left: 0; bottom: 0; width: 34%; height: 6px; background: var(--amarelo); }
+.numero b { font-size: 52px; line-height: .9; font-weight: 800; letter-spacing: -.07em; color: var(--roxo); flex: none; }
+.numero b sup { font-size: 24px; letter-spacing: 0; }
+.numero span { font-size: 15px; font-weight: 600; line-height: 1.3; }
+.numero span strong { color: var(--ameixa); }
 
-/* CONTATO */
-.contato { background: var(--roxo); color: #fff; padding-bottom: 44px; }
+/* 6 · CONTATO (espaço extra no fim para o card flutuante da campanha não cobrir nada) */
+.contato { background: var(--roxo); color: #fff; padding-bottom: 130px; }
 .contato .chapeu { color: var(--amarelo); }
 .contato h2 { color: #fff; font-weight: 700; }
-.contato p { margin: 16px 0 0; font-size: 15px; line-height: 1.7; color: var(--lilas); }
-.contato p a { color: #fff; font-weight: 700; text-decoration: none; }
+.contato .acoes { margin-top: 0; }
+.contato .botao-contorno { background: transparent; color: #fff; border-color: var(--lilas); }
+.endereco { margin: 18px 0 0; font-size: 15px; line-height: 1.6; color: var(--lilas); }
+@media (prefers-reduced-motion: reduce) { .faixa-track { animation: none; } .botao, .linha, .projeto { transition: none; } }
+@media (max-width: 340px) { section { padding-left: 16px; padding-right: 16px; } .topo-texto { padding: 0 16px; } .topo h1 { font-size: 34px; } .projeto img { width: 60px; height: 60px; } }
 
 .ame-plano-b{margin-top:16px;padding:16px 18px;border-radius:14px;background:#fcf8f0;color:#292530;border:2px solid #e8b950;font-family:"DM Sans",sans-serif;font-size:15px;line-height:1.5;text-align:left;flex-basis:100%}
 .ame-plano-b p{margin:0 0 8px;color:#292530}
@@ -95,49 +128,69 @@ a:focus-visible, button:focus-visible { outline: 3px solid var(--amarelo); outli
 </style>
 </head>
 <body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><clipPath id="ame-janela" clipPathUnits="objectBoundingBox"><path d="M 0 .97 L 0 .30 C .07 .23 .13 .07 .22 0 L .97 0 Q 1 0 1 .03 L 1 .97 Q 1 1 .97 1 L .03 1 Q 0 1 0 .97 Z"/></clipPath></defs></svg>
 <main>
 
-<!-- TOPO · EDITAR: título, texto e botões -->
+<!-- 1 · TOPO · EDITAR: título, texto e botões -->
 <section class="topo" aria-labelledby="titulo">
-  <p class="chapeu">Associação Mais Educação · Jacaré, RJ</p>
-  <h1 id="titulo">Inspirando mudanças <strong>impactantes.</strong></h1>
-  <p>Desde 2022 no Jacaré, com educação, cuidado e oportunidades para crianças, jovens e adultos.</p>
-  <div class="acoes">
-    <a class="botao botao-roxo" href="https://www.maiseducacao.org/#projetos" data-rolar="projetos">Quero participar</a>
-    <a class="botao botao-amarelo" href="https://www.maiseducacao.org/doe">Quero doar</a>
-  </div>
   <div class="topo-foto"><img src="https://static.wixstatic.com/media/d2b534_4a6837a185a84e06bb03f830112f9005~mv2.png" alt="Crianças em sala de aula da AME"></div>
+  <div class="topo-texto">
+    <p class="chapeu">AME · Jacaré, Rio de Janeiro</p>
+    <h1 id="titulo">Inspirando mudanças <strong>impactantes.</strong></h1>
+    <p class="texto">Educação, cuidado e oportunidades para crianças, jovens e adultos do Jacaré e entornos.</p>
+    <div class="acoes">
+      <a class="botao botao-amarelo" href="https://www.maiseducacao.org/doe">Quero doar</a>
+      <a class="botao botao-contorno" href="https://www.maiseducacao.org/#projetos" data-rolar="projetos">Conhecer os projetos</a>
+    </div>
+  </div>
 </section>
 
-<!-- PROJETOS · cada linha leva à página do projeto. Selo "Em breve": apague o <span class="selo"> para tirar. -->
+<!-- FAIXA · EDITAR: frases em FAIXA, no script do fim da página -->
+<div class="faixa"><div class="faixa-rail" id="faixa-1" role="img" aria-label="Faixa animada"><div class="faixa-track"></div></div></div>
+
+<!-- 2 · QUEM SOMOS · EDITAR: texto e destaques -->
+<section class="quem" id="quem-somos" aria-labelledby="titulo-quem">
+  <img class="quem-trilha" src="https://static.wixstatic.com/media/d2b534_934455c0983c43e0b40de8e720009a90~mv2.png" alt="" aria-hidden="true" loading="lazy">
+  <div class="conteudo">
+    <p class="chapeu">Quem somos</p>
+    <h2 id="titulo-quem">Um espaço onde podemos <strong>sonhar.</strong></h2>
+    <p class="texto">Nascemos em 2022 no Jacaré para apoiar a comunidade, com atenção especial às crianças. Acreditamos na educação como força de transformação.</p>
+    <div class="destaques">
+      <div class="destaque"><strong>Desde 2022</strong>no Jacaré, Rio de Janeiro</div>
+      <div class="destaque"><strong>4 projetos</strong>de educação, trabalho e direitos</div>
+    </div>
+  </div>
+</section>
+
+<!-- 3 · PROJETOS · cada linha leva à página do projeto. Selo "Em breve": apague o <span class="selo"> para tirar. -->
 <section class="projetos" id="projetos" aria-labelledby="titulo-projetos">
   <p class="chapeu">Projetos</p>
   <h2 id="titulo-projetos">Projetos que <strong>transformam</strong></h2>
   <ul class="lista">
-      <li><a class="projeto" href="https://www.maiseducacao.org/reforca-jacare" style="--cor:#e8b950">
-        <img src="https://static.wixstatic.com/media/d2b534_7f70adacfddd447286d0c23471ebee90~mv2.jpeg/v1/fill/w_160,h_160,al_c,q_80/d2b534_7f70adacfddd447286d0c23471ebee90~mv2.jpeg" alt="" loading="lazy">
-        <span class="projeto-texto"><strong>Reforça Jacaré</strong><span>Reforço escolar para crianças de 6 a 10 anos.</span></span>
-        <svg class="seta" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg>
-      </a></li>
-      <li><a class="projeto" href="https://www.maiseducacao.org/ame-qualifica" style="--cor:#bf5236">
-        <img src="https://static.wixstatic.com/media/d2b534_037a2583f3b64e5e8bcf1d29b8975532~mv2.png/v1/fill/w_160,h_160,al_c,q_80/d2b534_037a2583f3b64e5e8bcf1d29b8975532~mv2.png" alt="" loading="lazy">
-        <span class="projeto-texto"><strong>AME Qualifica</strong><span class="selo">Em breve</span><span>Cursos profissionalizantes: cozinheiro e montador de móveis.</span></span>
-        <svg class="seta" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg>
-      </a></li>
-      <li><a class="projeto" href="https://www.maiseducacao.org/pre-vestibular" style="--cor:#3e64b0">
-        <img src="https://static.wixstatic.com/media/d2b534_73c20b0af2c44f038e58b08292266978~mv2.png/v1/fill/w_160,h_160,al_c,q_80/d2b534_73c20b0af2c44f038e58b08292266978~mv2.png" alt="" loading="lazy">
-        <span class="projeto-texto"><strong>Pré-Vestibular AME</strong><span class="selo">Em breve</span><span>Preparação para o vestibular e o Enem.</span></span>
-        <svg class="seta" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg>
-      </a></li>
-      <li><a class="projeto" href="https://www.maiseducacao.org/atendimento-juridico" style="--cor:#2e7d73">
-        <img src="https://static.wixstatic.com/media/nsplsh_d36a47fd47a743fdbcaa691cfb05d6f4~mv2.jpg/v1/fill/w_160,h_160,al_c,q_80/nsplsh_d36a47fd47a743fdbcaa691cfb05d6f4~mv2.jpg" alt="" loading="lazy">
-        <span class="projeto-texto"><strong>Atendimento Jurídico</strong><span>Orientação jurídica gratuita para a comunidade.</span></span>
-        <svg class="seta" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg>
-      </a></li>
+    <li><a class="projeto" href="https://www.maiseducacao.org/reforca-jacare" style="--cor:#e8b950">
+      <img src="https://static.wixstatic.com/media/d2b534_7f70adacfddd447286d0c23471ebee90~mv2.jpeg/v1/fill/w_200,h_200,al_c,q_80/d2b534_7f70adacfddd447286d0c23471ebee90~mv2.jpeg" alt="" loading="lazy">
+      <span class="projeto-texto"><strong>Reforça Jacaré</strong><span>Reforço escolar para crianças de 6 a 10 anos.</span></span>
+      <svg class="seta" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg>
+    </a></li>
+    <li><a class="projeto" href="https://www.maiseducacao.org/ame-qualifica" style="--cor:#bf5236">
+      <img src="https://static.wixstatic.com/media/d2b534_037a2583f3b64e5e8bcf1d29b8975532~mv2.png/v1/fill/w_200,h_200,al_c,q_80/d2b534_037a2583f3b64e5e8bcf1d29b8975532~mv2.png" alt="" loading="lazy">
+      <span class="projeto-texto"><strong>AME Qualifica</strong><span class="selo">Em breve</span><span>Cursos de cozinheiro e montador de móveis.</span></span>
+      <svg class="seta" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg>
+    </a></li>
+    <li><a class="projeto" href="https://www.maiseducacao.org/pre-vestibular" style="--cor:#3e64b0">
+      <img src="https://static.wixstatic.com/media/d2b534_73c20b0af2c44f038e58b08292266978~mv2.png/v1/fill/w_200,h_200,al_c,q_80/d2b534_73c20b0af2c44f038e58b08292266978~mv2.png" alt="" loading="lazy">
+      <span class="projeto-texto"><strong>Pré-Vestibular AME</strong><span class="selo">Em breve</span><span>Preparação para o vestibular e o Enem.</span></span>
+      <svg class="seta" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg>
+    </a></li>
+    <li><a class="projeto" href="https://www.maiseducacao.org/atendimento-juridico" style="--cor:#2e7d73">
+      <img src="https://static.wixstatic.com/media/nsplsh_d36a47fd47a743fdbcaa691cfb05d6f4~mv2.jpg/v1/fill/w_200,h_200,al_c,q_80/nsplsh_d36a47fd47a743fdbcaa691cfb05d6f4~mv2.jpg" alt="" loading="lazy">
+      <span class="projeto-texto"><strong>Atendimento Jurídico</strong><span>Orientação jurídica gratuita para a comunidade.</span></span>
+      <svg class="seta" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg>
+    </a></li>
   </ul>
 </section>
 
-<!-- COMO AJUDAR -->
+<!-- 4 · COMO AJUDAR -->
 <section class="ajudar" id="apoiar" aria-labelledby="titulo-ajudar">
   <p class="chapeu">Como ajudar</p>
   <h2 id="titulo-ajudar">Faça parte <strong>dessa história</strong></h2>
@@ -145,37 +198,41 @@ a:focus-visible, button:focus-visible { outline: 3px solid var(--amarelo); outli
     <h3>Doe via Pix</h3>
     <p>A chave é o CNPJ da Associação Mais Educação.</p>
     <div class="chave"><span><small>Chave Pix (CNPJ)</small><strong>57.125.059/0001-23</strong></span><button type="button" class="copiar" id="copiar-chave">Copiar</button></div>
-    <button type="button" class="botao" id="ver-qr" aria-expanded="false" aria-controls="qr">Ver QR Code</button>
+    <button type="button" class="botao botao-claro" id="ver-qr" aria-expanded="false" aria-controls="qr">Ver QR Code</button>
     <div class="qr" id="qr">
       <div class="qr-img"><img src="data:image/png;base64,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" alt="QR Code Pix da Associação Mais Educação"></div>
       <button type="button" class="copiar" id="copiar-codigo">Copiar código Pix (copia e cola)</button>
     </div>
   </div>
-  <ul class="atalhos">
-    <li><a href="https://www.atados.com.br/ong/ame-associacao-educacional-mais-educacao-373731/vagas">Ser voluntário <span>›</span></a></li>
-    <li><a href="https://wa.me/5521977180459?text=Ol%C3%A1%2C%20vim%20do%20site%20e%20gostaria%20de%20saber%20como%20me%20torno%20um%20parceiro%20da%20ONG">Ser parceiro <span>›</span></a></li>
+  <ul class="linhas">
+    <li><a class="linha" href="https://www.maiseducacao.org/doe"><span><strong>Mais sobre doar</strong><span>Transparência e outras formas de ajudar</span></span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></a></li>
+    <li><a class="linha" href="https://www.atados.com.br/ong/ame-associacao-educacional-mais-educacao-373731/vagas"><span><strong>Ser voluntário</strong><span>Vagas abertas no Atados</span></span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></a></li>
+    <li><a class="linha" href="https://wa.me/5521977180459?text=Ol%C3%A1%2C%20vim%20do%20site%20e%20gostaria%20de%20saber%20como%20me%20torno%20um%20parceiro%20da%20ONG"><span><strong>Ser parceiro</strong><span>Para empresas e instituições</span></span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></a></li>
   </ul>
 </section>
 
-<!-- IMPACTO · EDITAR: números -->
+<!-- 5 · IMPACTO · EDITAR: números -->
 <section class="impacto" aria-labelledby="titulo-impacto">
   <p class="chapeu">Nosso impacto</p>
   <h2 id="titulo-impacto">Resultados que a comunidade <strong>constrói</strong></h2>
   <div class="numeros">
-    <div class="numero"><b>80<sup>+</sup></b><span>crianças atendidas no Reforça Jacaré</span></div>
-    <div class="numero"><b>10<sup>+</sup></b><span>jovens e adultos atendidos no AJA</span></div>
+    <div class="numero"><b>80<sup>+</sup></b><span>crianças atendidas no <strong>Reforça Jacaré</strong></span></div>
+    <div class="numero"><b>10<sup>+</sup></b><span>jovens e adultos atendidos no <strong>AJA</strong></span></div>
   </div>
-  <a class="contas" href="https://www.maiseducacao.org/prestacao-de-contas">Ver prestação de contas <span>›</span></a>
+  <ul class="linhas">
+    <li><a class="linha" href="https://www.maiseducacao.org/prestacao-de-contas"><span><strong>Prestação de contas</strong><span>Veja como os recursos são usados</span></span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></a></li>
+  </ul>
 </section>
 
-<!-- CONTATO · EDITAR: endereço e contatos -->
+<!-- 6 · CONTATO · EDITAR: contatos e endereço -->
 <section class="contato" id="contato" aria-labelledby="titulo-contato">
   <p class="chapeu">Contato</p>
   <h2 id="titulo-contato">Fale com a gente</h2>
-  <a class="botao botao-amarelo" href="https://wa.me/5521977180459?text=Ol%C3%A1%21%20Vim%20do%20site%20da%20AME.">Conversar pelo WhatsApp</a>
-  <p>WhatsApp <a href="https://wa.me/5521977180459">(21) 97718-0459</a><br>
-     Instagram <a href="https://www.instagram.com/amemaiseducacao/">@amemaiseducacao</a><br>
-     R. Conselheiro Mayrink, 339 · Jacaré<br>Rio de Janeiro – RJ · 20960-140</p>
+  <div class="acoes">
+    <a class="botao botao-amarelo" href="https://wa.me/5521977180459?text=Ol%C3%A1%21%20Vim%20do%20site%20da%20AME.">Conversar pelo WhatsApp</a>
+    <a class="botao botao-contorno" href="https://www.instagram.com/amemaiseducacao/">Instagram @amemaiseducacao</a>
+  </div>
+  <p class="endereco">R. Conselheiro Mayrink, 339 · Jacaré<br>Rio de Janeiro – RJ · 20960-140<br>WhatsApp (21) 97718-0459</p>
 </section>
 
 </main>
@@ -333,6 +390,49 @@ a:focus-visible, button:focus-visible { outline: 3px solid var(--amarelo); outli
 </script>
 <script>
 (function () {
+  /* FAIXA · EDITAR: frases */
+  var FAIXA = { frases: ["Mais educação", "Mais oportunidades", "Mais caminhos", "Mais futuro"], tema: "ameixa", separador: "lapis", alternarCores: true, direcao: "esquerda", velocidade: 55 };
+  var TEMAS = { ameixa: { fundo: "#562568", texto: "#FCF8F0", destaque: "#E8B950" } };
+  var SIMBOLOS = { lapis: '<span class="faixa-simbolo"><svg viewBox="0 0 100 100" aria-hidden="true"><path fill="currentColor" d="M0 100 47.24 29.43C56.14 15.77 72.33 0 88.84 0H100V100Z"/></svg></span>', nenhum: '' };
+  function iniciarFaixa(rail, cfg) {
+    var track = rail.querySelector(".faixa-track");
+    var tema = TEMAS[cfg.tema] || TEMAS.ameixa;
+    rail.style.setProperty("--f-fundo", tema.fundo);
+    rail.style.setProperty("--f-texto", tema.texto);
+    rail.style.setProperty("--f-destaque", tema.destaque);
+    if (cfg.direcao === "direita") track.classList.add("direita");
+    rail.setAttribute("aria-label", "Faixa com as frases: " + cfg.frases.join(", "));
+    function item(t, alt) {
+      var s = document.createElement("span");
+      s.className = "faixa-item" + (cfg.alternarCores && alt ? " alt" : "");
+      s.innerHTML = (SIMBOLOS[cfg.separador] || SIMBOLOS.lapis) + '<span class="faixa-palavra"></span>';
+      s.querySelector(".faixa-palavra").textContent = t;
+      return s;
+    }
+    function montar() {
+      track.style.animation = "none"; track.innerHTML = "";
+      var seq = document.createElement("div"); seq.className = "faixa-seq"; track.appendChild(seq);
+      var i = 0;
+      while (seq.getBoundingClientRect().width < rail.clientWidth * 1.35 || i < 3) {
+        cfg.frases.forEach(function (t, k) { seq.appendChild(item(t, (i * cfg.frases.length + k) % 2 === 1)); });
+        if (++i > 20) break;
+      }
+      track.appendChild(seq.cloneNode(true));
+      var d = Math.ceil(seq.getBoundingClientRect().width);
+      if (!d || !rail.clientWidth) { setTimeout(montar, 200); return; }
+      track.style.setProperty("--f-loop", d + "px");
+      track.style.setProperty("--f-speed", Math.max(16, d / cfg.velocidade) + "s");
+      track.offsetHeight; track.style.animation = "";
+    }
+    montar();
+    var largura = 0;
+    if ("ResizeObserver" in window) new ResizeObserver(function () { if (rail.clientWidth && rail.clientWidth !== largura) { largura = rail.clientWidth; montar(); } }).observe(rail);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(montar);
+  }
+
+  iniciarFaixa(document.getElementById("faixa-1"), FAIXA);
+
+  /* PIX */
   var CODIGO_PIX = "00020126500014br.gov.bcb.pix0114571250590001230210Doacao AME5204000053039865802BR5924ASSOCIACAO MAIS EDUCACAO6014RIO DE JANEIRO622905259cWvdvFmqF5XChO6AWD1uL8sX63040599";
   function copiar(texto, botao) {
     var rotulo = botao.textContent;
