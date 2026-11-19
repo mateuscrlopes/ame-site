@@ -71,7 +71,7 @@ a:focus-visible { outline: 3px solid var(--roxo); outline-offset: 3px; border-ra
 /* Folha de caderno: pauta horizontal + margem amarela à esquerda */
 main {
   max-width: 520px; margin: 0 auto;
-  padding: 28px 20px 40px 36px;
+  padding: 28px 12px 40px 36px;
   background:
     linear-gradient(to right, transparent 22px, var(--margem) 22px, var(--margem) 24px, transparent 24px);
   background-color: #fff;
@@ -124,12 +124,12 @@ main {
 /* ---------- Grupos de links (escritos na pauta) ---------- */
 h2 { margin: 28px 0 6px; font-size: 15px; font-weight: 700; color: var(--roxo); line-height: var(--linha); }
 ul { list-style: none; margin: 0 0 0 -36px; padding: 0; border-top: 1px solid var(--pauta); }
-li { border-bottom: 1px solid var(--pauta); padding-left: 24px; }
+li { border-bottom: 1px solid var(--pauta); padding-left: 28px; }
 @media (min-width: 600px) { ul { margin-left: -48px; } li { padding-left: 36px; } }
 /* pauta do caderno: as linhas entre os links atravessam a folha toda */
 .link {
-  display: flex; align-items: center; gap: 14px; min-height: 64px;
-  margin-left: -12px; padding: 8px 8px 8px 0; border-radius: 0 12px 12px 0;
+  display: flex; align-items: center; gap: 10px; min-height: 64px;
+  margin-left: 0; padding: 8px 8px 8px 0; border-radius: 0 12px 12px 0;
   color: var(--grafite); text-decoration: none;
 }
 .link::before { /* etiqueta colorida, como as abas de um fichário */
