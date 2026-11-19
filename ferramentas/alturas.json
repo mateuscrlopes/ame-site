@@ -59,6 +59,11 @@
         "computador": 320,
         "celular": 300
       }
+    },
+    "links": {
+      "arquivo": "links/index.html",
+      "computador": 1430,
+      "celular": 1570
     }
   }
 }
