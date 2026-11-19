@@ -45,6 +45,7 @@ mova o arquivo para `.github/workflows/` (peça ao Claude Code: "ative a verific
 | `faixas/topo/` | Faixa animada abaixo do topo | Página inicial (computador) | 48 / 42 px |
 | `faixas/apoio-impacto/` | Faixa entre Como apoiar e Nosso impacto | Página inicial (computador) | 48 / 42 px |
 | `doe/` | Página de doação: Pix (chave, QR Code e copia e cola), transparência e outras formas de ajudar | `/doe` | 1450 / 2650 px |
+| `links/` | Página de links da bio do Instagram (estilo Linktree): destaques, projetos, como ajudar e contato | `/links` (fora do menu) | 1430 / 1570 px |
 | `prestacao-de-contas/` | Prestação de contas: 2023, 2024 e 2025 numa página só, com abas por ano | `/prestacao-de-contas` | 1450 / 1900 px |
 | `natal/popup/` | Pop-up da campanha de Natal (dentro do pop-up do Wix) | Pop-up "Natal 2026" | 800 × 440 / 300 × 540 px |
 | `natal/card/` | Card flutuante da campanha de Natal, no canto da tela | Todas as páginas, ID `cardNatal` | 320 × 104 / 300 × 92 px |
