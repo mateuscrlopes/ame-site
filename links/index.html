@@ -148,6 +148,10 @@ li { border-bottom: 1px solid var(--pauta); padding-left: 28px; }
 .link.amarelo::before { background: var(--amarelo); }
 .link.ameixa::before { background: var(--ameixa); }
 .link.whats::before { background: #25a35a; }
+.link.blog::before { background: var(--roxo); }
+.link.blog b { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.link .data { display: block; margin-top: 2px; font-size: 13px; color: var(--suave); }
+.ver-todos { display: flex; align-items: center; min-height: 48px; padding-left: 0; font-size: 15px; font-weight: 700; color: var(--roxo); text-decoration: none; }
 
 .rodape { margin-top: 28px; font-size: 13px; line-height: 1.5; color: var(--suave); }
 
@@ -186,6 +190,22 @@ li { border-bottom: 1px solid var(--pauta); padding-left: 28px; }
     <span class="acao">Como pedir atendimento</span>
   </a>
   <!-- /LINK -->
+
+  <!-- ===== DO BLOG =====
+       Mostra sempre os 3 artigos mais recentes do blog do Wix, sozinho.
+       Quem manda a lista é o código Velo da página (wix/velo-pagina.js).
+       O artigo escrito abaixo é o RESERVA: aparece se o Velo não responder
+       (por exemplo, abrindo esta página direto no GitHub). EDITAR quando quiser trocar. -->
+  <h2>Do blog</h2>
+  <ul id="blog-lista">
+    <!-- LINK · reserva -->
+    <li><a class="link blog" href="https://www.maiseducacao.org/post/gente-preta-que-abriu-caminho">
+      <span class="txt"><b>Gente preta que abriu caminho pela educação</b><small>Conceição Evaristo, Machado de Assis e Nelson Mandela</small></span>
+      <svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><path d="M7 4l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a></li>
+    <!-- /LINK -->
+  </ul>
+  <a class="ver-todos" href="https://www.maiseducacao.org/blog">Ver todos os artigos</a>
 
   <!-- ===== PROJETOS ===== -->
   <h2>Projetos</h2>
@@ -262,6 +282,62 @@ li { border-bottom: 1px solid var(--pauta); padding-left: 28px; }
     var fim = new Date(+p[0], +p[1] - 1, +p[2]);
     if (hoje > fim) { (el.closest("li") || el).remove(); }
   });
+})();
+</script>
+<script>
+(function () {
+  /* ======================================================================
+     BLOG: OS ARTIGOS MAIS RECENTES (não precisa editar)
+     Este bloco pede a lista ao código Velo da página, que lê o blog do Wix
+     e responde com os artigos mais novos. Sem resposta, fica o reserva.
+     ====================================================================== */
+  var LIMITE = 3;                                   /* EDITAR: quantos artigos mostrar */
+  var lista = document.getElementById("blog-lista");
+  if (!lista || window.parent === window) return;   /* fora do Wix não há Velo: fica o reserva */
+
+  var recebido = false, tentativas = 0;
+  var SETA = '<svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><path d="M7 4l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+
+  function dataCurta(iso) {
+    var d = new Date(iso);
+    if (isNaN(d)) return "";
+    return d.toLocaleDateString("pt-BR", { day: "numeric", month: "short", year: "numeric" });
+  }
+
+  function montar(posts) {
+    var validos = posts.filter(function (p) {
+      return p && typeof p.titulo === "string" && /^https:\/\/www\.maiseducacao\.org\//.test(p.url || "");
+    }).slice(0, LIMITE);
+    if (!validos.length) return;
+    lista.innerHTML = "";
+    validos.forEach(function (p) {
+      var li = document.createElement("li");
+      var a = document.createElement("a");
+      a.className = "link blog"; a.href = p.url;
+      var txt = document.createElement("span"); txt.className = "txt";
+      var b = document.createElement("b"); b.textContent = p.titulo;
+      txt.appendChild(b);
+      var quando = dataCurta(p.data);
+      if (quando) { var s = document.createElement("small"); s.textContent = quando; txt.appendChild(s); }
+      a.appendChild(txt);
+      a.insertAdjacentHTML("beforeend", SETA);
+      li.appendChild(a); lista.appendChild(li);
+    });
+  }
+
+  window.addEventListener("message", function (ev) {
+    var d = ev.data;
+    if (!d || d.tipo !== "ame-blog" || !Array.isArray(d.posts)) return;
+    recebido = true;
+    montar(d.posts);
+  });
+
+  /* O Velo pode demorar a ficar pronto: pede de novo algumas vezes */
+  (function pedir() {
+    if (recebido || tentativas++ >= 10) return;
+    try { window.parent.postMessage({ tipo: "ame-pedir-blog", limite: LIMITE }, "*"); } catch (e) {}
+    setTimeout(pedir, 800);
+  })();
 })();
 </script>
 <script>
