@@ -55,13 +55,15 @@ $w.onReady(function () {
         wixData.query('Blog/Posts').descending('publishedDate').limit(limite).find()
           .then(function (resultado) {
             const posts = resultado.items.map(function (p) {
-              const caminho = p.postPageURL || '';
+              // postPageURL às vezes vem vazio: monta o endereço pelo slug do post
+              const caminho = p.postPageURL || (p.slug ? '/post/' + p.slug : '');
+              if (!caminho) return null;
               return {
                 titulo: p.title || '',
                 data: p.publishedDate ? new Date(p.publishedDate).toISOString() : '',
                 url: /^https?:/.test(caminho) ? caminho : 'https://www.maiseducacao.org' + caminho
               };
-            });
+            }).filter(Boolean);
             bloco.postMessage({ tipo: 'ame-blog', posts: posts });
           })
           .catch(function () { /* sem resposta: o bloco mostra o artigo reserva */ });
