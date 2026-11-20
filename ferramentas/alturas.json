@@ -62,8 +62,9 @@
     },
     "links": {
       "arquivo": "links/index.html",
-      "computador": 1430,
-      "celular": 1570
+      "computador": 1740,
+      "celular": 2000,
+      "altura_variavel": true
     }
   }
 }
